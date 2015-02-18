@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysRolePermit">
+	<!-- domain class alias -->
+	<typeAlias alias="sysRolePermitClass" type="com.tbb.sys.domain.SysRolePermit" />
+
+	<!-- result map -->
+	<resultMap id="sysRolePermitMap" class="sysRolePermitClass">
+		<result property="permit_id" column="permit_id" />
+		<result property="role_id" column="role_id" />
+	</resultMap>
+
+	<!-- column fields -->
+	<sql id="allColumn"> 
+		permit_id,role_id
+	</sql>
+	
+    <sql id="createColumn">
+        permit_id,role_id
+    </sql>
+
+	<!-- create domain-->
+	<insert id="create" parameterClass="sysRolePermitClass"> 
+		insert into sys_role_permit
+		( 
+			<include refid="createColumn" />
+		) 
+		values 
+		( 
+			#permit_id#,#role_id#
+		) 
+	</insert>
+
+	<!-- retrieve domain -->
+	<select id="retrieve" resultClass="sysRolePermitClass" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from sys_role_permit 
+		where permit_id = #permit_id# and role_id = #role_id#
+	</select>
+
+	<!-- update domain -->
+	<update id="update" parameterClass="sysRolePermitClass"> 
+		update sys_role_permit
+		<dynamic prepend="set">
+			
+		</dynamic> 
+		where permit_id = #permit_id# and role_id = #role_id#
+	</update>
+
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.util.HashMap"> 
+		delete from sys_role_permit
+		where permit_id = #permit_id# and role_id = #role_id#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="permit_id"> 
+			permit_id like '%$permit_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="role_id"> 
+			role_id like '%$role_id$%'
+		</isNotNull>
+	</sql>
+
+	<sql id="dynamicScope">
+
+	</sql>
+
+	<!-- query domain-->
+	<select id="query_list" resultMap="sysRolePermitMap" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from sys_role_permit 
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic>
+		<isNotNull prepend=" " property="orderBy"> 
+			order by $orderBy$
+		</isNotNull>
+	</select>
+
+	<select id="query_cnt" resultClass="java.lang.Integer" 
+	parameterClass="java.util.HashMap">
+		select count(*) from sys_role_permit  
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic> 
+	</select>
+
+	
+
+	
+
+</sqlMap>

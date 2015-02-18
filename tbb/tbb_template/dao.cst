@@ -1,0 +1,52 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+%>
+package com.tbb.vpn.dao;
+
+
+import java.util.List;
+import java.util.Map;
+
+import com.dm.wmf.core.PageList;
+import com.ibatis.dao.client.DaoException;
+import com.tbb.vpn.domain.<%= Utility.UpCaseFirst(name)%>;
+
+/**
+ * Organ Dao
+ */
+public interface <%= Utility.UpCaseFirst(name)%>Dao {
+	
+	public PageList queryForPageList(Map params, int pageIndex, int pageSize)
+			throws DaoException;
+	
+	public <%= Utility.UpCaseFirst(name)%> retrieve(java.lang.String domainPK) throws DaoException;
+	
+	public void create(<%= Utility.UpCaseFirst(name)%> domain) throws DaoException;
+	
+	public int update(<%= Utility.UpCaseFirst(name)%> domain) throws DaoException;
+	
+	public int delete(java.lang.String domainPK) throws DaoException;
+	
+	public List queryForList(Map params) throws DaoException;
+	
+}
+
+
+<script runat="template">
+</script>

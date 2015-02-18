@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>	
+	<form-beans>
+	    <form-bean name="fileForm" type="org.apache.struts.action.DynaActionForm">
+      		<form-property name="file" type="org.apache.struts.upload.FormFile" />
+    	</form-bean> 
+    </form-beans>
+	<action-mappings>
+		<action path="/imiation/ImiationAction"  type="com.tbb.imiation.action.ImiationAction"  name="fileForm">
+			
+			<forward name="redoQuery" path="/imiation/ImiationAction.do?method=query" redirect="true"/>
+			<forward name="redoAdd" path="/imiation/ImiationAction.do?method=add" redirect="true"/>
+			<forward name="redoQueryImiCase" path="/imiation/ImiationAction.do?method=query_imiation_case" redirect="true"/>
+			<forward name="redoImiCase" path="/imiation/ImiationAction.do?method=query"/>
+			<forward name="redoEdit" path="/imiation/ImiationAction.do?method=edit" redirect="true"/>
+			<forward name="redoQuerykbsource" path="/imiation/ImiationAction.do?method=query_kbsource" redirect="true"/>
+			<forward name="join_imiation" path="imiation.case_join.list" />
+			<forward name="query" path="imiation.case.list" />
+			<forward name="query_imiation" path="imiation.case.answer" />
+			<forward name="query_person" path="imiation.user" />
+			<forward name="query_evaluate" path="imiation.evaluate.list" />
+			<forward name="evaluate_view" path="imiation.evaluate.view" />
+			<forward name="redoEvaluateView" path="/imiation/ImiationAction.do?method=query_evaluate_view" redirect="true" />
+			<forward name="add" path="imiation.case.add" />
+			<forward name="imi_del" path="imiation.case.delete" />
+			<forward name="imiation_edit" path="imiation.case.edit" />
+			<forward name="enactment_list" path="/imiation/enactment_list.vm" />
+			<forward name="view" path="imiation.case.view" />
+			<forward name="imia_image_view" path="/imiation/imiation_image_view.vm"/>
+			<forward name="firehouse_view" path="/imiation/imiation_firehouse_view.vm"/>
+			<forward name="query_kbsource" path="kbsource.list"/>
+			<forward name="scourge_edit" path="kbsource.edit"/>
+			<forward name="scourge_add" path="kbsource.add"/>
+			<forward name="scourge_view" path="kbsource.view"/>
+			<forward name="evaluate_view" path="evaluate.view"/>
+			<forward name="imia_evaluate_view" path="imiation.evaluate.view"/>
+			<forward name="assistant_kbsource_list" path="assistant.kbsource.list"/>
+			<forward name="assistant_kbsource_add" path="assistant.kbsource.add"/>
+			<forward name="assistant_kbsource_edit" path="assistant.kbsource.edit"/>
+			<forward name="assistant_kbsource_view" path="assistant.kbsource.view"/>
+		</action>
+	</action-mappings>
+</struts-config>

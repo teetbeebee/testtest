@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE daoConfig
+          PUBLIC "-//ibatis.apache.org//DTD DAO Configuration 2.0//EN"
+          "http://ibatis.apache.org/dtd/dao-2.dtd">
+
+<daoConfig>
+	<context id="dm">
+		<transactionManager type="SQLMAP">
+			<property name="SqlMapConfigResource"
+				value="res/config/sql-map-config.xml" />
+		</transactionManager>
+			
+		<!--sys-->
+		<dao interface="com.tbb.sys.dao.SysUserDao"
+			implementation="com.tbb.sys.dao.sqlmap.SysUserSqlMapDao" />
+		<dao interface="com.tbb.sys.dao.SysRoleDao"
+			implementation="com.tbb.sys.dao.sqlmap.SysRoleSqlMapDao" />
+		<dao interface="com.tbb.sys.dao.SysPermitDao"
+			implementation="com.tbb.sys.dao.sqlmap.SysPermitSqlMapDao" />
+		<dao interface="com.tbb.sys.dao.UserRoleDao"
+			implementation="com.tbb.sys.dao.sqlmap.UserRoleSqlMapDao" />
+		<dao interface="com.tbb.sys.dao.SysGrantDao"
+			implementation="com.tbb.sys.dao.sqlmap.SysGrantSqlMapDao" />
+
+		<!--basedata-->
+		<dao interface="com.tbb.basedata.dao.OrganDao"
+			implementation="com.tbb.basedata.dao.sqlmap.OrganSqlMapDao" />
+		<dao interface="com.tbb.basedata.dao.T1Dao"
+			implementation="com.tbb.basedata.dao.sqlmap.T1SqlMapDao" />
+		<dao interface="com.tbb.basedata.dao.DictionaryDao"
+			implementation="com.tbb.basedata.dao.sqlmap.DictionarySqlMapDao" />
+		<dao interface="com.tbb.basedata.dao.TBB_BASEDATADao"
+			implementation="com.tbb.basedata.dao.sqlmap.TBB_BASEDATASqlMapDao" />		
+		<dao interface="com.tbb.basedata.dao.TBB_PROJ_LISTDao"
+			implementation="com.tbb.basedata.dao.sqlmap.TBB_PROJ_LISTSqlMapDao" />		
+		<dao interface="com.tbb.basedata.dao.RestrauntDao" 
+			implementation="com.tbb.basedata.dao.sqlmap.RestrauntSqlMapDao" />
+		<dao interface="com.tbb.basedata.dao.RecipeDao" 
+			implementation="com.tbb.basedata.dao.sqlmap.RecipeSqlMapDao" />
+			
+		<!--vpn-->
+		<dao interface="com.tbb.vpn.dao.VpnuserDao" 
+			implementation="com.tbb.vpn.dao.sqlmap.VpnuserSqlMapDao" />
+			
+		<!-- member -->
+		<dao interface="com.tbb.member.dao.Web_memberDao" 
+			implementation="com.tbb.member.dao.sqlmap.Web_memberSqlMapDao" />
+		
+	</context>
+
+</daoConfig>

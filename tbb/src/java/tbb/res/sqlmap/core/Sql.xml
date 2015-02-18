@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Sql">
+	<typeAlias alias="blobHandler" type="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback"/>
+	<typeAlias alias="clobHandler" type="com.ibatis.sqlmap.engine.type.ClobTypeHandlerCallback"/>
+	
+	<typeAlias alias="sql" type="com.tbb.core.domain.Sql"/>
+	
+	<resultMap id="rm_clob" class="java.lang.Object">
+		<result property="clob_obj" column="clob_obj" typeHandler="clobHandler" />
+	</resultMap>
+	
+	<resultMap id="rm_blob" class="sql">
+		<result property="blobValue" column="blob_obj" typeHandler="blobHandler" />
+	</resultMap>
+	
+	<!-- create domain-->
+	<insert id="create" parameterClass="java.lang.String"> 
+		$sql$ 
+	</insert>
+	
+	
+	<!-- retrieve domain -->
+	<select id="retrieve" resultClass="java.util.HashMap"  remapResults="true" 
+		parameterClass="java.lang.String"> 
+		$sql$
+	</select>
+	
+	<!-- retrieve clob obj -->
+	<select id="retrieve_clob" resultMap="rm_clob"  remapResults="true" 
+		parameterClass="java.lang.String"> 
+		$sql$
+	</select>
+	
+	<!-- retrieve blob obj -->
+	<select id="retrieve_blob" resultMap="rm_blob"  remapResults="true" 
+		parameterClass="java.lang.String"> 
+		$sql$
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="java.lang.String"> 
+		$sql$
+	</update>
+	
+	<!-- update blob domain-->
+	<update id="update_blob" parameterClass="sql"> 
+		update $table$ set $blobFieldName$ = #blobValue#  where $idFieldName$ = #idValue# 
+	</update>
+
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.String"> 
+		$sql$
+	</delete>
+	
+	<!-- query domain-->
+	<select id="query_list" resultClass="java.util.HashMap" remapResults="true" 
+		parameterClass="java.lang.String"> 
+		$sql$
+	</select>
+	
+	<!-- 取满足条件的记录数 -->
+	<select id="query_cnt" resultClass="java.lang.Integer" remapResults="true" 
+		parameterClass="java.lang.String">
+		select count(*) from ($sql$)
+	</select>
+	
+	<!-- 取计算值 -->
+	<select id="queryAccount" resultClass="java.lang.Integer" remapResults="true" 
+		parameterClass="java.lang.String">
+		$sql$
+	</select>
+</sqlMap>

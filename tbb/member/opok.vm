@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>操作成功</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="$link.ContextPath/css/main.css" rel="stylesheet" type="text/css">
+
+<script language="javascript">
+//探出操作成功提示信息
+#if ($msg)
+{
+	alert("$!msg");
+}
+#else
+{
+	alert("操作成功！");
+}
+#end
+
+
+#if($organ_add || $organ_edit || $organ_delete)
+	opener.ifOrgan.location.reload();
+#end
+
+#if($department_add || $department_edit || $department_delete)
+	opener.ifDepartment.location.reload();
+#end
+
+#if($person_add || $person_edit || $person_delete)
+	try
+	{
+	   var ope = opener.ifPerson || opener;
+		ope.location.reload();
+	}catch(ex){}
+#end
+
+self.close();
+</script>
+</head>
+<body>
+            
+</body>
+</html>

@@ -1,0 +1,38 @@
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+	
+	<table class="maintb">
+		<tr><th colspan="10">修改</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">字典ID</td>
+			<td><input name="dic_id" type="text" class="text"  value="$!dictionary.getDic_id()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">表名</td>
+			<td><input name="table_name" type="text" class="text"  maxlength="20" value="$!dictionary.getTable_name()" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">列名</td>
+			<td><input name="col_name" type="text" class="text"  maxlength="20" value="$!dictionary.getCol_name()" readonly/></td>
+		</tr>
+		<tr>
+			<td class="label">选项</td>
+			<td><input name="col_value" type="text" class="text"  maxlength="20" value="$!dictionary.getCol_value()" readonly/></td>
+		</tr>
+		<tr>
+			<td class="label">说明</td>
+			<td><textarea name="info" class="text" style="width:300px;height:100px;" readonly>$!dictionary.getInfo()</textarea></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

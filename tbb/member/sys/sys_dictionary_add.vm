@@ -1,0 +1,78 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	
+	if (isEmpty(document.objForm.table_name.value))
+	{
+		alert ('请输入表名。');
+		document.objForm.table_name.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.col_name.value))
+	{
+		alert ('请输入列名。');
+		document.objForm.col_name.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.col_value.value))
+	{
+		alert ('请输入选项。');
+		document.objForm.col_value.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/DictionaryAction.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="maintb">
+		<tr><th colspan="10">新增</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">表名</td>
+			<td><input name="table_name" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">列名</td>
+			<td><input name="col_name" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">选项</td>
+			<td><input name="col_value" type="text" class="text" /></td>			
+		</tr>
+		<tr>
+			<td class="label">说明</td>
+			<td><textarea name="info" class="text" style="width:300px;height:100px;"></textarea></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_add_save()" value="新增" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

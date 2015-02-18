@@ -1,0 +1,46 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%
+string[] voname = Utility.Split(Utility.GetVo_names());
+string[] cnname = Utility.Split(Utility.GetCn_names());
+%>
+	<%for(int i = 0;i < voname.Length;i++){%>	
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@query','查询<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@add','添加<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@add_save','保存<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@edit','编辑<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@edit_save','编辑保存<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@delete','删除<%= cnname[i]%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@view','查看<%= cnname[i]%>',null);
+
+	<%}%>
+
+	<%for(int i = 0;i < voname.Length;i++){%>	
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@query','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@add','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@add_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@edit','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@edit_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@delete','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.<%= Utility.UpCaseFirst(voname[i])%>Action@view','r001');
+
+	<%}%>
+
+
+<script runat="template">
+</script>

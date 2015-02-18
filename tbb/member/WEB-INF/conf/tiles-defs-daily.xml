@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+	
+	<!--=========首页=========-->
+	<definition name="daily.index.view" extends="daily">		
+		<put name="center" value="/daily/index.vm" />
+	</definition> 
+	
+	<!--=========值班=========-->
+	<definition name="daily.on_duty.edit_group" extends="daily">		
+		<put name="center" value="/daily/on_duty_group_edit.vm" />
+	</definition>	
+	 
+	<definition name="daily.on_duty.edit_corps" extends="daily">		
+		<put name="center" value="/daily/on_duty_corps_edit.vm" />
+	</definition>
+	
+	<definition name="daily.on_duty.edit_division" extends="daily">		
+		<put name="center" value="/daily/on_duty_division_edit.vm" />
+	</definition>	
+	 
+	<definition name="daily.on_duty.edit_squadron" extends="daily">		
+		<put name="center" value="/daily/on_duty_squadron_edit.vm" />
+	</definition>
+	
+	<definition name="led.control.edit" extends="daily">		
+		<put name="center" value="/daily/control_edit.vm" />
+	</definition> 
+</tiles-definitions>

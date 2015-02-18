@@ -1,0 +1,167 @@
+/* 整体布局 */
+body {
+	width: 640px;
+	height:352px;
+	margin: 0px;
+	padding: 0px;
+	background-color: black;
+	font-family: 宋体;
+	cursor:url('css/null.cur');
+}
+
+/* 显示层定义 */
+.layer_alarm {
+	width:420px;
+	height:512px;
+	
+	left: 0px;
+	top: 0px;
+	right: 420px;
+	bottom: 512px;	
+	padding: 15px; 
+	margin: 0px;
+	
+	font-size: 24px;
+	font-family: 宋体;
+	color: red;
+	
+	visibility: visible;
+	display: none;
+	
+	z-index: 3;
+	position: absolute;		
+	background-color: yellow;
+	filter:revealTrans(Duration=1,Transition=23);
+	background-image: url('../images/alarm.gif');
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+
+/* 显示区域布局 */
+#areaup {
+	margin:0px;
+	width: 640px; 
+	height: 352px;
+	border:0px;
+}
+
+#areadown {
+	margin:0px;
+	width: 640px; 
+	height: 70px;
+	border:0px;
+}
+	
+/* 文字色彩设定 */
+.redtitle {	
+	font-size: 16px;
+	font-weight: bold;
+	color:red;
+}
+
+.greentitle {
+	font-size: 16px;
+	font-weight: bold;
+	color:lime;
+}
+
+.yellowtitle {
+	font-size: 16px;
+	font-weight: bold;
+	color:white;
+}
+
+.redcapt {
+	font-size: 14px;
+	color:red;
+}
+
+.greencapt {
+	font-size: 14px;
+	color:lime;
+}
+
+.yellowcapt {
+	font-size: 14px;
+	color:white;
+}
+
+.redtext {
+	font-size: 12px;
+	line-height:14px;
+	color:red;
+}
+
+.greentext {
+	font-size: 12px;
+	line-height:14px;
+	color:lime;
+}
+
+.yellowtext {
+	font-size: 12px;
+	line-height:14px;
+	color:white;
+}
+
+/* 表格定义 */
+.maintb {
+	padding: 0;
+	margin: 0px;
+	width: 96%;	
+	line-height: 16px;
+	background-color:black;	
+}
+
+.maintb td {
+	height: 16px;
+}
+
+.maintb td.label {
+	font-family: 宋体;
+	font-size: 14px;
+	color: white;
+}
+
+.maintb td.title {
+	
+	font-size: 12px;
+	line-height:14px;
+	color:white;
+}
+
+/*  显示格表格 */
+.celltab {
+	padding: 0;
+	margin: 2px;
+	width: 100%;	
+	background-color: black;
+	border: 1px solid white;	
+	border-collapse: collapse;
+}
+
+.celltab td {
+	height:13pt;
+	line-height:13pt;
+	vertical-align:middle;
+	border: 1px solid white;	
+}
+
+/* 页面跳转效果 */
+.changeeffect {
+	width: 320px; 
+	height: 320px;
+	
+	left:0px;
+	top: 0px;
+	right: 320px;
+	bottom: 384px;
+	
+	padding:5px; 
+	
+	z-index: 1; 
+	position: absolute; 
+	visibility: visible;
+	display:block;
+	filter:revealTrans(Duration=1,Transition=23)
+}

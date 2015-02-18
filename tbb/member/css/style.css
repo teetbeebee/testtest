@@ -1,0 +1,219 @@
+html {
+	overflow: hidden;
+	height:100%
+}
+body {
+	background:#05245F;
+	margin:0;
+	padding:0;
+	font-family:"Microsoft YaHei", verdana, arial, Helvetica, sans-serif;
+	height:100%;
+	font-size:16px;
+}
+img {
+	margin:0;
+	padding:0;
+	border:none
+}
+#bg{
+	background:url(../images/bg.jpg) top center no-repeat;
+	width:100%;
+	height:100%;
+	position:relative
+}
+#loginBt{
+	height:40px;
+	width:100px;
+	display:block;
+	float:right;
+	background:url(../images/login_bt.png) right top no-repeat;
+}
+#loginBt:hover {
+	background:url(../images/login_bt.png) right bottom no-repeat;
+}
+* html #loginBt{
+	height:40px;
+	width:100px;
+	display:block;
+	background:none  !important;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/login_bt.png',sizingMethod='crop')  !important
+}
+* html #loginBt:hover{
+	background:none  !important;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/login_bt_ie6.png',sizingMethod='crop')  !important
+}
+#imageFlow0,#imageFlow1,#imageFlow2,#imageFlow3 {
+	position: absolute;
+	width: 100%;
+	height: 320px;
+	left: 0%;
+	bottom: 50px;
+	display:none;
+	z-index:100
+}
+.diapo {
+	position: absolute;
+	left: -1000px;
+	cursor: pointer;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+.link {
+	border: dotted #fff 1px;
+	margin-left: -1px;
+	margin-bottom: -1px;
+}
+.bank {
+	visibility: hidden;
+}
+.top {
+	position: absolute;
+	width: 100%;
+	height: 400px;
+}
+.text {
+	position: absolute;
+	left: 0px;	
+	width: 100%;
+	bottom: 14%;
+	text-align: center;
+	color: #FFF;
+	z-index: 1000;
+}
+.title {
+	font-size: 1em;
+	font-weight: bold;
+}
+.legend {
+	font-size: 0.8em;
+}
+.scrollbar {	
+	position: absolute;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 16px;
+	z-index: 1000;
+}
+.track {
+	position: absolute;
+	left: 1%;
+	width: 98%;
+	height: 16px;
+	filter: alpha(opacity=30);
+	opacity: 0.3;
+}
+.arrow-left {
+	position: absolute;
+}
+.arrow-right {
+	position: absolute;
+	right: 0px;
+}
+.bar {
+	position: absolute;
+	height: 16px;
+	left: 25px;
+}
+#nav {
+	position:absolute;
+	left:40%;
+	top: 136px;
+	height:144px;
+	width: 610px;
+	z-index:99
+}
+#slb,#zzb,#hqb,#fhb{
+	height:144px;
+	width:72px;
+	display: inline;
+	float:left;
+	cursor:pointer	
+}
+#slb {
+	background:url(../images/slb.png) no-repeat;
+}
+#zzb {
+	background:url(../images/zzb.png) no-repeat;
+}
+#hqb {
+	background:url(../images/hqb.png) no-repeat;
+}
+#fhb {
+	background:url(../images/fhb.png) no-repeat;
+}
+* html .slb_current{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/slb_IE6.png',sizingMethod='crop')  !important
+}
+* html .zzb_current{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/zzb_IE6.png',sizingMethod='crop')  !important
+}
+* html .hqb_current{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/hqb_IE6.png',sizingMethod='crop')  !important
+}
+* html .fhb_current{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/fhb_IE6.png',sizingMethod='crop')  !important
+}
+.slb_current{
+	background:url(../images/slb.png) right no-repeat !important
+}
+.zzb_current{
+	background:url(../images/zzb.png) right no-repeat !important
+}
+.hqb_current{
+	background:url(../images/hqb.png) right no-repeat !important
+}
+.fhb_current{
+	background:url(../images/fhb.png) right no-repeat !important
+}
+
+#nav img {
+	float:left;
+	margin-top:50px;
+	margin-right:20px;
+	display: inline
+}
+* html .slbTitle:hover #slb{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/slb_IE6.png',sizingMethod='crop')  !important
+}
+* html .zzbTitle:hover #zzb{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/zzb_IE6.png',sizingMethod='crop')  !important
+}
+* html .hqbTitle:hover #hqb{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/hqb_IE6.png',sizingMethod='crop')  !important
+}
+* html .fhbTitle:hover #fhb{
+background:none  !important;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='images/fhb_IE6.png',sizingMethod='crop')  !important
+}
+.slbTitle:hover #slb{
+background:url(../images/slb.png) right no-repeat 
+}
+.zzbTitle:hover #zzb{
+background:url(../images/zzb.png) right no-repeat
+}
+.hqbTitle:hover #hqb{
+background:url(../images/hqb.png) right no-repeat
+}
+.fhbTitle:hover #fhb{
+background:url(../images/fhb.png) right no-repeat
+}
+.clear {
+	clear:left
+}
+#loginbox{
+	position:absolute;
+	left: 60%;
+	top: 153px;
+	color:#FFFFFF;
+	font-size:1em
+}
+#loginbox label {
+	font-weight:bold
+}

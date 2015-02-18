@@ -1,0 +1,51 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Property Name="voname" Type="System.String"  Optional="False" Category="Strings" Description="This is voname." %>
+<%@ Property Name="attributes" Type="System.String"  Optional="False" Category="Strings" Description="This is attributes." %>
+<%@ Property Name="cn_names" Type="System.String"  Optional="False" Category="Strings" Description="This is attributes." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = voname;
+string[] attribute = Utility.Split(attributes);
+string[] cn_name = Utility.Split(cn_names);
+%>
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+	
+	<table class="maintb">
+		<tr><th colspan="10">详细信息</th></tr>    
+		<tr>
+		<%for(int i = 0;i < attribute.Length;i++){%>
+		<tr>
+			<td class="label"><%= cn_name[i]%></td>
+			<td><input name="<%= attribute[i]%>" type="text" class="text"  value="$!<%= name%>.get<%= Utility.UpCaseFirst(attribute[i])%>()" maxlength="20" readonly/></td>			
+		</tr>
+		<%}%>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+
+<script runat="template">
+</script>

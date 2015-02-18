@@ -1,0 +1,405 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+string[] attribute = Utility.Split(Utility.GetAttributes());
+string[] cn_name = Utility.Split(Utility.GetCn_attributes());
+%>
+<!--add.vm-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/Core.css" />
+<link rel="stylesheet" type="text/css" href="../css/Layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/Dock.css" />
+<link rel="stylesheet" type="text/css" href="../css/Window.css" />
+<link rel="stylesheet" type="text/css" href="../css/Tabs.css" />
+<link rel="stylesheet" type="text/css" href="../css/DataGrid.css" />
+
+<!--[if IE]>
+<script type="text/javascript" src="scripts/excanvas_r43.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../scripts/mootools-1.2.4-core.js"></script>
+<script type="text/javascript" src="../scripts/mootools-1.2.4-more.js"></script>
+<script type="text/javascript" src="../scripts/Mootools.Fx.CSS.Transform.js"></script>
+<script type="text/javascript" src="../scripts/Core/Core.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Layout.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Dock.js"></script>
+<script type="text/javascript" src="../scripts/Window/Window.js"></script>
+<script type="text/javascript" src="../scripts/Window/Modal.js"></script>
+<script type="text/javascript" src="../scripts/Components/Tabs.js"></script>
+<script type="text/javascript" src="../scripts/DataGrid/datagrid.js"></script>
+
+<!-- calendar related -->
+<link rel="stylesheet" type="text/css" href="../js/calendar/calendar-win2k-cold-1.css" />
+<script type="text/javascript" src="../js/calendar/calendar.js"></script>
+<script type="text/javascript" src="../js/calendar/calendar-zh.js"></script>
+<script type="text/javascript" src="../js/calendar/calendar-setup.js"></script>
+
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	<%for(int i = 1;i < attribute.Length;i++){%>
+	if (document.objForm.<%= attribute[i]%>.value == "")
+	{
+		alert ('请输入<%= cn_name[i]%>。');
+		document.objForm.<%= attribute[i]%>.focus();
+		return false;
+	}
+	<%}%>
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/<%= Utility.UpCaseFirst(name)%>Action.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="Mtable">
+		<tr><th colspan="10" class="Mtabletitle">新增</th></tr>    
+		<tr>
+			<%for(int i = 1;i < attribute.Length;i++){%>
+		<tr>
+			<td class="label"><%= cn_name[i]%></td>
+			<td><input name="<%= attribute[i]%>" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+			<%}%>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_add_save()" value="新增" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+</body>
+</html>
+
+<!-- edit.vm -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/Core.css" />
+<link rel="stylesheet" type="text/css" href="../css/Layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/Dock.css" />
+<link rel="stylesheet" type="text/css" href="../css/Window.css" />
+<link rel="stylesheet" type="text/css" href="../css/Tabs.css" />
+<link rel="stylesheet" type="text/css" href="../css/DataGrid.css" />
+
+<!--[if IE]>
+<script type="text/javascript" src="scripts/excanvas_r43.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../scripts/mootools-1.2.4-core.js"></script>
+<script type="text/javascript" src="../scripts/mootools-1.2.4-more.js"></script>
+<script type="text/javascript" src="../scripts/Mootools.Fx.CSS.Transform.js"></script>
+<script type="text/javascript" src="../scripts/Core/Core.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Layout.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Dock.js"></script>
+<script type="text/javascript" src="../scripts/Window/Window.js"></script>
+<script type="text/javascript" src="../scripts/Window/Modal.js"></script>
+<script type="text/javascript" src="../scripts/Components/Tabs.js"></script>
+<script type="text/javascript" src="../scripts/DataGrid/datagrid.js"></script>
+
+<!-- calendar related -->
+<link rel="stylesheet" type="text/css" href="../js/calendar/calendar-win2k-cold-1.css" />
+<script type="text/javascript" src="../js/calendar/calendar.js"></script>
+<script type="text/javascript" src="../js/calendar/calendar-zh.js"></script>
+<script type="text/javascript" src="../js/calendar/calendar-setup.js"></script>
+
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	<%for(int i = 1;i < attribute.Length;i++){%>
+	if (document.objForm.<%= attribute[i]%>.value == "")
+	{
+		alert ('请输入<%= cn_name[i]%>。');
+		document.objForm.<%= attribute[i]%>.focus();
+		return false;
+	}
+	<%}%>
+	
+	return true;
+}
+
+/**
+ * 提交修改
+ */
+function do_edit_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/<%= Utility.UpCaseFirst(name)%>Action.do')";
+    	document.objForm.method.value = "edit_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="Mtable">
+		<tr><th colspan="10" class="Mtabletitle">修改</th></tr>    
+		<tr>
+			<%for(int i = 0;i < attribute.Length;i++){%>
+		<tr>
+			<td class="label"><%= cn_name[i]%></td>
+			<td><input name="<%= attribute[i]%>" type="text" class="text"  maxlength="20" value="$!<%= Utility.UpCaseFirst(name)%>.get<%= Utility.UpCaseFirst(attribute[i])%>()"/></td>			
+		</tr>
+			<%}%>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_edit_save()" value="修改" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+</body>
+</html>
+
+<!--list.vm>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/Core.css" />
+<link rel="stylesheet" type="text/css" href="../css/Layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/Dock.css" />
+<link rel="stylesheet" type="text/css" href="../css/Window.css" />
+<link rel="stylesheet" type="text/css" href="../css/Tabs.css" />
+<link rel="stylesheet" type="text/css" href="../css/DataGrid.css" />
+
+<!--[if IE]>
+<script type="text/javascript" src="scripts/excanvas_r43.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../scripts/mootools-1.2.4-core.js"></script>
+<script type="text/javascript" src="../scripts/mootools-1.2.4-more.js"></script>
+<script type="text/javascript" src="../scripts/Mootools.Fx.CSS.Transform.js"></script>
+<script type="text/javascript" src="../scripts/Core/Core.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Layout.js"></script>
+<script type="text/javascript" src="../scripts/Layout/Dock.js"></script>
+<script type="text/javascript" src="../scripts/Window/Window.js"></script>
+<script type="text/javascript" src="../scripts/Window/Modal.js"></script>
+<script type="text/javascript" src="../scripts/Components/Tabs.js"></script>
+<script type="text/javascript" src="../scripts/DataGrid/datagrid.js"></script>
+<script src="/tbb/js/checkbox.js"></script>
+
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/<%= Utility.UpCaseFirst(name)%>Action.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.<%= name%>_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.<%= name%>_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="<%= name%>_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!<%= name%>List.pageIndex">
+    <!-- 隐含域 end-->
+
+	<table class="Mtable">
+		<tr>
+			<th colspan="4" class="Mtabletitle">查询条件:</th>
+		</tr>
+		<%for(int i = 0;i < attribute.Length;i++){%>
+			<%if(i / 2 * 2 == i) {%>
+		<tr>
+			<td><%= cn_name[i]%></td>
+			<td><input class="text" type="text" name="$!params.names.<%= attribute[i]%>" value="$!params.values.<%= attribute[i]%>" /></td>
+			<% } else {%>
+			<td><%= cn_name[i]%></td>
+			<td><input class="text" type="text" name="$!params.names.<%= attribute[i]%>" value="$!params.values.<%= attribute[i]%>" /></td>
+		</tr>
+			<% }%>
+		<%}%>
+		<%if(attribute.Length / 2 * 2 != attribute.Length) {%> <td></td><td></td></tr> <% }%>
+		<tr>
+			<th class="Mtableop" colspan="4">
+        	<input class="button" type="button" value="新增" onclick="do_add();" />
+        	<input class="button" type="button" value="查询" onclick="do_query();" />
+			</th>
+		</tr>
+	</table>
+	
+	<table class="Mtable" id="reclist" colspan="<%= attribute.Length + 1%>">
+		<tr colspan="<%= attribute.Length + 1%>" class="Mtabletitle">
+			<th style="width:20px;">&nbsp;</th>
+			<%for(int i = 1;i < attribute.Length;i++){%>
+			<th class="title"><%= cn_name[i]%></th>
+			<%}%>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($<%= name%> in $<%= name%>List.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!<%= name%>.<%= attribute[0]%>" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!<%= name%>.<%= attribute[0]%>');">$!<%= name%>.<%= attribute[1]%></a></td>
+			<%for(int i = 2;i < attribute.Length;i++){%>
+			<td>$!<%= name%>.<%= attribute[i]%></td>
+			<%}%>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!<%= name%>.<%= attribute[0]%>')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($<%= name%>List) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($organList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>
+</body>
+</html>
+
+<!--view.vm -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/Core.css" />
+<link rel="stylesheet" type="text/css" href="../css/Layout.css" />
+<link rel="stylesheet" type="text/css" href="../css/Dock.css" />
+<link rel="stylesheet" type="text/css" href="../css/Window.css" />
+<link rel="stylesheet" type="text/css" href="../css/Tabs.css" />
+<link rel="stylesheet" type="text/css" href="../css/DataGrid.css" />
+<!--[if IE]>
+<script type="text/javascript" src="scripts/excanvas_r43.js"></script>
+<![endif]-->
+<script type="text/javascript" src="scripts/mootools-1.2.4-core.js"></script>
+<script type="text/javascript" src="scripts/mootools-1.2.4-more.js"></script>
+<script type="text/javascript" src="scripts/Mootools.Fx.CSS.Transform.js"></script>
+<script type="text/javascript" src="scripts/Core/Core.js"></script>
+<script type="text/javascript" src="scripts/Layout/Layout.js"></script>
+<script type="text/javascript" src="scripts/Layout/Dock.js"></script>
+<script type="text/javascript" src="scripts/Window/Window.js"></script>
+<script type="text/javascript" src="scripts/Window/Modal.js"></script>
+<script type="text/javascript" src="scripts/Components/Tabs.js"></script>
+<script type="text/javascript" src="scripts/DataGrid/datagrid.js"></script>
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+	
+	<table class="maintb">
+		<tr><th colspan="10">详细信息</th></tr>    
+		<tr>
+		<%for(int i = 0;i < attribute.Length;i++){%>
+		<tr>
+			<td class="label"><%= cn_name[i]%></td>
+			<td><input name="<%= attribute[i]%>" type="text" class="text"  value="$!<%= name%>.get<%= Utility.UpCaseFirst(attribute[i])%>()" maxlength="20" readonly/></td>			
+		</tr>
+		<%}%>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+</body>
+</html>
+
+<script runat="template">
+</script>

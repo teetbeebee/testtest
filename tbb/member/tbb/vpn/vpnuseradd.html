@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>vpn用户添加</title>
+<link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	
+	if (isEmpty(document.objForm.user_name.value))
+	{
+		alert ('请输入用户名!');
+		document.objForm.user_id.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/vpnuser.php?s=add_save')";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<form name="objForm" method="post">
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" />
+    <input type="hidden" name="state" value="0" />
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">vpn管理</a></li>
+    <li><a href="#">vpn用户增加</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    
+    <ul class="forminfo">
+		<li><label>用户名</label><input name="user_name" type="text" class="dfinput"/></li>
+		<li><label>邮件</label><input name="email" type="text" class="dfinput"/></li>
+		<li><label>qq</label><input name="qq" type="text" class="dfinput"/></li>
+		<li><label>密码</label><input name="password" type="text" class="dfinput"/></li>
+		<li><label>用户类型</label><input name="user_type" type="text" class="dfinput"/></li>
+		<li><label>状态</label><input name="state" type="text" class="dfinput"/></li>
+		<li><label>vpn服务器id</label><input name="vpn_server_id" type="text" class="dfinput"/></li>
+		<li><label>账户余额</label><input name="account" type="text" class="dfinput"/></li>
+    <li><label>&nbsp;</label><input name="" type="button" onClick="do_add_save()" class="btn" value="确认保存"/></li>
+    </ul>
+    
+    
+    </div>
+</form>
+
+</body>
+
+</html>
+
+
+

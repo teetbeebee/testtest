@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config> 
+	<MessageCustomer>admin</MessageCustomer>
+	<GpsServer><![CDATA[http://8.8.8.8/web]]></GpsServer>
+    <parameter name="filePath">d:\scheme</parameter>
+    <docPath>c:\datum</docPath>
+    <currentSystem>vpn</currentSystem>
+    <adminmail>teebeebee@gmail.com</adminmail>
+    <adminmail>teebeebee123</adminmail>
+</Config>

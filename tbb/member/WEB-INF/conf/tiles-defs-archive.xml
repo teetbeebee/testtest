@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+	
+	<!--=========首页=========-->
+	<definition name="archive.index.view" extends="archive">		
+		<put name="center" value="/archive/index.vm" />
+	</definition> 
+	
+	<!--=========案件=========-->
+	<definition name="archive.all_case.list" extends="archive">		
+		<put name="center" value="/archive/all_case_list.vm" />
+	</definition> 
+	
+	<definition name="archive.all_case.view" extends="pop">		
+		<put name="center" value="/archive/all_case_view.vm" />
+	</definition> 
+	
+	<!--=========归档=========-->
+	<definition name="archive.case_report.list" extends="archive">		
+		<put name="center" value="/archive/case_report_list.vm" />
+	</definition> 
+	
+	
+	 
+</tiles-definitions>

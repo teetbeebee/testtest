@@ -1,0 +1,119 @@
+<html>
+<head>
+<style>
+.checkfail{
+border: 1px solid red; 
+background-color:#FFFFCC;
+}
+</style>
+<script language="javascript" type="text/javascript" src="$link.contextPath/js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="$link.contextPath/js/valid.js"></script>
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测   不要看见:$link.contextPath
+ */
+function isValid(){
+	if(!checkEmail()) 
+		return false;
+	
+	if(!checkPwd())
+		return false;
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/sys/RegisteAction.do')";
+    	document.objForm.method.value = "registe_save";
+    	document.objForm.submit();
+	}
+}
+
+function checkPwd(){
+	if (document.objForm.password.value != document.objForm.password1.value)
+	{
+		$("#check_pwd").html("两次输入的密码不一致");
+		$("#password").attr("class","checkfail");
+		return false;
+	} else {
+		$("#check_pwd").html("");
+		$("#password").removeClass("checkfail");
+		return true;
+		}
+}
+
+function checkEmail(){	
+	var email = $("#email").val();
+	if(!isValidEmail(email)){
+		$("#check_result").html("邮箱格式不正确");
+		$("#email").attr("class","checkfail");
+		return false;
+	}
+	
+	var url = "$link.setAction('/sys/RegisteAction.do?method=checkEmail&email=')";
+	url += email;
+	$("#check_result").html("");
+	jQuery.ajax({
+        url:url,
+        type:"POST",
+        cache:false,
+        dataType: "json",
+        success:function(data, textStatus) {
+            if(data.results != null){
+				//$("#idCard_code").html(data.results.IDCARDNO);
+				$("#check_result").html("邮箱已注册");
+				$("#email").attr("class","checkfail");
+				return false;
+            }
+        }
+    });
+
+	$("#check_result").html("");
+	$("#email").removeClass("checkfail");
+    return true;
+}
+
+</script>
+</head>
+<body>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+<!-- 隐含域 start --> 
+<input type="hidden" name="method" /> 
+<input type="hidden" name="state" value="0" />
+<input type="hidden" name="check_result" /> 
+<!-- 隐含域 end -->
+
+<ul class="current">
+	<li class="pos">当前位置：用户注册</li>
+	<li class="op"></li>
+</ul>
+
+<table class="maintb">
+	<tr>
+		<td class="label">邮箱</td>
+		<td><input name="email" id="email" type="text" class="text"  onchange="checkEmail();" /><span id="check_result" name="check_result" style="color: red;width: 500px;"></span></td>
+	</tr>
+	<tr>
+		<td class="label">用户密码</td>
+		<td><input name="password" id="password" type="password" class="text" onchange="checkPwd();"  /><span id="check_pwd" name="check_pwd" style="color: red;width: 500px;"></span></td>
+	</tr>
+	<tr>
+		<td class="label">确认密码</td>
+		<td><input name="password1" id="password1" type="password" class="text" onchange="checkPwd();"  /></td>
+	</tr>
+	<tr>
+		<th class="op"><input class="button" type="button"
+			onClick="do_add_save()" value="注册" /> <input class="button"
+			type="button" onClick="history.back()" value="返回" /></th>
+	</tr>
+</table>
+
+</form>
+</body>
+
+</html>

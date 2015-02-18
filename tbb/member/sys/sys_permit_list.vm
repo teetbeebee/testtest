@@ -1,0 +1,87 @@
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/sys/SysPermitAction.do?#arclist')";
+
+function do_clear(){	
+	document.objForm.$!{params.names.permit_id}.value = "";
+	document.objForm.$!{params.names.permit_name}.value = "";
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();	
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.permit_id.value = id;	
+	document.objForm.submit();
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="permit_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!sysPermitList.pageIndex">
+    <!-- 隐含域 end-->
+
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：系统管理/权限列表
+		</li>
+		<li class="op">
+		</li>
+	</ul>
+	
+	<table class="maintb">
+        <tr>
+          <th colspan="10">查询条件</th>
+        </tr>
+		<tr>
+			<td class="label">权限ID</td><td><input class="text" type="text" name="$!params.names.permit_id" value="$!params.values.permit_id" /></td>
+			<td class="label">权限名</td><td><input class="text" type="text" name="$!params.names.permit_name" value="$!params.values.permit_name" /></td>
+		</tr>		
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" value="查询" onclick="do_query();"/>
+				<input class="button" type="reset" value="重置"/><input class="button" type="button" value="清空" onclick="do_clear();"/>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <tr>
+          <th colspan="10">#page_count($sysPermitList)</th>
+        </tr>
+		<tr>
+			<td class="title">权限ID</td>
+			<td class="title">权限名</td>
+			<td class="title">说明</td>
+		</tr>
+		#foreach($sysPermit in $sysPermitList.getPage())
+		<tr>
+			<td><a href="javascript:do_view('$!sysPermit.permit_id');">$!sysPermit.permit_id</a></td>
+			<td>$!sysPermit.permit_name</td>		
+			<td>$!sysPermit.note</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			 #page_navg($sysPermitList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>

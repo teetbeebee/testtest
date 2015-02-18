@@ -1,0 +1,78 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+		
+	if (isEmpty(document.objForm.user_id.value))
+	{
+		alert ('请输入登录名!');
+		document.objForm.user_id.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.password.value))
+	{
+		alert ('请输入用户密码!');
+		document.objForm.password.focus();
+		return false;
+	}
+
+	if (document.objForm.password.value != document.objForm.password1.value)
+	{
+		alert ('两次输入的密码不一致，请再次输入确认密码!');
+		document.objForm.password1.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+function do_edit_pwd_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/sys/SysUserAction.do')";
+    	document.objForm.method.value = "edit_pwd_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：用户管理/修改密码
+		</li>
+		<li class="op">
+		</li>
+	</ul>
+	
+	<table class="maintb">
+		<tr><th colspan="10">编辑</th></tr>      
+		<tr>
+			<td class="label">登录名</td>
+			<td><input type="hidden" name="user_id" value="$!user.user_id"/>$!user.user_id</td>			
+		</tr>			
+		<tr>
+			<td class="label">用户密码</td>
+			<td><input name="password" type="password" class="text"/></td>			
+		</tr>
+		<tr>
+			<td class="label">确认密码</td>
+			<td><input name="password1" type="password" class="text"/></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_edit_pwd_save()" value="编辑保存" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

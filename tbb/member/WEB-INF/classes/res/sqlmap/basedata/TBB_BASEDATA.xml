@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TBB_BASEDATA">
+	<!-- domain class alias -->
+    <typeAlias alias="TBB_BASEDATAClass" type="com.tbb.basedata.domain.TBB_BASEDATA" /> 
+
+	<!-- result map -->
+    <resultMap id="TBB_BASEDATAMap" class="TBB_BASEDATAClass">
+		<result property="ID" column="ID" />
+		<result property="DOCTYPE" column="DOCTYPE" />
+		<result property="PROJ_NAME" column="PROJ_NAME" />
+		<result property="USER_NAME" column="USER_NAME" />
+		<result property="EDIT_DATE" column="EDIT_DATE" />
+		<result property="VERSION" column="VERSION" />
+	</resultMap>
+    
+	<!-- column fields -->
+    	<sql id="allColumn">
+		ID,DOCTYPE,PROJ_NAME,USER_NAME,EDIT_DATE,VERSION
+	</sql>
+    
+	<sql id="createColumn">
+        DOCTYPE,PROJ_NAME,USER_NAME,EDIT_DATE,VERSION
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="TBB_BASEDATAClass">
+        insert into TBB_BASEDATA(
+        <include refid="createColumn" />
+        ) values (
+        #DOCTYPE#,#PROJ_NAME#,#USER_NAME#,#EDIT_DATE#,#VERSION#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	    <select id="retrieve" resultClass="TBB_BASEDATAClass" 
+	parameterClass="java.lang.Integer"> 
+		select <include refid="allColumn" /> 
+		from TBB_BASEDATA where ID = #ID#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="TBB_BASEDATAClass">
+    	update TBB_BASEDATA 
+    	<dynamic prepend="set">
+		<isNotNull prepend="," property="DOCTYPE"> 
+			DOCTYPE = #DOCTYPE#
+		</isNotNull>
+		<isNotNull prepend="," property="PROJ_NAME"> 
+			PROJ_NAME = #PROJ_NAME#
+		</isNotNull>
+		<isNotNull prepend="," property="USER_NAME"> 
+			USER_NAME = #USER_NAME#
+		</isNotNull>
+		<isNotNull prepend="," property="EDIT_DATE"> 
+			EDIT_DATE = #EDIT_DATE#
+		</isNotNull>
+		<isNotNull prepend="," property="VERSION"> 
+			VERSION = #VERSION#
+		</isNotNull>
+        </dynamic>
+        WHERE ID = #ID#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.Integer"> 
+		delete from TBB_BASEDATA where ID = #ID#
+	</delete>
+	
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="ID"> 
+			ID = #ID#
+		</isNotNull>
+		<isNotNull prepend="and" property="DOCTYPE"> 
+			DOCTYPE like '%$DOCTYPE$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="PROJ_NAME"> 
+			PROJ_NAME like '%$PROJ_NAME$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="USER_NAME"> 
+			USER_NAME like '%$USER_NAME$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="EDIT_DATE"> 
+			EDIT_DATE like '%$EDIT_DATE$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="VERSION"> 
+			VERSION like '%$VERSION$%'
+		</isNotNull>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="TBB_BASEDATAMap"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from TBB_BASEDATA
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by ID desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from TBB_BASEDATA
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>

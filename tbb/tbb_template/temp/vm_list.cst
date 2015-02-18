@@ -1,0 +1,141 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Property Name="voname" Type="System.String"  Optional="False" Category="Strings" Description="This is voname." %>
+<%@ Property Name="attributes" Type="System.String"  Optional="False" Category="Strings" Description="This is attributes." %>
+<%@ Property Name="cn_names" Type="System.String"  Optional="False" Category="Strings" Description="This is attributes." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = voname;
+string[] attribute = Utility.Split(attributes);
+string[] cn_name = Utility.Split(cn_names);
+%>
+<script src="/tbb/js/checkbox.js"></script>
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/<%= Utility.UpCaseFirst(name)%>Action.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.<%= voname%>_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.<%= voname%>_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="<%= voname%>_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!<%= name%>List.pageIndex">
+    <!-- 隐含域 end-->
+
+	<table class="maintb">
+		<tr>
+			<th colspan="10" class="op">
+			<div class="searcharea">
+			<%for(int i = 0;i < attribute.Length;i++){%>
+			<div class="condition"><%= cn_name[i]%></div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.<%= attribute[i]%>" value="$!params.values.<%= attribute[i]%>" /></div>
+			<%}%>
+			</div>
+			<div class="pagearea">
+				<input class="button" type="button" value="查询" onclick="do_query();" />
+				<input class="button" type="button" value="新增" onclick="do_add();" />
+			</div>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <!-- tr>
+          <th colspan="10">#page_count($<%= name%>List)</th>
+        </tr -->
+		<tr>
+			<td class="title" style="width:20px;">&nbsp;</td>
+			<%for(int i = 1;i < attribute.Length;i++){%>
+			<td class="title"><%= cn_name[i]%></td>
+			<%}%>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($<%= name%> in $<%= name%>List.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!<%= name%>.<%= attribute[0]%>" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!<%= name%>.<%= attribute[0]%>');">$!<%= name%>.<%= attribute[1]%></a></td>
+			<%for(int i = 2;i < attribute.Length;i++){%>
+			<td>$!<%= name%>.<%= attribute[i]%></td>
+			<%}%>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!<%= name%>.<%= attribute[0]%>')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($<%= name%>List) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($organList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>
+
+<script runat="template">
+</script>

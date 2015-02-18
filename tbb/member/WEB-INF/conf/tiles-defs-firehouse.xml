@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+ 
+	<definition name="firehouse.sys_user.edit_my_pwd" extends="cs">		
+		<put name="center" value="/cs/firehouse/sys_user_my_pwd_edit.vm" />
+	</definition>
+	
+	<definition name="firehouse.strength.edit" extends="cs">		
+		<put name="center" value="/cs/firehouse/firehouse_strength_edit.vm" />
+	</definition>
+	
+	<!--=========消防实力=========-->
+	<definition name="firehouse.strength.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/firehouse_strength_view.vm" />
+	</definition>
+	
+	<!--=========地址簿=========-->
+	<definition name="firehouse.address_book.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/address_book_view.vm" />
+	</definition>	
+	 
+	<definition name="firehouse.address_book.view_detail" extends="cs">		
+		<put name="center" value="/cs/firehouse/address_book_detail_view.vm" />
+	</definition>
+	
+	<definition name="firehouse.organ.tree" extends="cs">		
+		<put name="center" value="/cs/firehouse/organ_tree.vm" />
+	</definition>
+	
+	<!--=========出动命令=========-->
+	<definition name="firehouse.fh_command.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/fh_command_list.vm" />
+	</definition>
+	
+	<!--=========出车单=========-->
+	<definition name="firehouse.action_bill.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/action_bill_view.vm" />
+	</definition>
+	
+	<!--=========调度响应=========-->
+	<definition name="firehouse.attemper_notify.edit" extends="cs">		
+		<put name="center" value="/cs/firehouse/attemper_notify_edit.vm" />
+	</definition>
+	
+	<!--=========值班=========-->
+	<definition name="firehouse.on_duty.view_group" extends="cs">		
+		<put name="center" value="/cs/firehouse/on_duty_group_view.vm" />
+	</definition>	
+	 
+	<definition name="firehouse.on_duty.view_division" extends="cs">		
+		<put name="center" value="/cs/firehouse/on_duty_division_view.vm" />
+	</definition>	
+	 
+	<definition name="firehouse.on_duty.view_squadron" extends="cs">		
+		<put name="center" value="/cs/firehouse/on_duty_squadron_view.vm" />
+	</definition>
+	 	
+	<!--=========重点单位=========-->
+	<definition name="firehouse.major_unit.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/major_unit_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.major_unit.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/major_unit_view.vm" />		
+	</definition>
+	
+	<!--=========社会力量=========-->
+	<definition name="firehouse.society_force.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/society_force_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.society_force.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/society_force_view.vm" />		
+	</definition>
+	
+	<!--=========专家组专家=========-->
+	<definition name="firehouse.expert.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/expert_list.vm" />
+	</definition>	
+	
+	<definition name="firehouse.expert.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/expert_view.vm" />		
+	</definition>	
+	
+	<!--=========消防水源=========-->
+	<definition name="firehouse.hydrant.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/hydrant_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.hydrant.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/hydrant_view.vm" />
+	</definition>	
+	
+	<!--=========历史出动=========-->
+	<definition name="firehouse.fh_action_log.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/fh_action_log_list.vm" />
+	</definition>
+	
+	<!--=========出动详情=========-->
+	<definition name="firehouse.fh_action_log.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/fh_action_log_view.vm" />
+	</definition>
+	
+	<!--=========通知=========-->
+	<definition name="firehouse.notify.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/notify_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.notify.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/notify_view.vm" />
+	</definition>
+	
+	<!--=========知识库=========-->
+	<definition name="firehouse.kb_chemical.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_chemical_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_chemical.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_chemical_view.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_guide.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_guide_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_guide.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_guide_view.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_law.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_law_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_law.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_law_view.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_method.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_method_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_method.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_method_view.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_other.list" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_other_list.vm" />
+	</definition>
+	
+	<definition name="firehouse.kb_other.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/kb_other_view.vm" />
+	</definition>	
+	
+	<!--=========人员=========-->
+	<definition name="firehouse.person.view" extends="cs">		
+		<put name="center" value="/cs/firehouse/person_view.vm" />
+	</definition>
+	
+</tiles-definitions>

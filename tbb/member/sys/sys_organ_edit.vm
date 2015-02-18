@@ -1,0 +1,78 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	
+	if (isEmpty(document.objForm.organ_id.value))
+	{
+		alert ('请选择组织机构ID!');
+		document.objForm.organ_id.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.organ_name.value))
+	{
+		alert ('请输入机构名称!');
+		document.objForm.organ_name.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.parent_id.value))
+	{
+		alert ('请选择上级机构!');
+		document.objForm.parent_id.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_edit_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/OrganAction.do')";
+    	document.objForm.method.value = "edit_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+	
+	<table class="maintb">
+		<tr><th colspan="10">修改</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">机构编号</td>
+			<td><input name="organ_id" type="text" class="text"  value="$!organ.getOrgan_id()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">机构名称</td>
+			<td><input name="organ_name" type="text" class="text"  maxlength="20" value="$!organ.getOrgan_name()"/></td>			
+		</tr>
+		<tr>
+			<td class="label">上级机构</td>
+			<td>
+				<select name="parent_id" class="dropdownlist" style="width:240px;">
+    				#organOptions($organList "$!organ.getParent_id()")
+    			</select>
+			</td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_edit_save()" value="修改" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

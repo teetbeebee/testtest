@@ -1,0 +1,126 @@
+<script src="/tbb/js/checkbox.js"></script>
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/TBB_BASEDATAAction.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.TBB_BASEDATA_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.TBB_BASEDATA_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{alert("aa");
+		if(confirm("确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="TBB_BASEDATA_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!TBB_BASEDATAList.pageIndex">
+    <!-- 隐含域 end-->
+
+	<table class="maintb">
+		<tr>
+			<th colspan="10" class="op">
+			<div class="searcharea">
+			<div class="condition">自增标识</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.ID" value="$!params.values.ID" /></div>
+			<div class="condition">文档类别</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.DOCTYPE" value="$!params.values.DOCTYPE" /></div>
+			<div class="condition">工程名称</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.PROJ_NAME" value="$!params.values.PROJ_NAME" /></div>
+			<div class="condition">用户名</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.USER_NAME" value="$!params.values.USER_NAME" /></div>
+			<div class="condition">编辑日期</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.EDIT_DATE" value="$!params.values.EDIT_DATE" /></div>
+			<div class="condition">版本</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.VERSION" value="$!params.values.VERSION" /></div>
+			</div>
+			<div class="pagearea">
+				<input class="button" type="button" value="查询" onclick="do_query();" />
+				<input class="button" type="button" value="新增" onclick="do_add();" />
+			</div>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <!-- tr>
+          <th colspan="10">#page_count($TBB_BASEDATAList)</th>
+        </tr -->
+		<tr>
+			<td class="title" style="width:20px;">&nbsp;</td>
+			<td class="title">文档类别</td>
+			<td class="title">工程名称</td>
+			<td class="title">用户名</td>
+			<td class="title">编辑日期</td>
+			<td class="title">版本</td>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($TBB_BASEDATA in $TBB_BASEDATAList.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!TBB_BASEDATA.ID" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!TBB_BASEDATA.ID');">$!TBB_BASEDATA.DOCTYPE</a></td>
+			<td>$!TBB_BASEDATA.PROJ_NAME</td>
+			<td>$!TBB_BASEDATA.USER_NAME</td>
+			<td>$!TBB_BASEDATA.EDIT_DATE</td>
+			<td>$!TBB_BASEDATA.VERSION</td>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!TBB_BASEDATA.ID')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($TBB_BASEDATAList) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($organList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>
+

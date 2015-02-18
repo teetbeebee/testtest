@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+ 
+	<!--=========首页=========-->
+	<definition name="basedata.index.view" extends="basedata">		
+		<put name="center" value="/basedata/index_data.vm" />
+	</definition>
+	
+	<definition name="basedata.index.query" extends="basedata">		
+		<put name="center" value="/basedata/index_query.vm" />
+		<put name="menu" value="/tree_query.html" />
+	</definition>
+	
+	
+
+	
+</tiles-definitions>

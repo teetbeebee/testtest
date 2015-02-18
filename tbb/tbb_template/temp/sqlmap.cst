@@ -1,0 +1,122 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+string[] attribute = Utility.Split(Utility.GetAttributes());
+string[] type = Utility.Split(Utility.GetTypes());
+%>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="wmf.<%= Utility.UpCaseFirst(name)%>">
+	<!-- domain class alias -->
+    <typeAlias alias="<%= Utility.UpCaseFirst(name)%>Class" type="com.dm.wmf.system.domain.<%= Utility.UpCaseFirst(name)%>" /> 
+
+	<!-- result map -->
+    <resultMap id="<%= Utility.UpCaseFirst(name)%>Map" class="<%= Utility.UpCaseFirst(name)%>Class">
+			<%for(int i = 0;i < attribute.Length;i++){%>
+		<result property="<%=attribute[i] %>" column="<%=attribute[i] %>" />
+			<%}%>
+	</resultMap>
+    
+	<!-- column fields -->
+    	<sql id="allColumn">
+		<%for(int i = 0;i < attribute.Length - 1;i++){%><%= attribute[i]%>,<%}%><%= attribute[attribute.Length - 1]%>
+	</sql>
+    
+	<sql id="createColumn">
+        <%for(int i = 1;i < attribute.Length - 1;i++){%><%= attribute[i]%>,<%}%><%= attribute[attribute.Length - 1]%>
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="<%= Utility.UpCaseFirst(name)%>Class">
+        insert into <%= name %>(
+        <include refid="createColumn" />
+        ) values (
+        <%for(int i = 1;i < attribute.Length - 1;i++){%>#<%= attribute[i]%>#,<%}%>#<%= attribute[attribute.Length - 1]%>#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	    <select id="retrieve" resultClass="<%= Utility.UpCaseFirst(name)%>Class" 
+	parameterClass="java.lang.Integer"> 
+		select <include refid="allColumn" /> 
+		from <%= name %> where <%= attribute[0]%> = #<%= attribute[0]%>#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="<%= Utility.UpCaseFirst(name)%>Class">
+    	update <%= name %> 
+    	<dynamic prepend="set">
+					<%for(int i = 1;i < attribute.Length;i++){%>
+		<isNotNull prepend="," property="<%= attribute[i]%>"> 
+			<%= attribute[i]%> = #<%= attribute[i]%>#
+		</isNotNull>
+		<%}%>
+        </dynamic>
+        WHERE <%= attribute[0]%> = #<%= attribute[0]%>#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.Integer"> 
+		delete from <%= name %> where <%= attribute[0]%> = #<%= attribute[0]%>#
+	</delete>
+	
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<%for(int i = 0;i < attribute.Length;i++){%>
+		<%if(type[i] != "String"){%>
+		<isNotNull prepend="and" property="<%= attribute[i]%>"> 
+			<%= attribute[i]%> = #<%= attribute[i]%>#
+		</isNotNull>
+		<%} else {%>
+		<isNotNull prepend="and" property="<%= attribute[i]%>"> 
+			<%= attribute[i]%> like '%$<%= attribute[i]%>$%'
+		</isNotNull>
+		<%} %>		
+		<%}%>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="<%= Utility.UpCaseFirst(name)%>Map"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from <%= name %>
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by <%= attribute[0]%> desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from <%= name %>
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>
+<script runat="template">
+</script>

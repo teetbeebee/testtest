@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	
+	if (isEmpty(document.objForm.user_id.value))
+	{
+		alert ('请输入登录名!');
+		document.objForm.user_id.focus();
+		return false;
+	}
+
+	if (isEmpty(document.objForm.user_name.value))
+	{
+		alert ('请输入用户名!');
+		document.objForm.user_name.focus();
+		return false;
+	}
+	
+	if (isEmpty(document.objForm.password.value))
+	{
+		alert ('请输入用户密码!');
+		document.objForm.password.focus();
+		return false;
+	}
+
+	if (document.objForm.password.value != document.objForm.password1.value)
+	{
+		alert ('两次输入的密码不一致，请再次输入确认密码!');
+		document.objForm.password1.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/sys/SysUserAction.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<form name="objForm" method="post">
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" />
+    <input type="hidden" name="state" value="0" />
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">系统管理</a></li>
+    <li><a href="#">用户增加</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    
+    <ul class="forminfo">
+    <li><label>登录名</label><input name="user_id" type="text" class="dfinput" maxlength="20"/><i>登录名不能超过20个字符</i></li>
+    <li><label>用户名</label><input name="user_name" type="text" class="dfinput"/></li>
+    <li><label>用户密码</label><input name="password" type="password" class="dfinput"/></li>
+    <li><label>密码确认</label><input name="password1" type="password" class="dfinput"/></li>
+    <li><label>备注</label><textarea name="note" cols="" rows="" class="textinput"></textarea></li>
+    <li><label>&nbsp;</label><input name="" type="button" onClick="do_add_save()" class="btn" value="确认保存"/></li>
+    </ul>
+    
+    
+    </div>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/RestrauntAction.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(restraunt_id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.organ_restraunt_id.value = restraunt_id;	
+	document.objForm.submit();
+}
+
+function do_edit_recipe(restraunt_id)
+{
+	document.objForm.action = "$link.setAction('/basedata/RecipeAction.do')";
+	document.objForm.method.value = "recipeList";	
+	document.objForm.organ_restraunt_id.value = restraunt_id;	
+	document.objForm.submit();
+}
+
+function do_view(restraunt_id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.user_restraunt_id.value = restraunt_id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("机构是基础数据，其它业务与此相关，确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="restraunt_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!organList.pageIndex">
+    <!-- 隐含域 end-->
+
+	<table class="maintb">
+		<tr>
+			<th colspan="10" class="op">
+			<div class="searcharea">
+			<div class="condition">编号</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_restraunt_id" value="$!params.values.organ_restraunt_id" /></div>
+			<div class="condition">名称</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_name" value="$!params.values.organ_name" /></div>
+			<div class="condition">级别</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_level" value="$!params.values.organ_level" /></div>
+			</div>
+			<div class="pagearea">
+				<input class="button" type="button" value="查询" onclick="do_query();" />
+				<input class="button" type="button" value="新增" onclick="do_add();" />
+			</div>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" restraunt_id="reclist">
+        <!-- tr>
+          <th colspan="10">#page_count($organList)</th>
+        </tr -->
+		<tr>
+			<td class="title" style="width:20px;">&nbsp;</td>
+			<td class="title">编号</td>
+			<td class="title">餐馆名</td>
+			<td class="title">餐馆电话</td>
+			<td class="title">餐馆地址</td>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($restraunt in $restrauntList.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!restraunt.restraunt_id" title="选择/不选择" /></td>
+			<td><a href="javascript:vorestraunt_id(0);">$!restraunt.restraunt_id</a></td>
+			<td>$!restraunt.restraunt_name</td>
+			<td>$!restraunt.restraunt_tel</td>
+			<td>$!restraunt.restraunt_address</td>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!restraunt.restraunt_id')" />
+				<input class="button" type="button" value="菜谱" onClick="do_edit_recipe('$!restraunt.restraunt_id')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($restrauntList) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($restrauntList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>

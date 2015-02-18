@@ -1,0 +1,14 @@
+﻿
+<%@ CodeTemplate Language="C#" TargetLanguage="java" Src="" Inherits="" Debug="False" Description="Template description here." ResponseEncoding="UTF-8" %>
+
+<%@ Property Name="vonames" Type="System.String"  Optional="False" Category="Strings" Description="This is a sample boolean property." %>
+
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%
+ string [] vonamelist=Utility.GetVo_names().Split(',');
+string name=vonames.Substring(0,1).ToUpper()+vonames.Substring(1);
+ 
+%>
+			<%for(int i = 0;i < vonamelist.Length;i++) {%>
+			<sqlMap resource="res/tbbsqlmap/basedata/<%=vonamelist[i] %>.xml" />
+			<%}%>

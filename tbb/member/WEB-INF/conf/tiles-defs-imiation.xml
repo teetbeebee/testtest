@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+   <tiles-definitions> 
+   		<!-- 首页 -->
+   		<definition name="imiation.index.view" extends="imiation">		
+			<put name="center" value="/imiation/index.vm" />
+		</definition>
+		
+		<!-- 新建模拟案例页面 -->
+		<definition name="imiation.case.add" extends="imiation">		
+			<put name="center" value="/imiation/imiation_case_add.vm" />
+		</definition>
+		
+		<!-- 模拟案例管理页面 -->
+		<definition name="imiation.case.list" extends="imiation">		
+			<put name="center" value="/imiation/imiation_case_list.vm" />
+		</definition>
+		
+		<definition name="imiation.case_join.list" extends="imiation">		
+			<put name="center" value="/imiation/imiation_join_list.vm" />
+		</definition>
+		
+		<!-- 进入模拟答题页面 -->
+		<definition name="imiation.case.answer" extends="imiation">		
+			<put name="center" value="/imiation/imiation_case_answer.vm" />
+		</definition>
+		
+		<!-- 选择答题人员页面 -->
+		<definition name="imiation.choose.person" extends="imiation">		
+			<put name="center" value="/imiation/imiation_choose_person.vm" />
+		</definition>
+		
+		<definition name="imiation.user" extends="imiation">		
+			<put name="center" value="/imiation/imiation_user.vm" />
+		</definition>
+		
+		<!-- 进入演练评估页面 -->
+		<definition name="imiation.evaluate.list" extends="imiation">		
+			<put name="center" value="/imiation/imiation_evaluate_list.vm" />
+		</definition>
+		
+		<!-- 进入演练评估页面 -->
+		<definition name="imiation.evaluate.view" extends="imiation">		
+			<put name="center" value="/imiation/imiation_evaluate_view.vm" />
+		</definition>
+		
+		<!-- 进入演练编辑页面 -->
+		<definition name="imiation.case.edit" extends="imiation">		
+			<put name="center" value="/imiation/imiation_case_edit.vm" />
+		</definition>
+		
+		<!-- 进入演练编辑页面 -->
+		<definition name="imiation.case.delete" extends="imiation">		
+			<put name="center" value="/imiDelOk.vm" />
+		</definition>
+		
+		<definition name="imiation.case.view" extends="imiation">		
+			<put name="center" value="/imiation/imiation_case_view.vm" />
+		</definition>
+		
+	  <definition name="assistant.kbsource.list" extends="assistant">		
+		  <put name="center" value="/imiation/kbscourge_list.vm" />
+	  </definition>	
+	 
+	  <definition name="assistant.kbsource.edit" extends="assistant">		
+		  <put name="center" value="/imiation/kbscourge_edit.vm" />
+	  </definition>	
+	  
+	   <definition name="assistant.kbsource.add" extends="assistant">		
+		  <put name="center" value="/imiation/kbscourge_add.vm" />
+	  </definition>	
+	  
+	   <definition name="assistant.kbsource.view" extends="assistant">		
+		  <put name="center" value="/imiation/kbscourge_view.vm" />
+	  </definition>	
+	  
+		<definition name="kbsource.list" extends="imiation">		
+			<put name="center" value="/imiation/kbscourge_list.vm" />
+		</definition>
+		
+		<definition name="kbsource.edit" extends="imiation">		
+			<put name="center" value="/imiation/kbscourge_edit.vm" />
+		</definition>
+		
+		<definition name="kbsource.add" extends="imiation">		
+			<put name="center" value="/imiation/kbscourge_add.vm" />
+		</definition>
+		
+		<definition name="kbsource.view" extends="imiation">		
+			<put name="center" value="/imiation/kbscourge_view.vm" />
+		</definition>
+		<definition name="evaluate.view" extends="imiation">		
+			<put name="center" value="/imiation/evaluate_view.vm" />
+		</definition>
+		
+		<definition name="imiation.sys_user.edit_my_pwd" extends="imiation">		
+		 	<put name="center" value="/sys/sys_user_pwd_edit.vm" />
+	    </definition>	
+   </tiles-definitions>

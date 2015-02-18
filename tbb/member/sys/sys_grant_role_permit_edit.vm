@@ -1,0 +1,76 @@
+<script src="$link.ContextPath/js/dynamicSelect.js"></script>
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	return true;
+}
+
+function do_edit_role_permit_save(){
+	if(isValid()){
+		selectAllOptions(document.getElementById("assign"));	
+		document.objForm.action = "$link.setAction('/sys/SysGrantAction.do')";
+    	document.objForm.method.value = "edit_role_permit_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：角色管理/设置权限
+		</li>
+		<li class="op">
+		</li>
+	</ul>
+	
+	<table class="maintb">
+		<tr><th colspan="10">编辑</th></tr>      
+		<tr>
+			<td class="label">角色ID：$!sysRole.role_id</td>
+			<td colspan="2"><input type="hidden" name="role_id" value="$!sysRole.role_id"/></td>			
+		</tr>			
+		<tr>
+			<td>未分配权限</td>
+			<td style="width:20px;text-align:center">&nbsp;</td>
+			<td>已分配权限</td>			
+		</tr>
+		<tr>
+			<td>
+				<select id="noAssign" name="noAssign" multiple="multiple" size="20" onDblClick="addbtn.click()"  style="height:300px;width:350px">
+                  #foreach($sysPermit in $!sysPermitsSelectedNo)																		
+					<option value="$!sysPermit.permit_id">$!sysPermit.permit_name ($!sysPermit.note)</option>
+				  #end
+              </select>
+			</td>
+			<td>
+                 <input type="button" name="addbtn" value="添加>>" onclick="move(noAssign,assign);return true;">
+                 <br>
+                 <input type="button" name="delbtn" value="<<删除" onclick="move(assign,noAssign);return true;">
+            </td>
+			<td>
+				<select id="assign" name="assign" multiple="multiple" size="20" onDblClick="delbtn.click()"   style="height:300px;width:350px">
+                  #foreach($sysPermit in $!sysPermitsSelected)																		
+					<option value="$!sysPermit.permit_id">$!sysPermit.permit_name ($!sysPermit.note)</option>
+				  #end
+              </select>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_edit_role_permit_save()" value="编辑保存" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

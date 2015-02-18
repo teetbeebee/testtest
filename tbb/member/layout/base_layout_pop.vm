@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<title>$tiles.getAttribute("title")</title>
+<link href="$link.contextPath/css/pop.css" rel="stylesheet" type="text/css">
+<script src="$link.contextPath/js/main.js"></script>
+<script src="$link.contextPath/js/checkbox.js"></script>
+<script src="$link.contextPath/js/colortab.js"></script>
+<script src="$link.contextPath/js/valid.js"></script>
+
+<link href="$link.contextPath/css/xtree.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript">
+	var CONTEXT = "$!CONTEXT";
+</script>
+<script src="$link.contextPath/js/xtree.js"></script>
+<script src="$link.contextPath/js/xloadtree.js"></script>
+<script src="$link.contextPath/js/xmlextras.js"></script>
+
+
+<!-- calendar css-->
+<link rel="stylesheet" type="text/css" href="$link.contextPath/js/calendar/calendar.css" />
+<!-- calendar javascript -->
+<script type="text/javascript" src="$link.contextPath/js/calendar/calendar.js"></script>
+<script type="text/javascript" src="$link.contextPath/js/calendar/calendar-zh.js"></script>
+<script type="text/javascript" src="$link.contextPath/js/calendar/calendar-setup.js"></script>
+</head> 
+<body>
+<!--工作区begin-->
+<table style="border:0; width:100%; height:100%">
+	<tr>
+		<td id="work" style="vertical-align:top;">
+			$tiles.center
+		</td>
+	</tr>	
+</table>
+<script language="javascript" type="text/javascript">
+//设置表格隔行变色
+setTableColor();
+</script>
+<!--工作区end-->
+</body>
+</html>

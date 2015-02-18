@@ -1,0 +1,29 @@
+<script language="javascript">
+	<!--
+	if (document.getElementById) {
+		var tree = new WebFXTree("数据统计", "$link.contextPath/stat/IndexAction.do?method=view");
+		tree.setBehavior('classic');	
+		
+		
+		
+		var attemper = new WebFXTreeItem("案件统计", "javascript:void(0);");
+		tree.add(attemper);		
+		
+		//柱图显示
+		//X轴中队
+		//Y轴数量 参数为时间或案件类型+时间
+		
+		var menu = new WebFXTreeItem("支队案件统计", "$link.contextPath/stat/StatAction.do?method=stat_case_log");
+		attemper.add(menu);
+		var menu = new WebFXTreeItem("综合统计", "$link.contextPath/stat/StatAction.do?method=stat_integrate");
+		attemper.add(menu);
+		
+	    document.write("<div id='xtree'>");
+		document.write(tree);
+		document.write("</div>");
+		
+		tree.expandAll();
+	}
+//-->
+	</script>
+	

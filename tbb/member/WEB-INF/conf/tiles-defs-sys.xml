@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+
+	<!--=========首页=========-->
+	<definition name="sys.index.view" extends="sys">		
+		<put name="center" value="/sys/index.vm" />
+	</definition>	
+	 
+	<!--=========用户=========-->
+	<definition name="sys.sys_user.list" extends="sys">		
+		<put name="center" value="/sys/sys_user_list.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_user.add" extends="sys">		
+		<put name="center" value="/sys/sys_user_add.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_user.edit" extends="sys">		
+		<put name="center" value="/sys/sys_user_edit.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_user.view" extends="sys">		
+		<put name="center" value="/sys/sys_user_view.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_user.edit_pwd" extends="sys">		
+		<put name="center" value="/sys/sys_user_pwd_edit.vm" />
+	</definition>	 
+	
+	<definition name="sys.sys_user.edit_my_pwd" extends="sys">		
+		<put name="center" value="/sys/sys_user_my_pwd_edit.vm" />
+	</definition>	
+	 
+	<!--=========角色=========-->
+	<definition name="sys.sys_role.list" extends="sys">		
+		<put name="center" value="/sys/sys_role_list.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_role.add" extends="sys">		
+		<put name="center" value="/sys/sys_role_add.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_role.edit" extends="sys">		
+		<put name="center" value="/sys/sys_role_edit.vm" />
+	</definition>	
+	 
+	<definition name="sys.sys_role.view" extends="sys">		
+		<put name="center" value="/sys/sys_role_view.vm" />
+	</definition>	
+	
+	<!--=========权限=========-->
+	<definition name="sys.sys_permit.list" extends="sys">		
+		<put name="center" value="/sys/sys_permit_list.vm" />
+	</definition>	
+	
+	<definition name="sys.sys_permit.view" extends="sys">		
+		<put name="center" value="/sys/sys_permit_view.vm" />
+	</definition>
+	
+	<!--=========授权=========-->
+	<definition name="sys.sys_grant.edit_user_role" extends="sys">		
+		<put name="center" value="/sys/sys_grant_user_role_edit.vm" />
+	</definition>	
+	
+	<definition name="sys.sys_grant.edit_role_permit" extends="sys">		
+		<put name="center" value="/sys/sys_grant_role_permit_edit.vm" />
+	</definition>
+	
+	<!--=========机构=========-->
+	<definition name="sys.sys_organ.list" extends="sys">		
+		<put name="center" value="/sys/sys_organ_list.vm" />
+	</definition>	
+	
+	<definition name="sys.sys_organ.add" extends="sys">		
+		<put name="center" value="/sys/sys_organ_add.vm" />
+	</definition>
+	
+	<definition name="sys.sys_organ.edit" extends="sys">		
+		<put name="center" value="/sys/sys_organ_edit.vm" />
+	</definition>
+
+	<definition name="sys.sys_organ.view" extends="sys">		
+		<put name="center" value="/sys/sys_organ_view.vm" />
+	</definition>
+	
+	<!--=========字典=========-->
+	<definition name="sys.sys_dictionary.list" extends="sys">		
+		<put name="center" value="/sys/sys_dictionary_list.vm" />
+	</definition>	
+	
+	<definition name="sys.sys_dictionary.add" extends="sys">		
+		<put name="center" value="/sys/sys_dictionary_add.vm" />
+	</definition>
+	
+	<definition name="sys.sys_dictionary.edit" extends="sys">		
+		<put name="center" value="/sys/sys_dictionary_edit.vm" />
+	</definition>
+
+	<definition name="sys.sys_dictionary.view" extends="sys">		
+		<put name="center" value="/sys/sys_dictionary_view.vm" />
+	</definition>
+	
+	<!--=========T1=========-->
+	<definition name="sys.t1.list" extends="sys">		
+		<put name="center" value="/sys/t1_list.vm" />
+	</definition>
+	
+	<definition name="sys.restraunt.list" extends="sys">		
+		<put name="center" value="/sys/restraunt_list.vm" />
+	</definition>
+	<definition name="sys.restraunt.add" extends="sys">		
+		<put name="center" value="/sys/restraunt_add.vm" />
+	</definition>
+	
+	<definition name="sys.recipe.list" extends="sys">		
+		<put name="center" value="/sys/recipe_list.vm" />
+	</definition>
+	<definition name="sys.recipe.add" extends="sys">		
+		<put name="center" value="/sys/recipe_add.vm" />
+	</definition>
+	<definition name="sys.recipe.view" extends="sys">		
+		<put name="center" value="/sys/recipe_view.vm" />
+	</definition>
+	
+</tiles-definitions>

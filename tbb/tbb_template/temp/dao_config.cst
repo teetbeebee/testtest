@@ -1,0 +1,28 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%
+string[] name = Utility.Split(Utility.GetVo_names());
+%>
+	<%for(int i = 0;i < name.Length;i++){%>	
+		<dao interface="com.tbb.basedata.dao.<%= Utility.UpCaseFirst(name[i])%>Dao"
+			implementation="com.tbb.basedata.dao.sqlmap.<%= Utility.UpCaseFirst(name[i])%>SqlMapDao" />		
+	<%}%>
+	
+
+<script runat="template">
+</script>

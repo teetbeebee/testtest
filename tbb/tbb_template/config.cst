@@ -1,0 +1,55 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+%>
+<!-- res\config\sql-map-config.xml -->
+	<sqlMap resource="res/dmsqlmap/vpn/<%= Utility.UpCaseFirst(name)%>.xml" />
+
+<!-- \WEB-INF\conf\struts-config-vpn.xml -->
+	<action path="/vpn/<%= Utility.UpCaseFirst(name)%>Action" type="com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action">		
+		<forward name="query" path="/vpn/<%= name%>list.vm" />
+		<forward name="add" path="/vpn/<%= name%>add.vm" />
+		<forward name="edit" path="/vpn/<%= name%>edit.vm" />
+		<forward name="view" path="/vpn/<%= name%>view.vm" />
+	</action>
+	
+<!-- res\config\dao-config.xml -->
+	<dao interface="com.tbb.vpn.dao.<%= Utility.UpCaseFirst(name)%>Dao" 
+		implementation="com.tbb.vpn.dao.sqlmap.<%= Utility.UpCaseFirst(name)%>SqlMapDao" />
+
+<!-- TBB_SQL_初始化.sql -->
+<!-- sys_permit注册 -->
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@query','查询<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@add','添加<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@add_save','保存<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@edit','编辑<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@edit_save','编辑保存<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@delete','删除<%= Utility.UpCaseFirst(name)%>',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@view','查看<%= Utility.UpCaseFirst(name)%>',null);
+
+<!-- sys_permit授权 -->
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@query','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@add','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@add_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@edit','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@edit_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@delete','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.<%= Utility.UpCaseFirst(name)%>Action@view','r001');
+
+<script runat="template">
+</script>

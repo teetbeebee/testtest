@@ -1,0 +1,39 @@
+<script language="javascript">
+	<!--
+	if (document.getElementById) {
+		var tree = new WebFXTree("系统管理", "$link.contextPath/sys/IndexAction.do?method=view");
+		tree.setBehavior('classic');	
+		
+		var menu = new WebFXTreeItem("用户管理", "$link.contextPath/sys/SysUserAction.do?method=query");
+		tree.add(menu);
+		
+		var menu = new WebFXTreeItem("角色管理", "$link.contextPath/sys/SysRoleAction.do?method=query");
+		tree.add(menu);
+		
+		var menu = new WebFXTreeItem("权限管理", "$link.contextPath/sys/SysPermitAction.do?method=query");
+		tree.add(menu);
+		
+		var menu = new WebFXTreeItem("机构管理", "$link.contextPath/basedata/OrganAction.do?method=query");
+		tree.add(menu);	
+		
+		var menu = new WebFXTreeItem("字典管理", "$link.contextPath/basedata/DictionaryAction.do?method=query");
+		tree.add(menu);	
+
+		var menu = new WebFXTreeItem("T1管理", "$link.contextPath/basedata/T1Action.do?method=query");
+		tree.add(menu);	
+
+		var menu = new WebFXTreeItem("餐馆管理", "$link.contextPath/basedata/RestrauntAction.do?method=query");
+		tree.add(menu);	
+
+		var menu = new WebFXTreeItem("菜谱管理", "$link.contextPath/basedata/RecipeAction.do?method=query");
+		tree.add(menu);	
+	
+	    document.write("<div id='xtree'>");
+		document.write(tree);
+		document.write("</div>");
+		
+		tree.expandAll();
+	}
+//-->
+	</script>
+	

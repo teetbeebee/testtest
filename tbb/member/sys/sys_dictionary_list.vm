@@ -1,0 +1,114 @@
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/DictionaryAction.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.dictionary_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.dictionary_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("机构是基础数据，其它业务与此相关，确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="dictionary_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!dictionaryList.pageIndex">
+    <!-- 隐含域 end-->
+
+	<table class="maintb">
+		<tr>
+			<th colspan="10" class="op">
+			<div class="searcharea">
+			<div class="condition">表名</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.table_name" value="$!params.values.table_name" /></div>
+			<div class="condition">列名</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.col_name" value="$!params.values.col_name" /></div>
+			<div class="condition">选项</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.col_value" value="$!params.values.col_value" /></div>
+			</div>
+			<div class="pagearea">
+				<input class="button" type="button" value="查询" onclick="do_query();" />
+				<input class="button" type="button" value="新增" onclick="do_add();" />
+			</div>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <!-- tr>
+          <th colspan="10">#page_count($dictionaryList)</th>
+        </tr -->
+		<tr>
+			<td class="title" style="width:20px;">&nbsp;</td>
+			<td class="title">表名</td>
+			<td class="title">列名</td>
+			<td class="title">选项</td>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($dictionary in $dictionaryList.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!dictionary.dic_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!dictionary.dic_id');">$!dictionary.table_name</a></td>
+			<td>$!dictionary.col_name</td>
+			<td>$!dictionary.col_value</td>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!dictionary.dic_id')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($dictionaryList) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($organList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>

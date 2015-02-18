@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>	
+
+	<form-beans>
+	    <form-bean name="upfileForm" type="com.tbb.tools.UpfileForm" >
+      		<form-property name="recipe_img" type="org.apache.struts.upload.FormFile" />
+    	</form-bean> 
+    </form-beans>
+    
+	<action-mappings>		
+		<action path="/basedata/IndexAction" 
+			type="com.tbb.basedata.action.IndexAction">
+			<forward name="view" path="/basedata/index.view" />
+			<forward name="imiation_view" path="imiation.index.view" />
+		</action>
+				<action path="/basedata/OrganAction" type="com.tbb.basedata.action.OrganAction">		
+			<forward name="add" path="sys.sys_organ.add" />
+			<forward name="edit" path="sys.sys_organ.edit" />
+			<forward name="query" path="sys.sys_organ.list" />
+			<forward name="organTree" path="/txqc/organ.vm" />
+		</action>
+		
+		<action path="/basedata/DictionaryAction" type="com.tbb.basedata.action.DictionaryAction">		
+			<forward name="add" path="sys.sys_dictionary.add" />
+			<forward name="edit" path="sys.sys_dictionary.edit" />
+			<forward name="query" path="sys.sys_dictionary.list" />
+			<forward name="view" path="sys.sys_dictionary.view" />
+		</action>
+
+		<action path="/basedata/TBB_BASEDATAAction" type="com.tbb.basedata.action.TBB_BASEDATAAction">		
+			<forward name="add" path="/basedata/TBB_BASEDATA_add.vm" />
+			<forward name="edit" path="/basedata/TBB_BASEDATA_edit.vm" />
+			<forward name="query" path="/basedata/TBB_BASEDATA_list.vm" />
+			<forward name="view" path="/basedata/TBB_BASEDATA_view.vm" />
+		</action>
+		
+		<action path="/basedata/TBB_PROJ_LISTAction" type="com.tbb.basedata.action.TBB_PROJ_LISTAction">		
+			<forward name="add" path="/basedata/TBB_PROJ_LIST_add.vm" />
+			<forward name="edit" path="/basedata/TBB_PROJ_LIST_edit.vm" />
+			<forward name="query" path="/basedata/TBB_PROJ_LIST_list.vm" />
+			<forward name="view" path="/basedata/TBB_PROJ_LIST_view.vm" />
+		</action>
+		
+		<action path="/basedata/T1Action" type="com.tbb.basedata.action.T1Action">		
+			<forward name="add" path="sys.t1.add" />
+			<forward name="edit" path="sys.t1.edit" />
+			<forward name="query" path="sys.t1.list" />
+			<forward name="organTree" path="/txqc/organ.vm" />
+		</action>
+		
+		<action path="/basedata/RestrauntAction" type="com.tbb.basedata.action.RestrauntAction">		
+			<forward name="add" path="sys.restraunt.add" />
+			<forward name="edit" path="sys.restraunt.edit" />
+			<forward name="query" path="sys.restraunt.list" />
+			<forward name="organTree" path="/txqc/organ.vm" />
+			<forward name="recipeList" path="sys.recipe.list" />
+		</action>
+		
+		<action path="/basedata/RecipeAction" type="com.tbb.basedata.action.RecipeAction">		
+			<forward name="add" path="sys.recipe.add" />
+			<forward name="edit" path="sys.recipe.edit" />
+			<forward name="query" path="sys.recipe.list" />
+			<forward name="view" path="sys.recipe.view" />
+			<forward name="organTree" path="/txqc/organ.vm" />
+		</action>
+						
+	</action-mappings>	
+</struts-config>

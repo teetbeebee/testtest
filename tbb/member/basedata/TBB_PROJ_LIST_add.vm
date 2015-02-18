@@ -1,0 +1,102 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	if (document.objForm.ZC.value == "")
+	{
+		alert ('请输入章次。');
+		document.objForm.ZC.focus();
+		return false;
+	}
+	if (document.objForm.KMMC.value == "")
+	{
+		alert ('请输入科目名称。');
+		document.objForm.KMMC.focus();
+		return false;
+	}
+	if (document.objForm.YHTJE.value == "")
+	{
+		alert ('请输入原合同金额。');
+		document.objForm.YHTJE.focus();
+		return false;
+	}
+	if (document.objForm.BGJE.value == "")
+	{
+		alert ('请输入变更金额。');
+		document.objForm.BGJE.focus();
+		return false;
+	}
+	if (document.objForm.ZJE.value == "")
+	{
+		alert ('请输入总金额。');
+		document.objForm.ZJE.focus();
+		return false;
+	}
+	if (document.objForm.BASEDATA_ID.value == "")
+	{
+		alert ('请输入基础信息ID。');
+		document.objForm.BASEDATA_ID.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/TBB_PROJ_LISTAction.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="maintb">
+		<tr><th colspan="10">新增</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">章次</td>
+			<td><input name="ZC" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">科目名称</td>
+			<td><input name="KMMC" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">原合同金额</td>
+			<td><input name="YHTJE" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">变更金额</td>
+			<td><input name="BGJE" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">总金额</td>
+			<td><input name="ZJE" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">基础信息ID</td>
+			<td><input name="BASEDATA_ID" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_add_save()" value="新增" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+

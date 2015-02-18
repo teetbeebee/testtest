@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>#parse("/custom/title.txt")-test</title>
+<link rel="stylesheet" type="text/css" media="screen" href="$link.contextPath/css/style.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" type="text/javascript" src="$link.contextPath/js/valid.js"></script>
+<script language="javascript" type="text/javascript" src="$link.contextPath/js/jquery.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+  if(self!=top){
+     top.location=self.location;
+	 }
+	
+function isValid(){
+	if(isEmpty(document.objForm.email.value)){
+		$("#check_result").html("请输入邮箱帐户");
+		document.objForm.email.focus();
+		return false;
+	}
+	
+	if(isEmpty(document.objForm.password.value)){
+		$("#check_result").html("请输入用户密码");
+		document.objForm.password.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+function do_login(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/LoginAction.do')";
+    	document.objForm.submit();		
+	}
+}
+
+function do_registe(){
+	document.objForm.action = "$link.setAction('/sys/RegisteAction.do')";
+	document.objForm.method.value = "registe";
+	document.objForm.submit();
+}
+
+function checkPwd(){
+	if (document.objForm.password.value != document.objForm.password1.value)
+	{
+		$("#check_pwd").html("两次输入的密码不一致");
+		$("#password").attr("class","checkfail");
+		return false;
+	} else {
+		$("#check_pwd").html("");
+		$("#password").removeClass("checkfail");
+		return true;
+		}
+}
+
+function checkActivate(){
+	alert("ss");
+	var email = $("#email").val();
+	if(!isValidEmail(email)){
+		$("#login_check").html("邮箱格式不正确");
+		$("#email").attr("class","checkfail");
+		return false;
+	}
+	
+	var url = "$link.setAction('/sys/RegisteAction.do?method=checkActivate&email=')";
+	url += email;
+	$("#login_check").html("");
+	jQuery.ajax({
+        url:url,
+        type:"POST",
+        cache:false,
+        dataType: "json",
+        success:function(data, textStatus) {
+            if(data.results == "notExist"){
+				$("#login_check").html("邮箱帐户不存在");
+				return false;
+            } else if(data.results == "notActivate"){
+            	$("#login_check").html("邮箱帐户未激活");
+				return false;
+            } else if(data.results == "activated"){
+            	$("#login_check").html("");
+				return false;
+            }
+        }
+    });
+
+    return true;
+}
+</script>
+</head>
+<body>
+<div id="bg">
+  <div id="loginbox">
+	<form name="objForm"  method="#method()">
+	<!-- 隐藏区域 start -->
+	<input type="hidden" name="last_request" value="$!last_request" />
+	<input type="hidden" name="method" />
+	<p>
+		#if($loginwarn) $!loginwarn #end</p>
+		<label>邮箱:</label>
+		<input type="text"     value="" name="email" id="email" onchange="checkActivate();"  onkeypress="if (event.keyCode == 13) document.objForm.password.focus();" style="width: 180px"/>
+	<p>
+		<label>密码:</label>
+		<input type="password" value="" name="password" id="password" onkeypress="if (event.keyCode == 13) do_login();" style="width: 180px"/>
+	</p>
+	<p align="center">
+		<input type="button" value="提交"  onclick="do_login();"/> &nbsp;<input type="button" value="注册"  onclick="do_registe();"/>
+		<br/>
+		<span id="login_check" name="login_check" style="color: red;width: 500px;"></span>
+	</p>
+	</form>
+  </div>
+</div>
+<script language="javascript" type="text/javascript">
+	document.objForm.email.focus();
+</script>
+</body>
+</html>

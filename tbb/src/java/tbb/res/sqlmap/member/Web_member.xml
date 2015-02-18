@@ -1,0 +1,2763 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Member">
+	<!-- domain class alias -->
+    <typeAlias alias="Web_memberClass" type="com.tbb.member.domain.Web_member" /> 
+
+	<!-- result map -->
+    <resultMap id="Web_memberMap" class="Web_memberClass">
+        <result property="id" column="id" />
+        <result property="oid" column="oid" />
+        <result property="memname" column="memname" />
+        <result property="loginname" column="loginname" />
+        <result property="passwd" column="passwd" />
+        <result property="ischeck" column="ischeck" />
+        <result property="bank_account_name" column="bank_account_name" />
+        <result property="bank" column="bank" />
+        <result property="bank_khname" column="bank_khname" />
+        <result property="bank_account" column="bank_account" />
+        <result property="answer" column="answer" />
+        <result property="askvalue" column="askvalue" />
+        <result property="withdrawalpassword" column="withdrawalpassword" />
+        <result property="withdrawalname" column="withdrawalname" />
+        <result property="email" column="email" />
+        <result property="phone" column="phone" />
+        <result property="sex" column="sex" />
+        <result property="money" column="money" />
+        <result property="credit" column="credit" />
+        <result property="alias" column="alias" />
+        <result property="logdate" column="logdate" />
+        <result property="domain" column="domain" />
+        <result property="adddate" column="adddate" />
+        <result property="language" column="language" />
+        <result property="active" column="active" />
+        <result property="logip" column="logip" />
+        <result property="setip" column="setip" />
+        <result property="agents" column="agents" />
+        <result property="corprator" column="corprator" />
+        <result property="world" column="world" />
+        <result property="superr" column="super" />
+        <result property="pay_type" column="pay_type" />
+        <result property="status" column="status" />
+        <result property="edtvou" column="edtvou" />
+        <result property="bettype" column="bettype" />
+        <result property="opentype" column="opentype" />
+        <result property="curtype" column="curtype" />
+        <result property="ft_r_scene" column="ft_r_scene" />
+        <result property="ft_re_scene" column="ft_re_scene" />
+        <result property="ft_rou_scene" column="ft_rou_scene" />
+        <result property="ft_m_scene" column="ft_m_scene" />
+        <result property="ft_ou_scene" column="ft_ou_scene" />
+        <result property="ft_pd_scene" column="ft_pd_scene" />
+        <result property="ft_t_scene" column="ft_t_scene" />
+        <result property="ft_eo_scene" column="ft_eo_scene" />
+        <result property="ft_p_scene" column="ft_p_scene" />
+        <result property="ft_pr_scene" column="ft_pr_scene" />
+        <result property="ft_f_scene" column="ft_f_scene" />
+        <result property="ft_m_bet" column="ft_m_bet" />
+        <result property="ft_r_bet" column="ft_r_bet" />
+        <result property="ft_ou_bet" column="ft_ou_bet" />
+        <result property="ft_re_bet" column="ft_re_bet" />
+        <result property="ft_rou_bet" column="ft_rou_bet" />
+        <result property="ft_t_bet" column="ft_t_bet" />
+        <result property="ft_eo_bet" column="ft_eo_bet" />
+        <result property="ft_pd_bet" column="ft_pd_bet" />
+        <result property="ft_f_bet" column="ft_f_bet" />
+        <result property="ft_p_bet" column="ft_p_bet" />
+        <result property="ft_pr_bet" column="ft_pr_bet" />
+        <result property="ft_turn_r" column="ft_turn_r" />
+        <result property="ft_turn_ou" column="ft_turn_ou" />
+        <result property="ft_turn_m" column="ft_turn_m" />
+        <result property="ft_turn_re" column="ft_turn_re" />
+        <result property="ft_turn_rou" column="ft_turn_rou" />
+        <result property="ft_turn_pd" column="ft_turn_pd" />
+        <result property="ft_turn_t" column="ft_turn_t" />
+        <result property="ft_turn_eo" column="ft_turn_eo" />
+        <result property="ft_turn_f" column="ft_turn_f" />
+        <result property="ft_turn_p" column="ft_turn_p" />
+        <result property="ft_turn_pr" column="ft_turn_pr" />
+        <result property="tn_r_bet" column="tn_r_bet" />
+        <result property="tn_re_bet" column="tn_re_bet" />
+        <result property="tn_rou_bet" column="tn_rou_bet" />
+        <result property="tn_ou_bet" column="tn_ou_bet" />
+        <result property="tn_m_bet" column="tn_m_bet" />
+        <result property="tn_t_bet" column="tn_t_bet" />
+        <result property="tn_eo_bet" column="tn_eo_bet" />
+        <result property="tn_p_bet" column="tn_p_bet" />
+        <result property="tn_pr_bet" column="tn_pr_bet" />
+        <result property="tn_pd_bet" column="tn_pd_bet" />
+        <result property="tn_f_bet" column="tn_f_bet" />
+        <result property="tn_r_scene" column="tn_r_scene" />
+        <result property="tn_ou_scene" column="tn_ou_scene" />
+        <result property="tn_re_scene" column="tn_re_scene" />
+        <result property="tn_rou_scene" column="tn_rou_scene" />
+        <result property="tn_m_scene" column="tn_m_scene" />
+        <result property="tn_eo_scene" column="tn_eo_scene" />
+        <result property="tn_t_scene" column="tn_t_scene" />
+        <result property="tn_pd_scene" column="tn_pd_scene" />
+        <result property="tn_f_scene" column="tn_f_scene" />
+        <result property="tn_p_scene" column="tn_p_scene" />
+        <result property="tn_pr_scene" column="tn_pr_scene" />
+        <result property="tn_turn_r" column="tn_turn_r" />
+        <result property="tn_turn_ou" column="tn_turn_ou" />
+        <result property="tn_turn_re" column="tn_turn_re" />
+        <result property="tn_turn_rou" column="tn_turn_rou" />
+        <result property="tn_turn_m" column="tn_turn_m" />
+        <result property="tn_turn_t" column="tn_turn_t" />
+        <result property="tn_turn_eo" column="tn_turn_eo" />
+        <result property="tn_turn_pd" column="tn_turn_pd" />
+        <result property="tn_turn_f" column="tn_turn_f" />
+        <result property="tn_turn_p" column="tn_turn_p" />
+        <result property="tn_turn_pr" column="tn_turn_pr" />
+        <result property="vb_turn_r" column="vb_turn_r" />
+        <result property="vb_turn_ou" column="vb_turn_ou" />
+        <result property="vb_turn_rou" column="vb_turn_rou" />
+        <result property="vb_turn_re" column="vb_turn_re" />
+        <result property="vb_turn_eo" column="vb_turn_eo" />
+        <result property="vb_turn_m" column="vb_turn_m" />
+        <result property="vb_turn_t" column="vb_turn_t" />
+        <result property="vb_turn_pd" column="vb_turn_pd" />
+        <result property="vb_turn_f" column="vb_turn_f" />
+        <result property="vb_turn_pr" column="vb_turn_pr" />
+        <result property="vb_turn_p" column="vb_turn_p" />
+        <result property="bk_turn_r" column="bk_turn_r" />
+        <result property="bk_turn_eo" column="bk_turn_eo" />
+        <result property="bk_turn_ou" column="bk_turn_ou" />
+        <result property="bk_turn_pr" column="bk_turn_pr" />
+        <result property="bk_r_scene" column="bk_r_scene" />
+        <result property="bk_eo_scene" column="bk_eo_scene" />
+        <result property="bk_ou_scene" column="bk_ou_scene" />
+        <result property="bk_pr_scene" column="bk_pr_scene" />
+        <result property="bk_r_bet" column="bk_r_bet" />
+        <result property="bk_eo_bet" column="bk_eo_bet" />
+        <result property="bk_ou_bet" column="bk_ou_bet" />
+        <result property="bk_pr_bet" column="bk_pr_bet" />
+        <result property="agent_rate" column="agent_rate" />
+        <result property="world_rate" column="world_rate" />
+        <result property="agent_point" column="agent_point" />
+        <result property="world_point" column="world_point" />
+        <result property="ratio" column="ratio" />
+        <result property="vb_r_bet" column="vb_r_bet" />
+        <result property="vb_re_bet" column="vb_re_bet" />
+        <result property="vb_rou_bet" column="vb_rou_bet" />
+        <result property="vb_ou_bet" column="vb_ou_bet" />
+        <result property="vb_m_bet" column="vb_m_bet" />
+        <result property="vb_t_bet" column="vb_t_bet" />
+        <result property="vb_eo_bet" column="vb_eo_bet" />
+        <result property="vb_p_bet" column="vb_p_bet" />
+        <result property="vb_pr_bet" column="vb_pr_bet" />
+        <result property="vb_pd_bet" column="vb_pd_bet" />
+        <result property="vb_f_bet" column="vb_f_bet" />
+        <result property="vb_r_scene" column="vb_r_scene" />
+        <result property="vb_ou_scene" column="vb_ou_scene" />
+        <result property="vb_re_scene" column="vb_re_scene" />
+        <result property="vb_rou_scene" column="vb_rou_scene" />
+        <result property="vb_m_scene" column="vb_m_scene" />
+        <result property="vb_eo_scene" column="vb_eo_scene" />
+        <result property="vb_t_scene" column="vb_t_scene" />
+        <result property="vb_pd_scene" column="vb_pd_scene" />
+        <result property="vb_f_scene" column="vb_f_scene" />
+        <result property="vb_p_scene" column="vb_p_scene" />
+        <result property="vb_pr_scene" column="vb_pr_scene" />
+        <result property="ft_hre_scene" column="ft_hre_scene" />
+        <result property="ft_hre_bet" column="ft_hre_bet" />
+        <result property="fs_r_bet" column="fs_r_bet" />
+        <result property="fs_r_scene" column="fs_r_scene" />
+        <result property="fs_turn_r" column="fs_turn_r" />
+        <result property="bk_turn_re" column="bk_turn_re" />
+        <result property="bk_turn_rou" column="bk_turn_rou" />
+        <result property="bk_re_scene" column="bk_re_scene" />
+        <result property="bk_re_bet" column="bk_re_bet" />
+        <result property="bk_rou_scene" column="bk_rou_scene" />
+        <result property="bk_rou_bet" column="bk_rou_bet" />
+        <result property="lastpawd" column="lastpawd" />
+        <result property="hidden" column="hidden" />
+        <result property="hiddenstatus" column="hiddenstatus" />
+        <result property="cancel" column="cancel" />
+        <result property="pretick" column="pretick" />
+        <result property="tick" column="tick" />
+        <result property="ft_pc_bet" column="ft_pc_bet" />
+        <result property="ft_pc_scene" column="ft_pc_scene" />
+        <result property="ft_turn_pc" column="ft_turn_pc" />
+        <result property="bs_r_scene" column="bs_r_scene" />
+        <result property="bs_r_bet" column="bs_r_bet" />
+        <result property="bs_ou_scene" column="bs_ou_scene" />
+        <result property="bs_ou_bet" column="bs_ou_bet" />
+        <result property="bs_m_scene" column="bs_m_scene" />
+        <result property="bs_m_bet" column="bs_m_bet" />
+        <result property="bs_eo_scene" column="bs_eo_scene" />
+        <result property="bs_eo_bet" column="bs_eo_bet" />
+        <result property="bs_t_scene" column="bs_t_scene" />
+        <result property="bs_t_bet" column="bs_t_bet" />
+        <result property="bs_p_scene" column="bs_p_scene" />
+        <result property="bs_p_bet" column="bs_p_bet" />
+        <result property="bs_pr_scene" column="bs_pr_scene" />
+        <result property="bs_pr_bet" column="bs_pr_bet" />
+        <result property="bs_pc_scene" column="bs_pc_scene" />
+        <result property="bs_pc_bet" column="bs_pc_bet" />
+        <result property="bs_pd_scene" column="bs_pd_scene" />
+        <result property="bs_pd_bet" column="bs_pd_bet" />
+        <result property="bs_turn_ou" column="bs_turn_ou" />
+        <result property="bs_turn_m" column="bs_turn_m" />
+        <result property="bs_re_scene" column="bs_re_scene" />
+        <result property="bs_re_bet" column="bs_re_bet" />
+        <result property="bs_turn_re" column="bs_turn_re" />
+        <result property="bs_rou_scene" column="bs_rou_scene" />
+        <result property="bs_rou_bet" column="bs_rou_bet" />
+        <result property="bs_turn_rou" column="bs_turn_rou" />
+        <result property="bs_turn_eo" column="bs_turn_eo" />
+        <result property="bs_turn_p" column="bs_turn_p" />
+        <result property="bs_turn_pr" column="bs_turn_pr" />
+        <result property="bs_turn_pc" column="bs_turn_pc" />
+        <result property="bs_turn_pd" column="bs_turn_pd" />
+        <result property="bs_turn_t" column="bs_turn_t" />
+        <result property="bs_turn_r" column="bs_turn_r" />
+        <result property="ft_rm_bet" column="ft_rm_bet" />
+        <result property="ft_rm_scene" column="ft_rm_scene" />
+        <result property="ft_turn_rm" column="ft_turn_rm" />
+        <result property="op_r_bet" column="op_r_bet" />
+        <result property="op_re_bet" column="op_re_bet" />
+        <result property="op_rou_bet" column="op_rou_bet" />
+        <result property="op_ou_bet" column="op_ou_bet" />
+        <result property="op_m_bet" column="op_m_bet" />
+        <result property="op_t_bet" column="op_t_bet" />
+        <result property="op_eo_bet" column="op_eo_bet" />
+        <result property="op_p_bet" column="op_p_bet" />
+        <result property="op_pr_bet" column="op_pr_bet" />
+        <result property="op_pd_bet" column="op_pd_bet" />
+        <result property="op_f_bet" column="op_f_bet" />
+        <result property="op_r_scene" column="op_r_scene" />
+        <result property="op_ou_scene" column="op_ou_scene" />
+        <result property="op_re_scene" column="op_re_scene" />
+        <result property="op_rou_scene" column="op_rou_scene" />
+        <result property="op_m_scene" column="op_m_scene" />
+        <result property="op_eo_scene" column="op_eo_scene" />
+        <result property="op_t_scene" column="op_t_scene" />
+        <result property="op_pd_scene" column="op_pd_scene" />
+        <result property="op_f_scene" column="op_f_scene" />
+        <result property="op_p_scene" column="op_p_scene" />
+        <result property="op_pr_scene" column="op_pr_scene" />
+        <result property="op_turn_r" column="op_turn_r" />
+        <result property="op_turn_ou" column="op_turn_ou" />
+        <result property="op_turn_re" column="op_turn_re" />
+        <result property="op_turn_rou" column="op_turn_rou" />
+        <result property="op_turn_m" column="op_turn_m" />
+        <result property="op_turn_t" column="op_turn_t" />
+        <result property="op_turn_eo" column="op_turn_eo" />
+        <result property="op_turn_pd" column="op_turn_pd" />
+        <result property="op_turn_f" column="op_turn_f" />
+        <result property="op_turn_p" column="op_turn_p" />
+        <result property="op_turn_pr" column="op_turn_pr" />
+        <result property="tn_pc_scene" column="tn_pc_scene" />
+        <result property="tn_pc_bet" column="tn_pc_bet" />
+        <result property="tn_turn_pc" column="tn_turn_pc" />
+        <result property="vb_pc_scene" column="vb_pc_scene" />
+        <result property="vb_pc_bet" column="vb_pc_bet" />
+        <result property="vb_turn_pc" column="vb_turn_pc" />
+        <result property="bk_pc_scene" column="bk_pc_scene" />
+        <result property="bk_pc_bet" column="bk_pc_bet" />
+        <result property="bk_turn_pc" column="bk_turn_pc" />
+        <result property="op_pc_scene" column="op_pc_scene" />
+        <result property="op_pc_bet" column="op_pc_bet" />
+        <result property="op_turn_pc" column="op_turn_pc" />
+        <result property="m" column="m" />
+        <result property="r" column="r" />
+        <result property="ou" column="ou" />
+        <result property="pd" column="pd" />
+        <result property="t" column="t" />
+        <result property="f" column="f" />
+        <result property="p" column="p" />
+        <result property="fs" column="fs" />
+        <result property="max" column="max" />
+        <result property="online" column="isonline" />
+        <result property="onlinetime" column="onlinetime" />
+        <result property="notes" column="notes" />
+        <result property="address" column="address" />
+        <result property="admin" column="admin" />
+	</resultMap>
+    
+	<!-- column fields -->
+    <sql id="allColumn">
+        id
+        ,oid
+        ,memname
+        ,loginname
+        ,passwd
+        ,ischeck
+        ,bank_account_name
+        ,bank
+        ,bank_khname
+        ,bank_account
+        ,answer
+        ,askvalue
+        ,withdrawalpassword
+        ,withdrawalname
+        ,email
+        ,phone
+        ,sex
+        ,money
+        ,credit
+        ,alias
+        ,logdate
+        ,domain
+        ,adddate
+        ,language
+        ,active
+        ,logip
+        ,setip
+        ,agents
+        ,corprator
+        ,world
+        ,super
+        ,pay_type
+        ,status
+        ,edtvou
+        ,bettype
+        ,opentype
+        ,curtype
+        ,ft_r_scene
+        ,ft_re_scene
+        ,ft_rou_scene
+        ,ft_m_scene
+        ,ft_ou_scene
+        ,ft_pd_scene
+        ,ft_t_scene
+        ,ft_eo_scene
+        ,ft_p_scene
+        ,ft_pr_scene
+        ,ft_f_scene
+        ,ft_m_bet
+        ,ft_r_bet
+        ,ft_ou_bet
+        ,ft_re_bet
+        ,ft_rou_bet
+        ,ft_t_bet
+        ,ft_eo_bet
+        ,ft_pd_bet
+        ,ft_f_bet
+        ,ft_p_bet
+        ,ft_pr_bet
+        ,ft_turn_r
+        ,ft_turn_ou
+        ,ft_turn_m
+        ,ft_turn_re
+        ,ft_turn_rou
+        ,ft_turn_pd
+        ,ft_turn_t
+        ,ft_turn_eo
+        ,ft_turn_f
+        ,ft_turn_p
+        ,ft_turn_pr
+        ,tn_r_bet
+        ,tn_re_bet
+        ,tn_rou_bet
+        ,tn_ou_bet
+        ,tn_m_bet
+        ,tn_t_bet
+        ,tn_eo_bet
+        ,tn_p_bet
+        ,tn_pr_bet
+        ,tn_pd_bet
+        ,tn_f_bet
+        ,tn_r_scene
+        ,tn_ou_scene
+        ,tn_re_scene
+        ,tn_rou_scene
+        ,tn_m_scene
+        ,tn_eo_scene
+        ,tn_t_scene
+        ,tn_pd_scene
+        ,tn_f_scene
+        ,tn_p_scene
+        ,tn_pr_scene
+        ,tn_turn_r
+        ,tn_turn_ou
+        ,tn_turn_re
+        ,tn_turn_rou
+        ,tn_turn_m
+        ,tn_turn_t
+        ,tn_turn_eo
+        ,tn_turn_pd
+        ,tn_turn_f
+        ,tn_turn_p
+        ,tn_turn_pr
+        ,vb_turn_r
+        ,vb_turn_ou
+        ,vb_turn_rou
+        ,vb_turn_re
+        ,vb_turn_eo
+        ,vb_turn_m
+        ,vb_turn_t
+        ,vb_turn_pd
+        ,vb_turn_f
+        ,vb_turn_pr
+        ,vb_turn_p
+        ,bk_turn_r
+        ,bk_turn_eo
+        ,bk_turn_ou
+        ,bk_turn_pr
+        ,bk_r_scene
+        ,bk_eo_scene
+        ,bk_ou_scene
+        ,bk_pr_scene
+        ,bk_r_bet
+        ,bk_eo_bet
+        ,bk_ou_bet
+        ,bk_pr_bet
+        ,agent_rate
+        ,world_rate
+        ,agent_point
+        ,world_point
+        ,ratio
+        ,vb_r_bet
+        ,vb_re_bet
+        ,vb_rou_bet
+        ,vb_ou_bet
+        ,vb_m_bet
+        ,vb_t_bet
+        ,vb_eo_bet
+        ,vb_p_bet
+        ,vb_pr_bet
+        ,vb_pd_bet
+        ,vb_f_bet
+        ,vb_r_scene
+        ,vb_ou_scene
+        ,vb_re_scene
+        ,vb_rou_scene
+        ,vb_m_scene
+        ,vb_eo_scene
+        ,vb_t_scene
+        ,vb_pd_scene
+        ,vb_f_scene
+        ,vb_p_scene
+        ,vb_pr_scene
+        ,ft_hre_scene
+        ,ft_hre_bet
+        ,fs_r_bet
+        ,fs_r_scene
+        ,fs_turn_r
+        ,bk_turn_re
+        ,bk_turn_rou
+        ,bk_re_scene
+        ,bk_re_bet
+        ,bk_rou_scene
+        ,bk_rou_bet
+        ,lastpawd
+        ,hidden
+        ,hiddenstatus
+        ,cancel
+        ,pretick
+        ,tick
+        ,ft_pc_bet
+        ,ft_pc_scene
+        ,ft_turn_pc
+        ,bs_r_scene
+        ,bs_r_bet
+        ,bs_ou_scene
+        ,bs_ou_bet
+        ,bs_m_scene
+        ,bs_m_bet
+        ,bs_eo_scene
+        ,bs_eo_bet
+        ,bs_t_scene
+        ,bs_t_bet
+        ,bs_p_scene
+        ,bs_p_bet
+        ,bs_pr_scene
+        ,bs_pr_bet
+        ,bs_pc_scene
+        ,bs_pc_bet
+        ,bs_pd_scene
+        ,bs_pd_bet
+        ,bs_turn_ou
+        ,bs_turn_m
+        ,bs_re_scene
+        ,bs_re_bet
+        ,bs_turn_re
+        ,bs_rou_scene
+        ,bs_rou_bet
+        ,bs_turn_rou
+        ,bs_turn_eo
+        ,bs_turn_p
+        ,bs_turn_pr
+        ,bs_turn_pc
+        ,bs_turn_pd
+        ,bs_turn_t
+        ,bs_turn_r
+        ,ft_rm_bet
+        ,ft_rm_scene
+        ,ft_turn_rm
+        ,op_r_bet
+        ,op_re_bet
+        ,op_rou_bet
+        ,op_ou_bet
+        ,op_m_bet
+        ,op_t_bet
+        ,op_eo_bet
+        ,op_p_bet
+        ,op_pr_bet
+        ,op_pd_bet
+        ,op_f_bet
+        ,op_r_scene
+        ,op_ou_scene
+        ,op_re_scene
+        ,op_rou_scene
+        ,op_m_scene
+        ,op_eo_scene
+        ,op_t_scene
+        ,op_pd_scene
+        ,op_f_scene
+        ,op_p_scene
+        ,op_pr_scene
+        ,op_turn_r
+        ,op_turn_ou
+        ,op_turn_re
+        ,op_turn_rou
+        ,op_turn_m
+        ,op_turn_t
+        ,op_turn_eo
+        ,op_turn_pd
+        ,op_turn_f
+        ,op_turn_p
+        ,op_turn_pr
+        ,tn_pc_scene
+        ,tn_pc_bet
+        ,tn_turn_pc
+        ,vb_pc_scene
+        ,vb_pc_bet
+        ,vb_turn_pc
+        ,bk_pc_scene
+        ,bk_pc_bet
+        ,bk_turn_pc
+        ,op_pc_scene
+        ,op_pc_bet
+        ,op_turn_pc
+        ,m
+        ,r
+        ,ou
+        ,pd
+        ,t
+        ,f
+        ,p
+        ,fs
+        ,max
+        ,isonline
+        ,onlinetime
+        ,notes
+        ,address
+        ,admin
+	</sql>
+    
+	<sql id="createColumn">
+        id
+        ,oid
+        ,memname
+        ,loginname
+        ,passwd
+        ,ischeck
+        ,bank_account_name
+        ,bank
+        ,bank_khname
+        ,bank_account
+        ,answer
+        ,askvalue
+        ,withdrawalpassword
+        ,withdrawalname
+        ,email
+        ,phone
+        ,sex
+        ,money
+        ,credit
+        ,alias
+        ,logdate
+        ,domain
+        ,adddate
+        ,language
+        ,active
+        ,logip
+        ,setip
+        ,agents
+        ,corprator
+        ,world
+        ,super
+        ,pay_type
+        ,status
+        ,edtvou
+        ,bettype
+        ,opentype
+        ,curtype
+        ,ft_r_scene
+        ,ft_re_scene
+        ,ft_rou_scene
+        ,ft_m_scene
+        ,ft_ou_scene
+        ,ft_pd_scene
+        ,ft_t_scene
+        ,ft_eo_scene
+        ,ft_p_scene
+        ,ft_pr_scene
+        ,ft_f_scene
+        ,ft_m_bet
+        ,ft_r_bet
+        ,ft_ou_bet
+        ,ft_re_bet
+        ,ft_rou_bet
+        ,ft_t_bet
+        ,ft_eo_bet
+        ,ft_pd_bet
+        ,ft_f_bet
+        ,ft_p_bet
+        ,ft_pr_bet
+        ,ft_turn_r
+        ,ft_turn_ou
+        ,ft_turn_m
+        ,ft_turn_re
+        ,ft_turn_rou
+        ,ft_turn_pd
+        ,ft_turn_t
+        ,ft_turn_eo
+        ,ft_turn_f
+        ,ft_turn_p
+        ,ft_turn_pr
+        ,tn_r_bet
+        ,tn_re_bet
+        ,tn_rou_bet
+        ,tn_ou_bet
+        ,tn_m_bet
+        ,tn_t_bet
+        ,tn_eo_bet
+        ,tn_p_bet
+        ,tn_pr_bet
+        ,tn_pd_bet
+        ,tn_f_bet
+        ,tn_r_scene
+        ,tn_ou_scene
+        ,tn_re_scene
+        ,tn_rou_scene
+        ,tn_m_scene
+        ,tn_eo_scene
+        ,tn_t_scene
+        ,tn_pd_scene
+        ,tn_f_scene
+        ,tn_p_scene
+        ,tn_pr_scene
+        ,tn_turn_r
+        ,tn_turn_ou
+        ,tn_turn_re
+        ,tn_turn_rou
+        ,tn_turn_m
+        ,tn_turn_t
+        ,tn_turn_eo
+        ,tn_turn_pd
+        ,tn_turn_f
+        ,tn_turn_p
+        ,tn_turn_pr
+        ,vb_turn_r
+        ,vb_turn_ou
+        ,vb_turn_rou
+        ,vb_turn_re
+        ,vb_turn_eo
+        ,vb_turn_m
+        ,vb_turn_t
+        ,vb_turn_pd
+        ,vb_turn_f
+        ,vb_turn_pr
+        ,vb_turn_p
+        ,bk_turn_r
+        ,bk_turn_eo
+        ,bk_turn_ou
+        ,bk_turn_pr
+        ,bk_r_scene
+        ,bk_eo_scene
+        ,bk_ou_scene
+        ,bk_pr_scene
+        ,bk_r_bet
+        ,bk_eo_bet
+        ,bk_ou_bet
+        ,bk_pr_bet
+        ,agent_rate
+        ,world_rate
+        ,agent_point
+        ,world_point
+        ,ratio
+        ,vb_r_bet
+        ,vb_re_bet
+        ,vb_rou_bet
+        ,vb_ou_bet
+        ,vb_m_bet
+        ,vb_t_bet
+        ,vb_eo_bet
+        ,vb_p_bet
+        ,vb_pr_bet
+        ,vb_pd_bet
+        ,vb_f_bet
+        ,vb_r_scene
+        ,vb_ou_scene
+        ,vb_re_scene
+        ,vb_rou_scene
+        ,vb_m_scene
+        ,vb_eo_scene
+        ,vb_t_scene
+        ,vb_pd_scene
+        ,vb_f_scene
+        ,vb_p_scene
+        ,vb_pr_scene
+        ,ft_hre_scene
+        ,ft_hre_bet
+        ,fs_r_bet
+        ,fs_r_scene
+        ,fs_turn_r
+        ,bk_turn_re
+        ,bk_turn_rou
+        ,bk_re_scene
+        ,bk_re_bet
+        ,bk_rou_scene
+        ,bk_rou_bet
+        ,lastpawd
+        ,hidden
+        ,hiddenstatus
+        ,cancel
+        ,pretick
+        ,tick
+        ,ft_pc_bet
+        ,ft_pc_scene
+        ,ft_turn_pc
+        ,bs_r_scene
+        ,bs_r_bet
+        ,bs_ou_scene
+        ,bs_ou_bet
+        ,bs_m_scene
+        ,bs_m_bet
+        ,bs_eo_scene
+        ,bs_eo_bet
+        ,bs_t_scene
+        ,bs_t_bet
+        ,bs_p_scene
+        ,bs_p_bet
+        ,bs_pr_scene
+        ,bs_pr_bet
+        ,bs_pc_scene
+        ,bs_pc_bet
+        ,bs_pd_scene
+        ,bs_pd_bet
+        ,bs_turn_ou
+        ,bs_turn_m
+        ,bs_re_scene
+        ,bs_re_bet
+        ,bs_turn_re
+        ,bs_rou_scene
+        ,bs_rou_bet
+        ,bs_turn_rou
+        ,bs_turn_eo
+        ,bs_turn_p
+        ,bs_turn_pr
+        ,bs_turn_pc
+        ,bs_turn_pd
+        ,bs_turn_t
+        ,bs_turn_r
+        ,ft_rm_bet
+        ,ft_rm_scene
+        ,ft_turn_rm
+        ,op_r_bet
+        ,op_re_bet
+        ,op_rou_bet
+        ,op_ou_bet
+        ,op_m_bet
+        ,op_t_bet
+        ,op_eo_bet
+        ,op_p_bet
+        ,op_pr_bet
+        ,op_pd_bet
+        ,op_f_bet
+        ,op_r_scene
+        ,op_ou_scene
+        ,op_re_scene
+        ,op_rou_scene
+        ,op_m_scene
+        ,op_eo_scene
+        ,op_t_scene
+        ,op_pd_scene
+        ,op_f_scene
+        ,op_p_scene
+        ,op_pr_scene
+        ,op_turn_r
+        ,op_turn_ou
+        ,op_turn_re
+        ,op_turn_rou
+        ,op_turn_m
+        ,op_turn_t
+        ,op_turn_eo
+        ,op_turn_pd
+        ,op_turn_f
+        ,op_turn_p
+        ,op_turn_pr
+        ,tn_pc_scene
+        ,tn_pc_bet
+        ,tn_turn_pc
+        ,vb_pc_scene
+        ,vb_pc_bet
+        ,vb_turn_pc
+        ,bk_pc_scene
+        ,bk_pc_bet
+        ,bk_turn_pc
+        ,op_pc_scene
+        ,op_pc_bet
+        ,op_turn_pc
+        ,m
+        ,r
+        ,ou
+        ,pd
+        ,t
+        ,f
+        ,p
+        ,fs
+        ,max
+        ,isonline
+        ,onlinetime
+        ,notes
+        ,address
+        ,admin
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="Web_memberClass">
+        insert into web_member(
+        <include refid="allColumn" />
+        ) values (
+        #id:VARCHAR#
+        ,#oid:VARCHAR#
+        ,#memname:VARCHAR#
+        ,#loginname:VARCHAR#
+        ,#passwd:VARCHAR#
+        ,#ischeck:INTEGER#
+        ,#bank_account_name:VARCHAR#
+        ,#bank:VARCHAR#
+        ,#bank_khname:VARCHAR#
+        ,#bank_account:VARCHAR#
+        ,#answer:VARCHAR#
+        ,#askvalue:VARCHAR#
+        ,#withdrawalpassword:VARCHAR#
+        ,#withdrawalname:VARCHAR#
+        ,#email:VARCHAR#
+        ,#phone:VARCHAR#
+        ,#sex:INTEGER#
+        ,#money:INTEGER#
+        ,#credit:INTEGER#
+        ,#alias:VARCHAR#
+        ,#logdate:TIMESTAMP#
+        ,#domain:VARCHAR#
+        ,#adddate:TIMESTAMP#
+        ,#language:VARCHAR#
+        ,#active:TIMESTAMP#
+        ,#logip:VARCHAR#
+        ,#setip:VARCHAR#
+        ,#agents:VARCHAR#
+        ,#corprator:VARCHAR#
+        ,#world:VARCHAR#
+        ,#superr:VARCHAR#
+        ,#pay_type:INTEGER#
+        ,#status:INTEGER#
+        ,#edtvou:INTEGER#
+        ,#bettype:INTEGER#
+        ,#opentype:VARCHAR#
+        ,#curtype:VARCHAR#
+        ,#ft_r_scene:INTEGER#
+        ,#ft_re_scene:INTEGER#
+        ,#ft_rou_scene:VARCHAR#
+        ,#ft_m_scene:INTEGER#
+        ,#ft_ou_scene:INTEGER#
+        ,#ft_pd_scene:INTEGER#
+        ,#ft_t_scene:INTEGER#
+        ,#ft_eo_scene:INTEGER#
+        ,#ft_p_scene:INTEGER#
+        ,#ft_pr_scene:INTEGER#
+        ,#ft_f_scene:INTEGER#
+        ,#ft_m_bet:INTEGER#
+        ,#ft_r_bet:INTEGER#
+        ,#ft_ou_bet:INTEGER#
+        ,#ft_re_bet:INTEGER#
+        ,#ft_rou_bet:VARCHAR#
+        ,#ft_t_bet:INTEGER#
+        ,#ft_eo_bet:INTEGER#
+        ,#ft_pd_bet:INTEGER#
+        ,#ft_f_bet:INTEGER#
+        ,#ft_p_bet:INTEGER#
+        ,#ft_pr_bet:INTEGER#
+        ,#ft_turn_r:VARCHAR#
+        ,#ft_turn_ou:VARCHAR#
+        ,#ft_turn_m:VARCHAR#
+        ,#ft_turn_re:VARCHAR#
+        ,#ft_turn_rou:VARCHAR#
+        ,#ft_turn_pd:VARCHAR#
+        ,#ft_turn_t:VARCHAR#
+        ,#ft_turn_eo:VARCHAR#
+        ,#ft_turn_f:VARCHAR#
+        ,#ft_turn_p:VARCHAR#
+        ,#ft_turn_pr:VARCHAR#
+        ,#tn_r_bet:VARCHAR#
+        ,#tn_re_bet:VARCHAR#
+        ,#tn_rou_bet:VARCHAR#
+        ,#tn_ou_bet:VARCHAR#
+        ,#tn_m_bet:VARCHAR#
+        ,#tn_t_bet:VARCHAR#
+        ,#tn_eo_bet:VARCHAR#
+        ,#tn_p_bet:VARCHAR#
+        ,#tn_pr_bet:VARCHAR#
+        ,#tn_pd_bet:VARCHAR#
+        ,#tn_f_bet:VARCHAR#
+        ,#tn_r_scene:VARCHAR#
+        ,#tn_ou_scene:VARCHAR#
+        ,#tn_re_scene:VARCHAR#
+        ,#tn_rou_scene:VARCHAR#
+        ,#tn_m_scene:VARCHAR#
+        ,#tn_eo_scene:VARCHAR#
+        ,#tn_t_scene:VARCHAR#
+        ,#tn_pd_scene:VARCHAR#
+        ,#tn_f_scene:VARCHAR#
+        ,#tn_p_scene:VARCHAR#
+        ,#tn_pr_scene:VARCHAR#
+        ,#tn_turn_r:VARCHAR#
+        ,#tn_turn_ou:VARCHAR#
+        ,#tn_turn_re:VARCHAR#
+        ,#tn_turn_rou:VARCHAR#
+        ,#tn_turn_m:VARCHAR#
+        ,#tn_turn_t:VARCHAR#
+        ,#tn_turn_eo:VARCHAR#
+        ,#tn_turn_pd:VARCHAR#
+        ,#tn_turn_f:VARCHAR#
+        ,#tn_turn_p:VARCHAR#
+        ,#tn_turn_pr:VARCHAR#
+        ,#vb_turn_r:VARCHAR#
+        ,#vb_turn_ou:VARCHAR#
+        ,#vb_turn_rou:VARCHAR#
+        ,#vb_turn_re:VARCHAR#
+        ,#vb_turn_eo:VARCHAR#
+        ,#vb_turn_m:VARCHAR#
+        ,#vb_turn_t:VARCHAR#
+        ,#vb_turn_pd:VARCHAR#
+        ,#vb_turn_f:VARCHAR#
+        ,#vb_turn_pr:VARCHAR#
+        ,#vb_turn_p:VARCHAR#
+        ,#bk_turn_r:VARCHAR#
+        ,#bk_turn_eo:VARCHAR#
+        ,#bk_turn_ou:VARCHAR#
+        ,#bk_turn_pr:VARCHAR#
+        ,#bk_r_scene:VARCHAR#
+        ,#bk_eo_scene:VARCHAR#
+        ,#bk_ou_scene:VARCHAR#
+        ,#bk_pr_scene:VARCHAR#
+        ,#bk_r_bet:VARCHAR#
+        ,#bk_eo_bet:VARCHAR#
+        ,#bk_ou_bet:VARCHAR#
+        ,#bk_pr_bet:VARCHAR#
+        ,#agent_rate:VARCHAR#
+        ,#world_rate:VARCHAR#
+        ,#agent_point:VARCHAR#
+        ,#world_point:VARCHAR#
+        ,#ratio:VARCHAR#
+        ,#vb_r_bet:VARCHAR#
+        ,#vb_re_bet:VARCHAR#
+        ,#vb_rou_bet:VARCHAR#
+        ,#vb_ou_bet:VARCHAR#
+        ,#vb_m_bet:VARCHAR#
+        ,#vb_t_bet:VARCHAR#
+        ,#vb_eo_bet:VARCHAR#
+        ,#vb_p_bet:VARCHAR#
+        ,#vb_pr_bet:VARCHAR#
+        ,#vb_pd_bet:VARCHAR#
+        ,#vb_f_bet:VARCHAR#
+        ,#vb_r_scene:VARCHAR#
+        ,#vb_ou_scene:VARCHAR#
+        ,#vb_re_scene:VARCHAR#
+        ,#vb_rou_scene:VARCHAR#
+        ,#vb_m_scene:VARCHAR#
+        ,#vb_eo_scene:VARCHAR#
+        ,#vb_t_scene:VARCHAR#
+        ,#vb_pd_scene:VARCHAR#
+        ,#vb_f_scene:VARCHAR#
+        ,#vb_p_scene:VARCHAR#
+        ,#vb_pr_scene:VARCHAR#
+        ,#ft_hre_scene:VARCHAR#
+        ,#ft_hre_bet:VARCHAR#
+        ,#fs_r_bet:VARCHAR#
+        ,#fs_r_scene:VARCHAR#
+        ,#fs_turn_r:VARCHAR#
+        ,#bk_turn_re:VARCHAR#
+        ,#bk_turn_rou:VARCHAR#
+        ,#bk_re_scene:VARCHAR#
+        ,#bk_re_bet:VARCHAR#
+        ,#bk_rou_scene:VARCHAR#
+        ,#bk_rou_bet:VARCHAR#
+        ,#lastpawd:TIMESTAMP#
+        ,#hidden:INTEGER#
+        ,#hiddenstatus:INTEGER#
+        ,#cancel:INTEGER#
+        ,#pretick:INTEGER#
+        ,#tick:INTEGER#
+        ,#ft_pc_bet:INTEGER#
+        ,#ft_pc_scene:INTEGER#
+        ,#ft_turn_pc:INTEGER#
+        ,#bs_r_scene:INTEGER#
+        ,#bs_r_bet:INTEGER#
+        ,#bs_ou_scene:INTEGER#
+        ,#bs_ou_bet:INTEGER#
+        ,#bs_m_scene:INTEGER#
+        ,#bs_m_bet:INTEGER#
+        ,#bs_eo_scene:INTEGER#
+        ,#bs_eo_bet:INTEGER#
+        ,#bs_t_scene:INTEGER#
+        ,#bs_t_bet:INTEGER#
+        ,#bs_p_scene:INTEGER#
+        ,#bs_p_bet:INTEGER#
+        ,#bs_pr_scene:INTEGER#
+        ,#bs_pr_bet:INTEGER#
+        ,#bs_pc_scene:INTEGER#
+        ,#bs_pc_bet:INTEGER#
+        ,#bs_pd_scene:INTEGER#
+        ,#bs_pd_bet:INTEGER#
+        ,#bs_turn_ou:VARCHAR#
+        ,#bs_turn_m:VARCHAR#
+        ,#bs_re_scene:INTEGER#
+        ,#bs_re_bet:INTEGER#
+        ,#bs_turn_re:VARCHAR#
+        ,#bs_rou_scene:INTEGER#
+        ,#bs_rou_bet:INTEGER#
+        ,#bs_turn_rou:VARCHAR#
+        ,#bs_turn_eo:VARCHAR#
+        ,#bs_turn_p:VARCHAR#
+        ,#bs_turn_pr:VARCHAR#
+        ,#bs_turn_pc:VARCHAR#
+        ,#bs_turn_pd:VARCHAR#
+        ,#bs_turn_t:VARCHAR#
+        ,#bs_turn_r:VARCHAR#
+        ,#ft_rm_bet:VARCHAR#
+        ,#ft_rm_scene:VARCHAR#
+        ,#ft_turn_rm:VARCHAR#
+        ,#op_r_bet:INTEGER#
+        ,#op_re_bet:INTEGER#
+        ,#op_rou_bet:INTEGER#
+        ,#op_ou_bet:INTEGER#
+        ,#op_m_bet:INTEGER#
+        ,#op_t_bet:INTEGER#
+        ,#op_eo_bet:INTEGER#
+        ,#op_p_bet:INTEGER#
+        ,#op_pr_bet:INTEGER#
+        ,#op_pd_bet:INTEGER#
+        ,#op_f_bet:INTEGER#
+        ,#op_r_scene:INTEGER#
+        ,#op_ou_scene:INTEGER#
+        ,#op_re_scene:INTEGER#
+        ,#op_rou_scene:INTEGER#
+        ,#op_m_scene:INTEGER#
+        ,#op_eo_scene:INTEGER#
+        ,#op_t_scene:INTEGER#
+        ,#op_pd_scene:INTEGER#
+        ,#op_f_scene:INTEGER#
+        ,#op_p_scene:INTEGER#
+        ,#op_pr_scene:INTEGER#
+        ,#op_turn_r:VARCHAR#
+        ,#op_turn_ou:VARCHAR#
+        ,#op_turn_re:VARCHAR#
+        ,#op_turn_rou:VARCHAR#
+        ,#op_turn_m:VARCHAR#
+        ,#op_turn_t:VARCHAR#
+        ,#op_turn_eo:VARCHAR#
+        ,#op_turn_pd:VARCHAR#
+        ,#op_turn_f:VARCHAR#
+        ,#op_turn_p:VARCHAR#
+        ,#op_turn_pr:VARCHAR#
+        ,#tn_pc_scene:INTEGER#
+        ,#tn_pc_bet:INTEGER#
+        ,#tn_turn_pc:VARCHAR#
+        ,#vb_pc_scene:INTEGER#
+        ,#vb_pc_bet:INTEGER#
+        ,#vb_turn_pc:VARCHAR#
+        ,#bk_pc_scene:INTEGER#
+        ,#bk_pc_bet:INTEGER#
+        ,#bk_turn_pc:VARCHAR#
+        ,#op_pc_scene:INTEGER#
+        ,#op_pc_bet:INTEGER#
+        ,#op_turn_pc:VARCHAR#
+        ,#m:INTEGER#
+        ,#r:INTEGER#
+        ,#ou:INTEGER#
+        ,#pd:INTEGER#
+        ,#t:INTEGER#
+        ,#f:INTEGER#
+        ,#p:INTEGER#
+        ,#fs:INTEGER#
+        ,#max:INTEGER#
+        ,#online:INTEGER#
+        ,#onlinetime:TIMESTAMP#
+        ,#notes:VARCHAR#
+        ,#address:VARCHAR#
+        ,#admin:VARCHAR#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	<select id="retrieve" resultClass="Web_memberClass" parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from web_member where id = #id#
+	</select>
+	
+			<!-- retrieve domain -->
+	<select id="retrieveByUid" resultClass="Web_memberClass" parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from web_member where oid = #uid#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="Web_memberClass">
+    	update web_member 
+    	<dynamic prepend="set">
+        <isNotNull prepend="," property="id">
+            id=#id:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="oid">
+            oid=#oid:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="memname">
+            memname=#memname:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="loginname">
+            loginname=#loginname:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="passwd">
+            passwd=#passwd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ischeck">
+            ischeck=#ischeck:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bank_account_name">
+            bank_account_name=#bank_account_name:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bank">
+            bank=#bank:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bank_khname">
+            bank_khname=#bank_khname:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bank_account">
+            bank_account=#bank_account:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="answer">
+            answer=#answer:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="askvalue">
+            askvalue=#askvalue:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="withdrawalpassword">
+            withdrawalpassword=#withdrawalpassword:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="withdrawalname">
+            withdrawalname=#withdrawalname:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="email">
+            email=#email:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="phone">
+            phone=#phone:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="sex">
+            sex=#sex:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="money">
+            money=#money:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="credit">
+            credit=#credit:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="alias">
+            alias=#alias:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="logdate">
+            logdate=#logdate:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="domain">
+            domain=#domain:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="adddate">
+            adddate=#adddate:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="language">
+            language=#language:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="active">
+            active=#active:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="logip">
+            logip=#logip:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="setip">
+            setip=#setip:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="agents">
+            agents=#agents:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="corprator">
+            corprator=#corprator:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="world">
+            world=#world:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="superr">
+            super=#superr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="pay_type">
+            pay_type=#pay_type:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="status">
+            status=#status:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="edtvou">
+            edtvou=#edtvou:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bettype">
+            bettype=#bettype:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="opentype">
+            opentype=#opentype:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="curtype">
+            curtype=#curtype:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_r_scene">
+            ft_r_scene=#ft_r_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_re_scene">
+            ft_re_scene=#ft_re_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_rou_scene">
+            ft_rou_scene=#ft_rou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_m_scene">
+            ft_m_scene=#ft_m_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_ou_scene">
+            ft_ou_scene=#ft_ou_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pd_scene">
+            ft_pd_scene=#ft_pd_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_t_scene">
+            ft_t_scene=#ft_t_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_eo_scene">
+            ft_eo_scene=#ft_eo_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_p_scene">
+            ft_p_scene=#ft_p_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pr_scene">
+            ft_pr_scene=#ft_pr_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_f_scene">
+            ft_f_scene=#ft_f_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_m_bet">
+            ft_m_bet=#ft_m_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_r_bet">
+            ft_r_bet=#ft_r_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_ou_bet">
+            ft_ou_bet=#ft_ou_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_re_bet">
+            ft_re_bet=#ft_re_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_rou_bet">
+            ft_rou_bet=#ft_rou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_t_bet">
+            ft_t_bet=#ft_t_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_eo_bet">
+            ft_eo_bet=#ft_eo_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pd_bet">
+            ft_pd_bet=#ft_pd_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_f_bet">
+            ft_f_bet=#ft_f_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_p_bet">
+            ft_p_bet=#ft_p_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pr_bet">
+            ft_pr_bet=#ft_pr_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_r">
+            ft_turn_r=#ft_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_ou">
+            ft_turn_ou=#ft_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_m">
+            ft_turn_m=#ft_turn_m:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_re">
+            ft_turn_re=#ft_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_rou">
+            ft_turn_rou=#ft_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_pd">
+            ft_turn_pd=#ft_turn_pd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_t">
+            ft_turn_t=#ft_turn_t:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_eo">
+            ft_turn_eo=#ft_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_f">
+            ft_turn_f=#ft_turn_f:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_p">
+            ft_turn_p=#ft_turn_p:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_pr">
+            ft_turn_pr=#ft_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_r_bet">
+            tn_r_bet=#tn_r_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_re_bet">
+            tn_re_bet=#tn_re_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_rou_bet">
+            tn_rou_bet=#tn_rou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_ou_bet">
+            tn_ou_bet=#tn_ou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_m_bet">
+            tn_m_bet=#tn_m_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_t_bet">
+            tn_t_bet=#tn_t_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_eo_bet">
+            tn_eo_bet=#tn_eo_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_p_bet">
+            tn_p_bet=#tn_p_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pr_bet">
+            tn_pr_bet=#tn_pr_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pd_bet">
+            tn_pd_bet=#tn_pd_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_f_bet">
+            tn_f_bet=#tn_f_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_r_scene">
+            tn_r_scene=#tn_r_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_ou_scene">
+            tn_ou_scene=#tn_ou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_re_scene">
+            tn_re_scene=#tn_re_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_rou_scene">
+            tn_rou_scene=#tn_rou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_m_scene">
+            tn_m_scene=#tn_m_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_eo_scene">
+            tn_eo_scene=#tn_eo_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_t_scene">
+            tn_t_scene=#tn_t_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pd_scene">
+            tn_pd_scene=#tn_pd_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_f_scene">
+            tn_f_scene=#tn_f_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_p_scene">
+            tn_p_scene=#tn_p_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pr_scene">
+            tn_pr_scene=#tn_pr_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_r">
+            tn_turn_r=#tn_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_ou">
+            tn_turn_ou=#tn_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_re">
+            tn_turn_re=#tn_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_rou">
+            tn_turn_rou=#tn_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_m">
+            tn_turn_m=#tn_turn_m:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_t">
+            tn_turn_t=#tn_turn_t:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_eo">
+            tn_turn_eo=#tn_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_pd">
+            tn_turn_pd=#tn_turn_pd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_f">
+            tn_turn_f=#tn_turn_f:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_p">
+            tn_turn_p=#tn_turn_p:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_pr">
+            tn_turn_pr=#tn_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_r">
+            vb_turn_r=#vb_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_ou">
+            vb_turn_ou=#vb_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_rou">
+            vb_turn_rou=#vb_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_re">
+            vb_turn_re=#vb_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_eo">
+            vb_turn_eo=#vb_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_m">
+            vb_turn_m=#vb_turn_m:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_t">
+            vb_turn_t=#vb_turn_t:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_pd">
+            vb_turn_pd=#vb_turn_pd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_f">
+            vb_turn_f=#vb_turn_f:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_pr">
+            vb_turn_pr=#vb_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_p">
+            vb_turn_p=#vb_turn_p:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_r">
+            bk_turn_r=#bk_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_eo">
+            bk_turn_eo=#bk_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_ou">
+            bk_turn_ou=#bk_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_pr">
+            bk_turn_pr=#bk_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_r_scene">
+            bk_r_scene=#bk_r_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_eo_scene">
+            bk_eo_scene=#bk_eo_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_ou_scene">
+            bk_ou_scene=#bk_ou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_pr_scene">
+            bk_pr_scene=#bk_pr_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_r_bet">
+            bk_r_bet=#bk_r_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_eo_bet">
+            bk_eo_bet=#bk_eo_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_ou_bet">
+            bk_ou_bet=#bk_ou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_pr_bet">
+            bk_pr_bet=#bk_pr_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="agent_rate">
+            agent_rate=#agent_rate:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="world_rate">
+            world_rate=#world_rate:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="agent_point">
+            agent_point=#agent_point:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="world_point">
+            world_point=#world_point:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ratio">
+            ratio=#ratio:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_r_bet">
+            vb_r_bet=#vb_r_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_re_bet">
+            vb_re_bet=#vb_re_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_rou_bet">
+            vb_rou_bet=#vb_rou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_ou_bet">
+            vb_ou_bet=#vb_ou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_m_bet">
+            vb_m_bet=#vb_m_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_t_bet">
+            vb_t_bet=#vb_t_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_eo_bet">
+            vb_eo_bet=#vb_eo_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_p_bet">
+            vb_p_bet=#vb_p_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pr_bet">
+            vb_pr_bet=#vb_pr_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pd_bet">
+            vb_pd_bet=#vb_pd_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_f_bet">
+            vb_f_bet=#vb_f_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_r_scene">
+            vb_r_scene=#vb_r_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_ou_scene">
+            vb_ou_scene=#vb_ou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_re_scene">
+            vb_re_scene=#vb_re_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_rou_scene">
+            vb_rou_scene=#vb_rou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_m_scene">
+            vb_m_scene=#vb_m_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_eo_scene">
+            vb_eo_scene=#vb_eo_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_t_scene">
+            vb_t_scene=#vb_t_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pd_scene">
+            vb_pd_scene=#vb_pd_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_f_scene">
+            vb_f_scene=#vb_f_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_p_scene">
+            vb_p_scene=#vb_p_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pr_scene">
+            vb_pr_scene=#vb_pr_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_hre_scene">
+            ft_hre_scene=#ft_hre_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_hre_bet">
+            ft_hre_bet=#ft_hre_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="fs_r_bet">
+            fs_r_bet=#fs_r_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="fs_r_scene">
+            fs_r_scene=#fs_r_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="fs_turn_r">
+            fs_turn_r=#fs_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_re">
+            bk_turn_re=#bk_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_rou">
+            bk_turn_rou=#bk_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_re_scene">
+            bk_re_scene=#bk_re_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_re_bet">
+            bk_re_bet=#bk_re_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_rou_scene">
+            bk_rou_scene=#bk_rou_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_rou_bet">
+            bk_rou_bet=#bk_rou_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="lastpawd">
+            lastpawd=#lastpawd:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="hidden">
+            hidden=#hidden:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="hiddenstatus">
+            hiddenstatus=#hiddenstatus:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="cancel">
+            cancel=#cancel:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="pretick">
+            pretick=#pretick:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="tick">
+            tick=#tick:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pc_bet">
+            ft_pc_bet=#ft_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_pc_scene">
+            ft_pc_scene=#ft_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_pc">
+            ft_turn_pc=#ft_turn_pc:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_r_scene">
+            bs_r_scene=#bs_r_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_r_bet">
+            bs_r_bet=#bs_r_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_ou_scene">
+            bs_ou_scene=#bs_ou_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_ou_bet">
+            bs_ou_bet=#bs_ou_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_m_scene">
+            bs_m_scene=#bs_m_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_m_bet">
+            bs_m_bet=#bs_m_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_eo_scene">
+            bs_eo_scene=#bs_eo_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_eo_bet">
+            bs_eo_bet=#bs_eo_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_t_scene">
+            bs_t_scene=#bs_t_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_t_bet">
+            bs_t_bet=#bs_t_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_p_scene">
+            bs_p_scene=#bs_p_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_p_bet">
+            bs_p_bet=#bs_p_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pr_scene">
+            bs_pr_scene=#bs_pr_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pr_bet">
+            bs_pr_bet=#bs_pr_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pc_scene">
+            bs_pc_scene=#bs_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pc_bet">
+            bs_pc_bet=#bs_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pd_scene">
+            bs_pd_scene=#bs_pd_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_pd_bet">
+            bs_pd_bet=#bs_pd_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_ou">
+            bs_turn_ou=#bs_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_m">
+            bs_turn_m=#bs_turn_m:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_re_scene">
+            bs_re_scene=#bs_re_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_re_bet">
+            bs_re_bet=#bs_re_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_re">
+            bs_turn_re=#bs_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_rou_scene">
+            bs_rou_scene=#bs_rou_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_rou_bet">
+            bs_rou_bet=#bs_rou_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_rou">
+            bs_turn_rou=#bs_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_eo">
+            bs_turn_eo=#bs_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_p">
+            bs_turn_p=#bs_turn_p:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_pr">
+            bs_turn_pr=#bs_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_pc">
+            bs_turn_pc=#bs_turn_pc:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_pd">
+            bs_turn_pd=#bs_turn_pd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_t">
+            bs_turn_t=#bs_turn_t:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bs_turn_r">
+            bs_turn_r=#bs_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_rm_bet">
+            ft_rm_bet=#ft_rm_bet:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_rm_scene">
+            ft_rm_scene=#ft_rm_scene:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ft_turn_rm">
+            ft_turn_rm=#ft_turn_rm:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_r_bet">
+            op_r_bet=#op_r_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_re_bet">
+            op_re_bet=#op_re_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_rou_bet">
+            op_rou_bet=#op_rou_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_ou_bet">
+            op_ou_bet=#op_ou_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_m_bet">
+            op_m_bet=#op_m_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_t_bet">
+            op_t_bet=#op_t_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_eo_bet">
+            op_eo_bet=#op_eo_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_p_bet">
+            op_p_bet=#op_p_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pr_bet">
+            op_pr_bet=#op_pr_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pd_bet">
+            op_pd_bet=#op_pd_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_f_bet">
+            op_f_bet=#op_f_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_r_scene">
+            op_r_scene=#op_r_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_ou_scene">
+            op_ou_scene=#op_ou_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_re_scene">
+            op_re_scene=#op_re_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_rou_scene">
+            op_rou_scene=#op_rou_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_m_scene">
+            op_m_scene=#op_m_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_eo_scene">
+            op_eo_scene=#op_eo_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_t_scene">
+            op_t_scene=#op_t_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pd_scene">
+            op_pd_scene=#op_pd_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_f_scene">
+            op_f_scene=#op_f_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_p_scene">
+            op_p_scene=#op_p_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pr_scene">
+            op_pr_scene=#op_pr_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_r">
+            op_turn_r=#op_turn_r:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_ou">
+            op_turn_ou=#op_turn_ou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_re">
+            op_turn_re=#op_turn_re:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_rou">
+            op_turn_rou=#op_turn_rou:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_m">
+            op_turn_m=#op_turn_m:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_t">
+            op_turn_t=#op_turn_t:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_eo">
+            op_turn_eo=#op_turn_eo:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_pd">
+            op_turn_pd=#op_turn_pd:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_f">
+            op_turn_f=#op_turn_f:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_p">
+            op_turn_p=#op_turn_p:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_pr">
+            op_turn_pr=#op_turn_pr:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pc_scene">
+            tn_pc_scene=#tn_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_pc_bet">
+            tn_pc_bet=#tn_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="tn_turn_pc">
+            tn_turn_pc=#tn_turn_pc:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pc_scene">
+            vb_pc_scene=#vb_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_pc_bet">
+            vb_pc_bet=#vb_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="vb_turn_pc">
+            vb_turn_pc=#vb_turn_pc:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_pc_scene">
+            bk_pc_scene=#bk_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_pc_bet">
+            bk_pc_bet=#bk_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="bk_turn_pc">
+            bk_turn_pc=#bk_turn_pc:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pc_scene">
+            op_pc_scene=#op_pc_scene:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_pc_bet">
+            op_pc_bet=#op_pc_bet:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="op_turn_pc">
+            op_turn_pc=#op_turn_pc:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="m">
+            m=#m:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="r">
+            r=#r:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="ou">
+            ou=#ou:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="pd">
+            pd=#pd:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="t">
+            t=#t:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="f">
+            f=#f:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="p">
+            p=#p:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="fs">
+            fs=#fs:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="max">
+            max=#max:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="online">
+            isonline=#online:INTEGER#
+        </isNotNull>
+        <isNotNull prepend="," property="onlinetime">
+            onlinetime=#onlinetime:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="notes">
+            notes=#notes:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="address">
+            address=#address:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="admin">
+            admin=#admin:VARCHAR#
+        </isNotNull>
+        </dynamic>
+        WHERE id = #id#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.Long"> 
+		delete from web_member where id = #id#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+        <isNotNull prepend="and" property="id"> 
+			id = #id#
+		</isNotNull>
+        <isNotNull prepend="and" property="oid"> 
+			oid like '%$oid$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="memname"> 
+			memname like '%$memname$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="loginname"> 
+			loginname like '%$loginname$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="passwd"> 
+			passwd = #passwd#
+		</isNotNull>
+        <isNotNull prepend="and" property="ischeck"> 
+			ischeck = #ischeck#
+		</isNotNull>
+        <isNotNull prepend="and" property="bank_account_name"> 
+			bank_account_name like '%$bank_account_name$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bank"> 
+			bank like '%$bank$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bank_khname"> 
+			bank_khname like '%$bank_khname$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bank_account"> 
+			bank_account like '%$bank_account$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="answer"> 
+			answer like '%$answer$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="askvalue"> 
+			askvalue like '%$askvalue$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="withdrawalpassword"> 
+			withdrawalpassword like '%$withdrawalpassword$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="withdrawalname"> 
+			withdrawalname like '%$withdrawalname$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="email"> 
+			email like '%$email$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="phone"> 
+			phone like '%$phone$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="sex"> 
+			sex = #sex#
+		</isNotNull>
+        <isNotNull prepend="and" property="money"> 
+			money = #money#
+		</isNotNull>
+        <isNotNull prepend="and" property="credit"> 
+			credit = #credit#
+		</isNotNull>
+        <isNotNull prepend="and" property="alias"> 
+			alias like '%$alias$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="logdate"> 
+			logdate = #logdate#
+		</isNotNull>
+        <isNotNull prepend="and" property="domain"> 
+			domain like '%$domain$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="adddate"> 
+			adddate = #adddate#
+		</isNotNull>
+        <isNotNull prepend="and" property="language"> 
+			language like '%$language$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="active"> 
+			active = #active#
+		</isNotNull>
+        <isNotNull prepend="and" property="logip"> 
+			logip like '%$logip$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="setip"> 
+			setip like '%$setip$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="agents"> 
+			agents like '%$agents$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="corprator"> 
+			corprator like '%$corprator$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="world"> 
+			world like '%$world$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="superr"> 
+			super like '%$superr$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="pay_type"> 
+			pay_type = #pay_type#
+		</isNotNull>
+        <isNotNull prepend="and" property="status"> 
+			status = #status#
+		</isNotNull>
+        <isNotNull prepend="and" property="edtvou"> 
+			edtvou = #edtvou#
+		</isNotNull>
+        <isNotNull prepend="and" property="bettype"> 
+			bettype = #bettype#
+		</isNotNull>
+        <isNotNull prepend="and" property="opentype"> 
+			opentype = #opentype#
+		</isNotNull>
+        <isNotNull prepend="and" property="curtype"> 
+			curtype like '%$curtype$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_r_scene"> 
+			ft_r_scene = #ft_r_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_re_scene"> 
+			ft_re_scene = #ft_re_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_rou_scene"> 
+			ft_rou_scene like '%$ft_rou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_m_scene"> 
+			ft_m_scene = #ft_m_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_ou_scene"> 
+			ft_ou_scene = #ft_ou_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pd_scene"> 
+			ft_pd_scene = #ft_pd_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_t_scene"> 
+			ft_t_scene = #ft_t_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_eo_scene"> 
+			ft_eo_scene = #ft_eo_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_p_scene"> 
+			ft_p_scene = #ft_p_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pr_scene"> 
+			ft_pr_scene = #ft_pr_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_f_scene"> 
+			ft_f_scene = #ft_f_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_m_bet"> 
+			ft_m_bet = #ft_m_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_r_bet"> 
+			ft_r_bet = #ft_r_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_ou_bet"> 
+			ft_ou_bet = #ft_ou_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_re_bet"> 
+			ft_re_bet = #ft_re_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_rou_bet"> 
+			ft_rou_bet like '%$ft_rou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_t_bet"> 
+			ft_t_bet = #ft_t_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_eo_bet"> 
+			ft_eo_bet = #ft_eo_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pd_bet"> 
+			ft_pd_bet = #ft_pd_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_f_bet"> 
+			ft_f_bet = #ft_f_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_p_bet"> 
+			ft_p_bet = #ft_p_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pr_bet"> 
+			ft_pr_bet = #ft_pr_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_r"> 
+			ft_turn_r like '%$ft_turn_r$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_ou"> 
+			ft_turn_ou like '%$ft_turn_ou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_m"> 
+			ft_turn_m like '%$ft_turn_m$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_re"> 
+			ft_turn_re like '%$ft_turn_re$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_rou"> 
+			ft_turn_rou like '%$ft_turn_rou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_pd"> 
+			ft_turn_pd like '%$ft_turn_pd$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_t"> 
+			ft_turn_t like '%$ft_turn_t$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_eo"> 
+			ft_turn_eo like '%$ft_turn_eo$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_f"> 
+			ft_turn_f like '%$ft_turn_f$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_p"> 
+			ft_turn_p like '%$ft_turn_p$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_pr"> 
+			ft_turn_pr like '%$ft_turn_pr$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_r_bet"> 
+			tn_r_bet like '%$tn_r_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_re_bet"> 
+			tn_re_bet like '%$tn_re_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_rou_bet"> 
+			tn_rou_bet like '%$tn_rou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_ou_bet"> 
+			tn_ou_bet like '%$tn_ou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_m_bet"> 
+			tn_m_bet like '%$tn_m_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_t_bet"> 
+			tn_t_bet like '%$tn_t_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_eo_bet"> 
+			tn_eo_bet like '%$tn_eo_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_p_bet"> 
+			tn_p_bet like '%$tn_p_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pr_bet"> 
+			tn_pr_bet like '%$tn_pr_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pd_bet"> 
+			tn_pd_bet like '%$tn_pd_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_f_bet"> 
+			tn_f_bet like '%$tn_f_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_r_scene"> 
+			tn_r_scene like '%$tn_r_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_ou_scene"> 
+			tn_ou_scene like '%$tn_ou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_re_scene"> 
+			tn_re_scene like '%$tn_re_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_rou_scene"> 
+			tn_rou_scene like '%$tn_rou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_m_scene"> 
+			tn_m_scene like '%$tn_m_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_eo_scene"> 
+			tn_eo_scene like '%$tn_eo_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_t_scene"> 
+			tn_t_scene like '%$tn_t_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pd_scene"> 
+			tn_pd_scene like '%$tn_pd_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_f_scene"> 
+			tn_f_scene like '%$tn_f_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_p_scene"> 
+			tn_p_scene like '%$tn_p_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pr_scene"> 
+			tn_pr_scene like '%$tn_pr_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_r"> 
+			tn_turn_r = #tn_turn_r#
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_ou"> 
+			tn_turn_ou like '%$tn_turn_ou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_re"> 
+			tn_turn_re like '%$tn_turn_re$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_rou"> 
+			tn_turn_rou like '%$tn_turn_rou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_m"> 
+			tn_turn_m like '%$tn_turn_m$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_t"> 
+			tn_turn_t like '%$tn_turn_t$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_eo"> 
+			tn_turn_eo like '%$tn_turn_eo$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_pd"> 
+			tn_turn_pd like '%$tn_turn_pd$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_f"> 
+			tn_turn_f like '%$tn_turn_f$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_p"> 
+			tn_turn_p like '%$tn_turn_p$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_pr"> 
+			tn_turn_pr like '%$tn_turn_pr$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_r"> 
+			vb_turn_r like '%$vb_turn_r$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_ou"> 
+			vb_turn_ou like '%$vb_turn_ou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_rou"> 
+			vb_turn_rou like '%$vb_turn_rou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_re"> 
+			vb_turn_re like '%$vb_turn_re$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_eo"> 
+			vb_turn_eo like '%$vb_turn_eo$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_m"> 
+			vb_turn_m like '%$vb_turn_m$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_t"> 
+			vb_turn_t like '%$vb_turn_t$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_pd"> 
+			vb_turn_pd like '%$vb_turn_pd$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_f"> 
+			vb_turn_f like '%$vb_turn_f$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_pr"> 
+			vb_turn_pr like '%$vb_turn_pr$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_p"> 
+			vb_turn_p like '%$vb_turn_p$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_r"> 
+			bk_turn_r like '%$bk_turn_r$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_eo"> 
+			bk_turn_eo like '%$bk_turn_eo$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_ou"> 
+			bk_turn_ou like '%$bk_turn_ou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_pr"> 
+			bk_turn_pr like '%$bk_turn_pr$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_r_scene"> 
+			bk_r_scene like '%$bk_r_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_eo_scene"> 
+			bk_eo_scene like '%$bk_eo_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_ou_scene"> 
+			bk_ou_scene like '%$bk_ou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_pr_scene"> 
+			bk_pr_scene like '%$bk_pr_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_r_bet"> 
+			bk_r_bet like '%$bk_r_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_eo_bet"> 
+			bk_eo_bet like '%$bk_eo_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_ou_bet"> 
+			bk_ou_bet like '%$bk_ou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_pr_bet"> 
+			bk_pr_bet like '%$bk_pr_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="agent_rate"> 
+			agent_rate like '%$agent_rate$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="world_rate"> 
+			world_rate like '%$world_rate$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="agent_point"> 
+			agent_point like '%$agent_point$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="world_point"> 
+			world_point like '%$world_point$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ratio"> 
+			ratio like '%$ratio$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_r_bet"> 
+			vb_r_bet like '%$vb_r_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_re_bet"> 
+			vb_re_bet like '%$vb_re_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_rou_bet"> 
+			vb_rou_bet like '%$vb_rou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_ou_bet"> 
+			vb_ou_bet like '%$vb_ou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_m_bet"> 
+			vb_m_bet like '%$vb_m_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_t_bet"> 
+			vb_t_bet like '%$vb_t_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_eo_bet"> 
+			vb_eo_bet like '%$vb_eo_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_p_bet"> 
+			vb_p_bet like '%$vb_p_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pr_bet"> 
+			vb_pr_bet like '%$vb_pr_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pd_bet"> 
+			vb_pd_bet like '%$vb_pd_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_f_bet"> 
+			vb_f_bet like '%$vb_f_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_r_scene"> 
+			vb_r_scene like '%$vb_r_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_ou_scene"> 
+			vb_ou_scene like '%$vb_ou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_re_scene"> 
+			vb_re_scene like '%$vb_re_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_rou_scene"> 
+			vb_rou_scene like '%$vb_rou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_m_scene"> 
+			vb_m_scene like '%$vb_m_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_eo_scene"> 
+			vb_eo_scene like '%$vb_eo_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_t_scene"> 
+			vb_t_scene like '%$vb_t_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pd_scene"> 
+			vb_pd_scene like '%$vb_pd_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_f_scene"> 
+			vb_f_scene like '%$vb_f_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_p_scene"> 
+			vb_p_scene like '%$vb_p_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pr_scene"> 
+			vb_pr_scene like '%$vb_pr_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_hre_scene"> 
+			ft_hre_scene like '%$ft_hre_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_hre_bet"> 
+			ft_hre_bet like '%$ft_hre_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="fs_r_bet"> 
+			fs_r_bet like '%$fs_r_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="fs_r_scene"> 
+			fs_r_scene like '%$fs_r_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="fs_turn_r"> 
+			fs_turn_r = #fs_turn_r#
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_re"> 
+			bk_turn_re like '%$bk_turn_re$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_rou"> 
+			bk_turn_rou like '%$bk_turn_rou$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_re_scene"> 
+			bk_re_scene like '%$bk_re_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_re_bet"> 
+			bk_re_bet like '%$bk_re_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_rou_scene"> 
+			bk_rou_scene like '%$bk_rou_scene$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_rou_bet"> 
+			bk_rou_bet like '%$bk_rou_bet$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="lastpawd"> 
+			lastpawd = #lastpawd#
+		</isNotNull>
+        <isNotNull prepend="and" property="hidden"> 
+			hidden = #hidden#
+		</isNotNull>
+        <isNotNull prepend="and" property="hiddenstatus"> 
+			hiddenstatus = #hiddenstatus#
+		</isNotNull>
+        <isNotNull prepend="and" property="cancel"> 
+			cancel = #cancel#
+		</isNotNull>
+        <isNotNull prepend="and" property="pretick"> 
+			pretick = #pretick#
+		</isNotNull>
+        <isNotNull prepend="and" property="tick"> 
+			tick = #tick#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pc_bet"> 
+			ft_pc_bet = #ft_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_pc_scene"> 
+			ft_pc_scene = #ft_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_pc"> 
+			ft_turn_pc = #ft_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_r_scene"> 
+			bs_r_scene = #bs_r_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_r_bet"> 
+			bs_r_bet = #bs_r_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_ou_scene"> 
+			bs_ou_scene = #bs_ou_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_ou_bet"> 
+			bs_ou_bet = #bs_ou_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_m_scene"> 
+			bs_m_scene = #bs_m_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_m_bet"> 
+			bs_m_bet = #bs_m_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_eo_scene"> 
+			bs_eo_scene = #bs_eo_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_eo_bet"> 
+			bs_eo_bet = #bs_eo_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_t_scene"> 
+			bs_t_scene = #bs_t_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_t_bet"> 
+			bs_t_bet = #bs_t_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_p_scene"> 
+			bs_p_scene = #bs_p_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_p_bet"> 
+			bs_p_bet = #bs_p_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pr_scene"> 
+			bs_pr_scene = #bs_pr_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pr_bet"> 
+			bs_pr_bet = #bs_pr_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pc_scene"> 
+			bs_pc_scene = #bs_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pc_bet"> 
+			bs_pc_bet = #bs_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pd_scene"> 
+			bs_pd_scene = #bs_pd_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_pd_bet"> 
+			bs_pd_bet = #bs_pd_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_ou"> 
+			bs_turn_ou = #bs_turn_ou#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_m"> 
+			bs_turn_m = #bs_turn_m#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_re_scene"> 
+			bs_re_scene = #bs_re_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_re_bet"> 
+			bs_re_bet = #bs_re_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_re"> 
+			bs_turn_re = #bs_turn_re#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_rou_scene"> 
+			bs_rou_scene = #bs_rou_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_rou_bet"> 
+			bs_rou_bet = #bs_rou_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_rou"> 
+			bs_turn_rou = #bs_turn_rou#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_eo"> 
+			bs_turn_eo = #bs_turn_eo#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_p"> 
+			bs_turn_p = #bs_turn_p#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_pr"> 
+			bs_turn_pr = #bs_turn_pr#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_pc"> 
+			bs_turn_pc = #bs_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_pd"> 
+			bs_turn_pd = #bs_turn_pd#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_t"> 
+			bs_turn_t = #bs_turn_t#
+		</isNotNull>
+        <isNotNull prepend="and" property="bs_turn_r"> 
+			bs_turn_r = #bs_turn_r#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_rm_bet"> 
+			ft_rm_bet = #ft_rm_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_rm_scene"> 
+			ft_rm_scene = #ft_rm_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="ft_turn_rm"> 
+			ft_turn_rm = #ft_turn_rm#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_r_bet"> 
+			op_r_bet = #op_r_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_re_bet"> 
+			op_re_bet = #op_re_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_rou_bet"> 
+			op_rou_bet = #op_rou_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_ou_bet"> 
+			op_ou_bet = #op_ou_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_m_bet"> 
+			op_m_bet = #op_m_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_t_bet"> 
+			op_t_bet = #op_t_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_eo_bet"> 
+			op_eo_bet = #op_eo_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_p_bet"> 
+			op_p_bet = #op_p_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pr_bet"> 
+			op_pr_bet = #op_pr_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pd_bet"> 
+			op_pd_bet = #op_pd_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_f_bet"> 
+			op_f_bet = #op_f_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_r_scene"> 
+			op_r_scene = #op_r_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_ou_scene"> 
+			op_ou_scene = #op_ou_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_re_scene"> 
+			op_re_scene = #op_re_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_rou_scene"> 
+			op_rou_scene = #op_rou_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_m_scene"> 
+			op_m_scene = #op_m_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_eo_scene"> 
+			op_eo_scene = #op_eo_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_t_scene"> 
+			op_t_scene = #op_t_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pd_scene"> 
+			op_pd_scene = #op_pd_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_f_scene"> 
+			op_f_scene = #op_f_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_p_scene"> 
+			op_p_scene = #op_p_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pr_scene"> 
+			op_pr_scene = #op_pr_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_r"> 
+			op_turn_r = #op_turn_r#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_ou"> 
+			op_turn_ou = #op_turn_ou#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_re"> 
+			op_turn_re = #op_turn_re#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_rou"> 
+			op_turn_rou = #op_turn_rou#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_m"> 
+			op_turn_m = #op_turn_m#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_t"> 
+			op_turn_t = #op_turn_t#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_eo"> 
+			op_turn_eo = #op_turn_eo#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_pd"> 
+			op_turn_pd = #op_turn_pd#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_f"> 
+			op_turn_f = #op_turn_f#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_p"> 
+			op_turn_p = #op_turn_p#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_pr"> 
+			op_turn_pr = #op_turn_pr#
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pc_scene"> 
+			tn_pc_scene = #tn_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_pc_bet"> 
+			tn_pc_bet = #tn_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="tn_turn_pc"> 
+			tn_turn_pc = #tn_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pc_scene"> 
+			vb_pc_scene = #vb_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_pc_bet"> 
+			vb_pc_bet = #vb_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="vb_turn_pc"> 
+			vb_turn_pc = #vb_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_pc_scene"> 
+			bk_pc_scene = #bk_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_pc_bet"> 
+			bk_pc_bet = #bk_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="bk_turn_pc"> 
+			bk_turn_pc = #bk_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pc_scene"> 
+			op_pc_scene = #op_pc_scene#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_pc_bet"> 
+			op_pc_bet = #op_pc_bet#
+		</isNotNull>
+        <isNotNull prepend="and" property="op_turn_pc"> 
+			op_turn_pc = #op_turn_pc#
+		</isNotNull>
+        <isNotNull prepend="and" property="m"> 
+			m = #m#
+		</isNotNull>
+        <isNotNull prepend="and" property="r"> 
+			r = #r#
+		</isNotNull>
+        <isNotNull prepend="and" property="ou"> 
+			ou = #ou#
+		</isNotNull>
+        <isNotNull prepend="and" property="pd"> 
+			pd = #pd#
+		</isNotNull>
+        <isNotNull prepend="and" property="t"> 
+			t = #t#
+		</isNotNull>
+        <isNotNull prepend="and" property="f"> 
+			f = #f#
+		</isNotNull>
+        <isNotNull prepend="and" property="p"> 
+			p = #p#
+		</isNotNull>
+        <isNotNull prepend="and" property="fs"> 
+			fs = #fs#
+		</isNotNull>
+        <isNotNull prepend="and" property="max"> 
+			max = #max#
+		</isNotNull>
+        <isNotNull prepend="and" property="online"> 
+			isonline = #online#
+		</isNotNull>
+        <isNotNull prepend="and" property="onlinetime"> 
+			onlinetime = #onlinetime#
+		</isNotNull>
+        <isNotNull prepend="and" property="notes"> 
+			notes = #notes#
+		</isNotNull>
+        <isNotNull prepend="and" property="address"> 
+			address like '%$address$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="admin"> 
+			admin like '%$admin$%'
+		</isNotNull>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="Web_memberMap"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from web_member
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by id desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from web_member
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>
+

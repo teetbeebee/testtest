@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>tbb</display-name>
+	<description></description>
+
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>com.newbee.tmf.core.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<servlet-name>action</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<servlet-name>velocity</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<servlet-name>template</servlet-name>
+	</filter-mapping>
+	
+	<filter-mapping>
+        <filter-name>Set Character Encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>chainConfig</param-name>
+			<param-value>
+				org/apache/struts/tiles/chain-config.xml
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+			  /WEB-INF/conf/struts-config.xml,
+			  /WEB-INF/conf/struts-config-basedata.xml,
+			  /WEB-INF/conf/struts-config-sys.xml
+			 </param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>application</param-name>
+			<param-value>ApplicationResources</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>velocity</servlet-name>
+		<servlet-class>
+			org.apache.velocity.tools.view.servlet.VelocityViewServlet
+		</servlet-class>
+		<init-param>
+			<param-name>org.apache.velocity.toolbox</param-name>
+			<param-value>/WEB-INF/conf/toolbox.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.apache.velocity.properties</param-name>
+			<param-value>/WEB-INF/conf/velocity.properties</param-value>
+		</init-param>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DisplayChart</servlet-name>
+		<servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DisplayChart</servlet-name>
+		<url-pattern>/servlet/DisplayChart</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>velocity</servlet-name>
+		<url-pattern>*.vm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>velocity</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.php</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>/select.html</welcome-file>
+	</welcome-file-list>
+	<error-page> 
+		<error-code>404</error-code> 
+		<location>/login.vm</location> 
+	</error-page>
+	
+	<error-page> 
+		<error-code>500</error-code> 
+		<location>/login.vm</location> 
+	</error-page>
+	
+         
+</web-app>

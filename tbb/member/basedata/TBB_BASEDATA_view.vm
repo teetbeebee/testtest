@@ -1,0 +1,42 @@
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+	
+	<table class="maintb">
+		<tr><th colspan="10">详细信息</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">自增标识</td>
+			<td><input name="ID" type="text" class="text"  value="$!dictionary.getID()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">文档类别</td>
+			<td><input name="DOCTYPE" type="text" class="text"  value="$!dictionary.getDOCTYPE()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">工程名称</td>
+			<td><input name="PROJ_NAME" type="text" class="text"  value="$!dictionary.getPROJ_NAME()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">用户名</td>
+			<td><input name="USER_NAME" type="text" class="text"  value="$!dictionary.getUSER_NAME()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">编辑日期</td>
+			<td><input name="EDIT_DATE" type="text" class="text"  value="$!dictionary.getEDIT_DATE()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<td class="label">版本</td>
+			<td><input name="VERSION" type="text" class="text"  value="$!dictionary.getVERSION()" maxlength="20" readonly/></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

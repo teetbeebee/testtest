@@ -1,0 +1,380 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="utf-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%@ Import Namespace="System.Data" %>
+
+<script runat="template">
+// My methods here.
+
+		string name = Utility.GetVo_name();
+		//string detail_name = Utility.GetDetail_vo_name();
+      private string _outputDirectory;    //文件输出目录
+      //文件的输出目录
+       [Editor(typeof(System.Windows.Forms.Design.FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
+       [Category("category")]
+      [Description("")]
+      public string OutputDirectory
+       {
+             get {return _outputDirectory;}
+            set {_outputDirectory= value;}
+       }
+
+	private CodeTemplate _domainTemplate;   //action
+    private CodeTemplate _domainDetailTemplate;   //action_detail
+	private CodeTemplate _actionTemplate;   //action
+    private CodeTemplate _actionDetailTemplate;   //action_detail
+	private CodeTemplate _sqlMapTemplate;   //sqlmap
+	private CodeTemplate _detailSqlMapTemplate;   //sqlmap
+	private CodeTemplate _vmAddTemplate;   //vm_add
+	private CodeTemplate _vmEditTemplate;   //vm_edit
+	private CodeTemplate _vmListTemplate;   //vm_list
+	private CodeTemplate _vmViewTemplate;   //vm_view
+	private CodeTemplate _vmDetailAddTemplate;   //vm_detail_add
+	private CodeTemplate _vmDetailEditTemplate;   //vm_detail_edit
+	private CodeTemplate _vmDetailListTemplate;   //vm_detail_list
+	private CodeTemplate _vmDetailViewTemplate;   //vm_detail_view
+	private CodeTemplate _daoTemplate;   //dao
+	private CodeTemplate _sqlMapDaoTemplate;   //sqlmapdao
+	private CodeTemplate _detailDaoTemplate;   //dao
+	private CodeTemplate _detailSqlMapDaoTemplate;   //sqlmapdao
+	private CodeTemplate _serviceTemplate;   //action
+    private CodeTemplate _detailServiceTemplate;   //action_detail
+	private CodeTemplate _configTemplate;   //action_detail
+	
+      //action
+      [Browsable(false)]
+
+     //编译映射文件
+      public CodeTemplate CompileTemplate(string templateName)
+      {
+            CodeTemplateCompiler compiler = new CodeTemplateCompiler(templateName);
+            compiler.Compile();
+
+            if (compiler.Errors.Count == 0)
+            {
+                  return compiler.CreateInstance();
+            }
+            else
+            {
+                  //如果编译有错则输出错误
+                  for (int i = 0; i < compiler.Errors.Count; i++)
+                  {
+                        Response.WriteLine(compiler.Errors[i].ToString());
+                  }
+                  return null;
+            }
+      }
+
+	
+	     public void Generate()
+      {
+
+                  try
+                  {		//gen action.java
+                        string fileName = OutputDirectory + "\\" ;
+                        this.ActionTemplate.RenderToFile(fileName + "action\\"+ Utility.UpCaseFirst(name) + "Action.java", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "action\\" + Utility.UpCaseFirst(name) + "Action.java"));
+						
+						this.ServiceTemplate.RenderToFile(fileName + "service\\"+ Utility.UpCaseFirst(name) + "Service.java", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "service\\" + Utility.UpCaseFirst(name) + "Service.java"));
+
+						this.DaoTemplate.RenderToFile(fileName + "dao\\"+ Utility.UpCaseFirst(name) + "Dao.java", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "dao\\" + Utility.UpCaseFirst(name) + "Dao.java"));
+						this.SqlMapDaoTemplate.RenderToFile(fileName + "dao\\sqlmap\\"+ Utility.UpCaseFirst(name) + "SqlMapDao.java", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "dao\\sqlmap\\" + Utility.UpCaseFirst(name) + "SqlMapDao.java"));
+
+						this.DomainTemplate.RenderToFile(fileName + "domain\\"+ Utility.UpCaseFirst(name) + ".java", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "domain\\" + Utility.UpCaseFirst(name) + ".java"));
+						this.SqlMapTemplate.RenderToFile(fileName + "sqlmap\\"+ Utility.UpCaseFirst(name) + ".xml", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + "sqlmap\\" + Utility.UpCaseFirst(name) + ".xml"));
+						
+						this.ConfigTemplate.RenderToFile(fileName + Utility.UpCaseFirst(name) + "Config.txt", true);
+                        Response.WriteLine(string.Format("{0} ", fileName + Utility.UpCaseFirst(name) + "Config.txt"));
+								
+                  }
+                  catch (Exception ex)
+                  {
+                        Response.WriteLine("Error: " + ex);
+                  }
+      }
+	
+	[Browsable(false)]
+	  public CodeTemplate ActionTemplate
+      {
+            get
+            {
+                  if (_actionTemplate == null)
+                  {
+                        _actionTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "action.cst");
+                  }
+                  return _actionTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+	public CodeTemplate ActionDetailTemplate
+      {
+            get
+            {
+                  if (_actionDetailTemplate == null)
+                  {
+                        _actionDetailTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "action_detail.cst");
+                  }
+                  return _actionDetailTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+	  public CodeTemplate DomainTemplate
+      {
+            get
+            {
+                  if (_domainTemplate == null)
+                  {
+                        _domainTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "domain.cst");
+                  }
+                  return _domainTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+	public CodeTemplate DomainDetailTemplate
+      {
+            get
+            {
+                  if (_domainDetailTemplate == null)
+                  {
+                        _domainDetailTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "detail_domain.cst");
+                  }
+                  return _domainDetailTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate SqlMapTemplate
+      {
+            get
+            {
+                  if (_sqlMapTemplate == null)
+                  {
+                        _sqlMapTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "sqlmap.cst");
+                  }
+                  return _sqlMapTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+			public CodeTemplate DetailSqlMapTemplate
+      {
+            get
+            {
+                  if (_detailSqlMapTemplate == null)
+                  {
+                        _detailSqlMapTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "detailsqlmap.cst");
+                  }
+                  return _detailSqlMapTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+	public CodeTemplate VmAddTemplate
+      {
+            get
+            {
+                  if (_vmAddTemplate == null)
+                  {
+                        _vmAddTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_add.cst");
+                  }
+                  return _vmAddTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmEditTemplate
+      {
+            get
+            {
+                  if (_vmEditTemplate == null)
+                  {
+                        _vmEditTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_edit.cst");
+                  }
+                  return _vmEditTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmViewTemplate
+      {
+            get
+            {
+                  if (_vmViewTemplate == null)
+                  {
+                        _vmViewTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_view.cst");
+                  }
+                  return _vmViewTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmListTemplate
+      {
+            get
+            {
+                  if (_vmListTemplate == null)
+                  {
+                        _vmListTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_list.cst");
+                  }
+                  return _vmListTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+	public CodeTemplate VmDetailAddTemplate
+      {
+            get
+            {
+                  if (_vmDetailAddTemplate == null)
+                  {
+                        _vmDetailAddTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_add_detail.cst");
+                  }
+                  return _vmDetailAddTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmDetailEditTemplate
+      {
+            get
+            {
+                  if (_vmDetailEditTemplate == null)
+                  {
+                        _vmDetailEditTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_edit_detail.cst");
+                  }
+                  return _vmDetailEditTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmDetailViewTemplate
+      {
+            get
+            {
+                  if (_vmDetailViewTemplate == null)
+                  {
+                        _vmDetailViewTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_view_detail.cst");
+                  }
+                  return _vmDetailViewTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+		public CodeTemplate VmDetailListTemplate
+      {
+            get
+            {
+                  if (_vmDetailListTemplate == null)
+                  {
+                        _vmDetailListTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "vm_list_detail.cst");
+                  }
+                  return _vmDetailListTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+			public CodeTemplate DaoTemplate
+      {
+            get
+            {
+                  if (_daoTemplate == null)
+                  {
+                        _daoTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "dao.cst");
+                  }
+                  return _daoTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+				public CodeTemplate SqlMapDaoTemplate
+      {
+            get
+            {
+                  if (_sqlMapDaoTemplate == null)
+                  {
+                        _sqlMapDaoTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "sqlmapdao.cst");
+                  }
+                  return _sqlMapDaoTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+			public CodeTemplate DetailDaoTemplate
+      {
+            get
+            {
+                  if (_detailDaoTemplate == null)
+                  {
+                        _detailDaoTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "detaildao.cst");
+                  }
+                  return _detailDaoTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+				public CodeTemplate DetailSqlMapDaoTemplate
+      {
+            get
+            {
+                  if (_detailSqlMapDaoTemplate == null)
+                  {
+                        _detailSqlMapDaoTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "detailsqlmapdao.cst");
+                  }
+                  return _detailSqlMapDaoTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+				public CodeTemplate DetailServiceTemplate
+      {
+            get
+            {
+                  if (_detailServiceTemplate == null)
+                  {
+                        _detailServiceTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "service_detail.cst");
+                  }
+                  return _detailServiceTemplate;
+            }
+      }
+	
+	[Browsable(false)]
+				public CodeTemplate ServiceTemplate
+      {
+            get
+            {
+                  if (_serviceTemplate == null)
+                  {
+                        _serviceTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "service.cst");
+                  }
+                  return _serviceTemplate;
+            }
+      }
+	
+		[Browsable(false)]
+				public CodeTemplate ConfigTemplate
+      {
+            get
+            {
+                  if (_configTemplate == null)
+                  {
+                        _configTemplate = CompileTemplate(CodeTemplateInfo.DirectoryName + "config.cst");
+                  }
+                  return _configTemplate;
+            }
+      }
+	
+</script>
+<%Generate();%>

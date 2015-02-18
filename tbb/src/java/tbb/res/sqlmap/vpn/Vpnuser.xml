@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Vpnuser">
+	<!-- domain class alias -->
+    <typeAlias alias="VpnuserClass" type="com.tbb.vpn.domain.Vpnuser" /> 
+
+	<!-- result map -->
+    <resultMap id="VpnuserMap" class="VpnuserClass">
+		<result property="user_id" column="user_id" />
+		<result property="user_name" column="user_name" />
+		<result property="email" column="email" />
+		<result property="qq" column="qq" />
+		<result property="password" column="password" />
+		<result property="regtime" column="regtime"/>
+		<result property="expiretime" column="expiretime"/>
+		<result property="session_id" column="session_id" />
+		<result property="user_type" column="user_type" />
+		<result property="state" column="state" />
+		<result property="vpn_server_id" column="vpn_server_id" />
+		<result property="account" column="account" />
+	</resultMap>
+    
+	<!-- column fields -->
+    	<sql id="allColumn">
+		user_id,user_name,email,qq,password,regtime,expiretime,session_id,user_type,state,vpn_server_id,account
+	</sql>
+    
+	<sql id="createColumn">
+        user_id,user_name,email,qq,password,regtime,expiretime,session_id,user_type,state,vpn_server_id,account
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="VpnuserClass">
+        insert into vpnuser(
+        <include refid="allColumn" />
+        ) values (
+        #user_id#,#user_name:VARCHAR#,#email:VARCHAR#,#qq:VARCHAR#,#password:VARCHAR#,#regtime:TIMESTAMP#,#expiretime:TIMESTAMP#,#session_id:VARCHAR#,#user_type:INTEGER#,#state:INTEGER#,#vpn_server_id:VARCHAR#,#account:DOUBLE#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	    <select id="retrieve" resultClass="VpnuserClass" 
+	parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from vpnuser where user_id = #user_id#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="VpnuserClass">
+    	update vpnuser 
+    	<dynamic prepend="set">
+		<isNotNull prepend="," property="user_name"> 
+			user_name = #user_name#
+		</isNotNull>
+		<isNotNull prepend="," property="email"> 
+			email = #email#
+		</isNotNull>
+		<isNotNull prepend="," property="qq"> 
+			qq = #qq#
+		</isNotNull>
+		<isNotNull prepend="," property="password"> 
+			password = #password#
+		</isNotNull>
+		<isNotNull prepend="," property="regtime"> 
+			regtime = #regtime#
+		</isNotNull>
+		<isNotNull prepend="," property="expiretime"> 
+			expiretime = #expiretime#
+		</isNotNull>
+		<isNotNull prepend="," property="session_id"> 
+			session_id = #session_id#
+		</isNotNull>
+		<isNotNull prepend="," property="user_type"> 
+			user_type = #user_type#
+		</isNotNull>
+		<isNotNull prepend="," property="state"> 
+			state = #state#
+		</isNotNull>
+		<isNotNull prepend="," property="vpn_server_id"> 
+			vpn_server_id = #vpn_server_id#
+		</isNotNull>
+		<isNotNull prepend="," property="account"> 
+			account = #account#
+		</isNotNull>
+        </dynamic>
+        WHERE user_id = #user_id#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.String"> 
+		delete from vpnuser where user_id = #user_id#
+	</delete>
+	
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="user_id"> 
+			user_id = '%$user_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="user_name"> 
+			user_name like '%$user_name$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="email"> 
+			email = '%$email$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="qq"> 
+			qq like '%$qq$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="password"> 
+			password like '%$password$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="regtime"> 
+			regtime = #regtime#
+		</isNotNull>
+		<isNotNull prepend="and" property="expiretime"> 
+			expiretime = #expiretime#
+		</isNotNull>
+		<isNotNull prepend="and" property="session_id"> 
+			session_id like '%$session_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="user_type"> 
+			user_type = #user_type#
+		</isNotNull>
+		<isNotNull prepend="and" property="state"> 
+			state = #state#
+		</isNotNull>
+		<isNotNull prepend="and" property="vpn_server_id"> 
+			vpn_server_id like '%$vpn_server_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="account"> 
+			account = #account#
+		</isNotNull>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="VpnuserMap"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from vpnuser
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by user_id desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from vpnuser
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>

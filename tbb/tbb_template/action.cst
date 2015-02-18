@@ -1,0 +1,159 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+%>
+package com.tbb.vpn.action;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.dm.wmf.core.ActionContext;
+import com.dm.wmf.core.BaseDispatchAction;
+import com.dm.wmf.core.BaseException;
+import com.dm.wmf.core.PageList;
+import com.dm.wmf.core.QueryParams;
+import com.dm.wmf.util.RequestUtils;
+import com.dm.wmf.util.ValueUtils;
+import com.tbb.vpn.domain.<%= Utility.UpCaseFirst(name)%>;
+import com.tbb.vpn.service.<%= Utility.UpCaseFirst(name)%>Service;
+
+public class <%= Utility.UpCaseFirst(name)%>Action extends BaseDispatchAction
+{
+	public ActionForward add(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+		return mapping.findForward("add");
+	}
+
+	public ActionForward add_save(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+		<%= Utility.UpCaseFirst(name)%> <%= name%> = new <%= Utility.UpCaseFirst(name)%>();
+		Map<String, String> map = new HashMap<String, String>();
+		// 取页面参数
+		RequestUtils.getParameter(request, map);
+		// 一次性赋值
+		ValueUtils.populate(<%= name%>, map);
+		
+		<%= Utility.UpCaseFirst(name)%>Service service = <%= Utility.UpCaseFirst(name)%>Service.getInstance();
+		
+		
+		try{
+			service.createVpnuser(<%= name%>);
+		} catch(Exception ex){
+			throw new BaseException("新增的ID：“" + <%= name%>.getId()
+					+ "”失败，不能新增！");
+		}
+
+		return this.query(mapping, form, request, response, context);
+//		return mapping.findForward("query");
+	}
+
+	public ActionForward edit(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+		String <%= name%>_id = request.getParameter("id");
+		if (null == <%= name%>_id || "".equals(<%= name%>_id.trim()))
+		{
+			throw new BaseException("修改的对象编号为空，不能修改！");
+		}
+
+		<%= Utility.UpCaseFirst(name)%>Service os = <%= Utility.UpCaseFirst(name)%>Service.getInstance();
+
+		<%= Utility.UpCaseFirst(name)%> <%= name%> = os.retrieve<%= Utility.UpCaseFirst(name)%>(<%= name%>_id);
+		if (null == <%= name%>)
+		{
+			throw new BaseException("修改编号为“" + <%= name%>_id + "”的对象为空或不存在，不能修改！");
+		}
+
+		request.setAttribute("<%= name%>", <%= name%>);
+		return mapping.findForward("edit");
+	}
+
+	public ActionForward edit_save(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+		<%= Utility.UpCaseFirst(name)%> <%= name%> = new <%= Utility.UpCaseFirst(name)%>();
+		Map<String, String> map = new HashMap<String, String>();
+		// 取页面参数
+		RequestUtils.getParameter(request, map);
+		// 一次性赋值
+		ValueUtils.populate(<%= name%>, map);
+
+		<%= Utility.UpCaseFirst(name)%>Service service = <%= Utility.UpCaseFirst(name)%>Service.getInstance();
+		service.update<%= Utility.UpCaseFirst(name)%>(<%= name%>);
+
+		return this.query(mapping, form, request, response, context);
+	}
+
+	@SuppressWarnings ("unchecked")
+	public ActionForward delete(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+		String[] <%= name%>_ids = request.getParameterValues("pk");
+		if (<%= name%>_ids == null || <%= name%>_ids.length < 1)
+		{
+			throw new BaseException("请选择要删除的记录");
+		}
+
+		<%= Utility.UpCaseFirst(name)%>Service os = <%= Utility.UpCaseFirst(name)%>Service.getInstance();
+		for (String <%= name%>_id : <%= name%>_ids)
+		{
+			os.delete<%= Utility.UpCaseFirst(name)%>(<%= name%>_id);
+		}
+		String <%= name%>_id = request.getParameter("<%= name%>_id");
+		
+		os.delete<%= Utility.UpCaseFirst(name)%>(<%= name%>_id);
+		return this.query(mapping, form, request, response, context);
+	}
+	
+	public ActionForward query(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response,
+			ActionContext context) throws Exception
+	{
+
+		QueryParams queryParams = context.getQueryParams();
+		Map params = queryParams.getParameterMap();
+		int pageIndex = queryParams.getPageIndex();
+		int pageSize = queryParams.getPageSize();
+
+		<%= Utility.UpCaseFirst(name)%>Service <%= name%>s = <%= Utility.UpCaseFirst(name)%>Service.getInstance();
+		PageList <%= name%>List = <%= name%>s.query<%= Utility.UpCaseFirst(name)%>ForPageList(params, pageIndex, pageSize);
+
+		request.setAttribute("<%= name%>List", <%= name%>List);
+		return mapping.findForward("query");
+	}
+
+
+}
+
+
+<script runat="template">
+</script>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysDict">
+	<!-- domain class alias -->
+	<typeAlias alias="sysDictClass" type="com.tbb.sys.domain.SysDict" />
+
+	<!-- result map -->
+	<resultMap id="sysDictMap" class="sysDictClass">
+		<result property="dict_type" column="dict_type" />
+		<result property="code_id" column="code_id" />
+		<result property="code_value" column="code_value" />
+		<result property="sort_order" column="sort_order" />
+		<result property="note" column="note" />
+
+	</resultMap>
+
+	<!-- column fields -->
+	<sql id="allColumn"> 
+		dict_type,code_id,code_value,sort_order,note
+	</sql>
+	
+    <sql id="createColumn">
+        dict_type,code_id,code_value,sort_order,note
+    </sql>
+
+	<!-- create domain-->
+	<insert id="create" parameterClass="sysDictClass"> 
+		insert into sys_dict
+		( 
+			<include refid="createColumn" />
+		) 
+		values 
+		( 
+			#dict_type#,#code_id#,#code_value#,#sort_order#,#note#
+		) 
+	</insert>
+
+	<!-- retrieve domain -->
+	<select id="retrieve" resultClass="sysDictClass" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from sys_dict 
+		where code_id = #code_id# and dict_type = #dict_type#
+	</select>
+
+	<!-- update domain -->
+	<update id="update" parameterClass="sysDictClass"> 
+		update sys_dict
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="code_value"> 
+				code_value = #code_value#
+			</isNotNull>
+			<isNotNull prepend="," property="sort_order"> 
+				sort_order = #sort_order#
+			</isNotNull>
+			<isNotNull prepend="," property="note"> 
+				note = #note#
+			</isNotNull>
+		</dynamic> 
+		where code_id = #code_id# and dict_type = #dict_type#
+	</update>
+
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.util.HashMap"> 
+		delete from sys_dict
+		where code_id = #code_id# and dict_type = #dict_type#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="dict_type"> 
+			dict_type like '%$dict_type$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="code_id"> 
+			code_id like '$code_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="code_value"> 
+			code_value like '%$code_value$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="sort_order"> 
+			sort_order = #sort_order#
+		</isNotNull>
+		<isNotNull prepend="and" property="note"> 
+			note like '%$note$%'
+		</isNotNull>
+	</sql>
+
+	<sql id="dynamicScope">
+
+	</sql>
+
+	<!-- query domain-->
+	<select id="query_list" resultMap="sysDictMap" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from sys_dict 
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic>
+		<isNotNull prepend=" " property="orderBy"> 
+			order by $orderBy$
+		</isNotNull>
+	</select>
+
+	<select id="query_cnt" resultClass="java.lang.Integer" 
+	parameterClass="java.util.HashMap">
+		select count(*) from sys_dict  
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic> 
+	</select>
+
+	
+
+	
+
+</sqlMap>

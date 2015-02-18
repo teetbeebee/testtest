@@ -1,0 +1,119 @@
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/basedata/RecipeAction.do')";
+
+function do_clear(){	
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(recipe_id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.organ_recipe_id.value = recipe_id;	
+	document.objForm.submit();
+}
+
+function do_view(recipe_id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.recipe_id.value = recipe_id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method" />
+	<input type="hidden" name="recipe_id" />
+	<input type="hidden" name="restraunt_id" value="$!restraunt.restraunt_id" />
+	<input name="$!params.names.pageIndex" type="hidden" value="$!organList.pageIndex" />
+    <!-- 隐含域 end-->
+
+	<table class="maintb">
+		<tr>
+			<th colspan="10" class="op">
+			<div class="searcharea">
+			<div class="condition">编号</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_recipe_id" value="$!params.values.organ_recipe_id" /></div>
+			<div class="condition">名称</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_name" value="$!params.values.organ_name" /></div>
+			<div class="condition">级别</div>
+			<div class="condition_value"><input class="text" type="text" name="$!params.names.organ_level" value="$!params.values.organ_level" /></div>
+			</div>
+			<div class="pagearea">
+				<input class="button" type="button" value="查询" onclick="do_query();" />
+				<input class="button" type="button" value="新增" onclick="do_add();" />
+			</div>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <!-- tr>
+          <th colspan="10">#page_count($organList)</th>
+        </tr -->
+		<tr>
+			<td class="title" style="wrecipe_idth:20px;">&nbsp;</td>
+			<td class="title">编号</td>
+			<td class="title">餐馆编号</td>
+			<td class="title">菜谱名称</td>
+			<td class="title">联系电话</td>
+			<td class="title">菜谱地址</td>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($recipe in $recipeList.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!recipe.recipe_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!recipe.recipe_id');">$!recipe.recipe_id</a></td>
+			<td>$!recipe.restraunt_id</td>
+			<td>$!recipe.recipe_name</td>
+			<td>$!recipe.recipe_price</td>
+			<td>$!recipe.recipe_pic</td>
+			<td>
+				<input class="button" type="button" value="修改" onClick="do_edit('$!recipe.recipe_id')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#page_count($recipeList) #select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($recipeList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysPermit">
+	<!-- domain class alias -->
+	<typeAlias alias="sysPermitClass" type="com.tbb.sys.domain.SysPermit" />
+
+	<!-- result map -->
+	<resultMap id="sysPermitMap" class="sysPermitClass">
+		<result property="permit_id" column="permit_id" />
+		<result property="permit_name" column="permit_name" />
+		<result property="note" column="note" />
+	</resultMap>
+
+	<!-- column fields -->
+	<sql id="allColumn"> 
+		permit_id,permit_name,note
+	</sql>
+	
+    <sql id="createColumn">
+        permit_id,permit_name,note
+    </sql>
+
+	<!-- create domain-->
+	<insert id="create" parameterClass="sysPermitClass"> 
+		insert into sys_permit
+		( 
+			<include refid="createColumn" />
+		) 
+		values 
+		( 
+			#permit_id#,#permit_name#,#note#
+		) 
+	</insert>
+
+	<!-- retrieve domain -->
+	<select id="retrieve" resultClass="sysPermitClass" 
+	parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from sys_permit 
+		where permit_id = #permit_id#
+	</select>
+
+	<!-- update domain -->
+	<update id="update" parameterClass="sysPermitClass"> 
+		update sys_permit
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="permit_name"> 
+				permit_name = #permit_name#
+			</isNotNull>
+			<isNotNull prepend="," property="note"> 
+				note = #note#
+			</isNotNull>
+		</dynamic> 
+		where permit_id = #permit_id#
+	</update>
+
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.String"> 
+		delete from sys_permit
+		where permit_id = #permit_id#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="permit_id"> 
+			permit_id like '%$permit_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="permit_name"> 
+			permit_name like '%$permit_name$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="note"> 
+			note like '%$note$%'
+		</isNotNull>
+	</sql>
+
+	<sql id="dynamicScope">
+
+	</sql>
+
+	<!-- query domain-->
+	<select id="query_list" resultMap="sysPermitMap" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from sys_permit 
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic>
+		<isNotNull prepend=" " property="orderBy"> 
+			order by $orderBy$
+		</isNotNull>
+	</select>
+
+	<select id="query_cnt" resultClass="java.lang.Integer" 
+	parameterClass="java.util.HashMap">
+		select count(*) from sys_permit  
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic> 
+	</select>
+
+	
+
+	
+
+</sqlMap>

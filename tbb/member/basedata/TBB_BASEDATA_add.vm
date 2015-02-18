@@ -1,0 +1,92 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	if (document.objForm.DOCTYPE.value == "")
+	{
+		alert ('请输入文档类别。');
+		document.objForm.DOCTYPE.focus();
+		return false;
+	}
+	if (document.objForm.PROJ_NAME.value == "")
+	{
+		alert ('请输入工程名称。');
+		document.objForm.PROJ_NAME.focus();
+		return false;
+	}
+	if (document.objForm.USER_NAME.value == "")
+	{
+		alert ('请输入用户名。');
+		document.objForm.USER_NAME.focus();
+		return false;
+	}
+	if (document.objForm.EDIT_DATE.value == "")
+	{
+		alert ('请输入编辑日期。');
+		document.objForm.EDIT_DATE.focus();
+		return false;
+	}
+	if (document.objForm.VERSION.value == "")
+	{
+		alert ('请输入版本。');
+		document.objForm.VERSION.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/basedata/TBB_BASEDATAAction.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="maintb">
+		<tr><th colspan="10">新增</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">文档类别</td>
+			<td><input name="DOCTYPE" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">工程名称</td>
+			<td><input name="PROJ_NAME" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">用户名</td>
+			<td><input name="USER_NAME" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">编辑日期</td>
+			<td><input name="EDIT_DATE" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<td class="label">版本</td>
+			<td><input name="VERSION" type="text" class="text"  maxlength="20"/></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_add_save()" value="新增" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>
+

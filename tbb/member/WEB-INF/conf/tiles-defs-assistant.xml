@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+	 
+	<!--=========首页=========-->
+	<definition name="assistant.index.view" extends="basedata">		
+		<put name="center" value="/assistant/index.vm" />
+	</definition>	 
+	 
+	 <!--=========天气预报=========-->
+	 <definition name="assistant.weather_forecast.list" extends="basedata">		
+		<put name="center" value="/assistant/weather_forecast_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather_forecast.add" extends="basedata">		
+		<put name="center" value="/assistant/weather_forecast_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather_forecast.edit" extends="basedata">		
+		<put name="center" value="/assistant/weather_forecast_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather_forecast.view" extends="basedata">		
+		<put name="center" value="/assistant/weather_forecast_view.vm" />
+	 </definition>	
+	 
+	 <!--=========实时天气情况=========-->
+	 <definition name="assistant.weather.list" extends="basedata">		
+		<put name="center" value="/assistant/weather_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather.add" extends="basedata">		
+		<put name="center" value="/assistant/weather_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather.edit" extends="basedata">		
+		<put name="center" value="/assistant/weather_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.weather.view" extends="basedata">		
+		<put name="center" value="/assistant/weather_view.vm" />
+	 </definition>	
+	 
+	 <!--=========化学危险品=========-->
+	 <definition name="assistant.kb_chemical.list" extends="basedata">		
+		<put name="center" value="/assistant/kb_chemical_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_chemical.add" extends="basedata">		
+		<put name="center" value="/assistant/kb_chemical_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_chemical.edit" extends="basedata">		
+		<put name="center" value="/assistant/kb_chemical_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_chemical.view" extends="basedata">		
+		<put name="center" value="/assistant/kb_chemical_view.vm" />
+	 </definition>	
+	 
+	 <!--=========救援办法=========-->
+	 <definition name="assistant.kb_method.list" extends="basedata">		
+		<put name="center" value="/assistant/kb_method_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_method.add" extends="basedata">		
+		<put name="center" value="/assistant/kb_method_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_method.edit" extends="basedata">		
+		<put name="center" value="/assistant/kb_method_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_method.view" extends="basedata">		
+		<put name="center" value="/assistant/kb_method_view.vm" />
+	 </definition>	
+	 
+	 <!--=========工作规范=========-->
+	 <definition name="assistant.kb_guide.list" extends="basedata">		
+		<put name="center" value="/assistant/kb_guide_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_guide.add" extends="basedata">		
+		<put name="center" value="/assistant/kb_guide_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_guide.edit" extends="basedata">		
+		<put name="center" value="/assistant/kb_guide_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_guide.view" extends="basedata">		
+		<put name="center" value="/assistant/kb_guide_view.vm" />
+	 </definition>	
+	 
+	 <!--=========法律法规=========-->
+	 <definition name="assistant.kb_law.list" extends="basedata">		
+		<put name="center" value="/assistant/kb_law_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_law.add" extends="basedata">		
+		<put name="center" value="/assistant/kb_law_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_law.edit" extends="basedata">		
+		<put name="center" value="/assistant/kb_law_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_law.view" extends="basedata">		
+		<put name="center" value="/assistant/kb_law_view.vm" />
+	 </definition>	
+	 
+	  <!--=========其他制度=========-->
+	 <definition name="assistant.kb_other.list" extends="basedata">		
+		<put name="center" value="/assistant/kb_other_list.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_other.add" extends="basedata">		
+		<put name="center" value="/assistant/kb_other_add.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_other.edit" extends="basedata">		
+		<put name="center" value="/assistant/kb_other_edit.vm" />
+	 </definition>	
+	 
+	 <definition name="assistant.kb_other.view" extends="basedata">		
+		<put name="center" value="/assistant/kb_other_view.vm" />
+	 </definition>	
+	 
+</tiles-definitions>

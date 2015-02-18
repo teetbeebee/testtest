@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SysGrant">
+	
+	<select id="sys_user_sys_permit_check" resultMap="SysPermit.sysPermitMap"
+    parameterClass="java.util.Map">
+       select 
+			permit_id,permit_name,note
+		from sys_permit
+		where 
+			permit_id in
+					(
+						select 
+							permit_id
+						from sys_role_permit
+						where permit_id = #permit_id#
+						and (role_id in
+						(
+						   select role_id from user_role where user_id = #user_id#
+						) or role_id = 'r002')
+					)
+	</select>
+		
+	<select id="sys_role_have_sys_users" resultMap="SysUser.sysUserMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			user_id,user_name,password,state,is_sys,
+		    organ_id,note
+		from sys_user
+		where 
+			user_id in
+					(
+						select 
+							user_id 
+						from user_role 
+						where role_id = #role_id#
+					)
+	</select>
+	
+	<select id="sys_role_have_not_sys_users" resultMap="SysUser.sysUserMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			user_id,user_name,password,state,is_sys,
+		    organ_id,note
+		from sys_user
+		where 
+			user_id not in
+					(
+						select 
+							user_id 
+						from user_role 
+						where role_id = #role_id#
+					)
+	</select>
+	
+	<insert id="sys_user_add_sys_role" parameterClass="java.util.HashMap"> 
+		insert into user_role( user_id,role_id ) 
+		values ( 
+		#user_id#,#role_id#
+		) 
+	</insert>
+	
+	<delete id="sys_user_delete_sys_role" parameterClass="java.util.HashMap"> 
+		delete from user_role where user_id = #user_id# and role_id = #role_id#
+	</delete>
+	
+	<delete id="sys_user_delete_all_sys_roles" parameterClass="java.lang.String"> 
+		delete from user_role where user_id = #user_id#
+	</delete>
+	
+	<delete id="sys_role_delete_all_sys_users" parameterClass="java.lang.String"> 
+		delete from user_role where role_id = #role_id#
+	</delete>
+	
+	<select id="sys_user_have_sys_roles" resultMap="SysRole.sysRoleMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			role_id,role_name,note
+		from sys_role 
+		where 
+			role_id in
+					(
+						select 
+							role_id 
+						from user_role 
+						where user_id = #user_id#
+					)
+	</select>
+	
+	<select id="sys_user_have_not_sys_roles" resultMap="SysRole.sysRoleMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			role_id,role_name,note
+		from sys_role 
+		where 
+			role_id not in
+					(
+						select 
+							role_id 
+						from user_role 
+						where user_id = #user_id#
+					)
+	</select>
+	
+	<insert id="sys_role_add_sys_permit" parameterClass="java.util.HashMap"> 
+		insert into sys_role_permit( role_id,permit_id ) 
+		values ( 
+		#role_id#,#permit_id#
+		)
+	</insert>
+	
+	<delete id="sys_role_delete_sys_permit" parameterClass="java.util.HashMap"> 
+		delete from sys_role_permit where role_id = #role_id# and permit_id = #permit_id#
+	</delete>
+	
+	<delete id="sys_role_delete_all_sys_permits" parameterClass="java.lang.String"> 
+		delete from sys_role_permit where role_id = #role_id#
+	</delete>
+	
+	<delete id="sys_permit_delete_all_sys_roles" parameterClass="java.lang.String"> 
+		delete from sys_role_permit where permit_id = #permit_id#
+	</delete>
+	
+	<select id="sys_role_have_sys_permits" resultMap="SysPermit.sysPermitMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			permit_id,permit_name,note
+		from sys_permit 
+		where 
+			permit_id in
+					(
+						select 
+							permit_id 
+						from sys_role_permit 
+						where role_id = #role_id#
+					)
+	</select>
+	
+	<select id="sys_role_have_not_sys_permits" resultMap="SysPermit.sysPermitMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			permit_id,permit_name,note
+		from sys_permit 
+		where 
+			permit_id not in
+					(
+						select 
+							permit_id 
+						from sys_role_permit 
+						where role_id = #role_id#
+					)
+	</select>
+	
+	<select id="sys_permit_have_sys_roles" resultMap="SysRole.sysRoleMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			role_id,role_name,note
+		from sys_role
+		where 
+			role_id in
+					(
+						select 
+							role_id 
+						from sys_role_permit 
+						where permit_id = #permit_id#
+					)
+	</select>
+	
+	<select id="sys_permit_have_not_sys_roles" resultMap="SysRole.sysRoleMap" 
+		parameterClass="java.lang.String"> 
+		select 
+			role_id,role_name,note
+		from sys_role
+		where 
+			role_id not in
+					(
+						select 
+							role_id 
+						from sys_role_permit 
+						where permit_id = #permit_id#
+					)
+	</select>
+	
+</sqlMap>

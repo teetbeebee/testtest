@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Restraunt">
+	<!-- domain class alias -->
+    <typeAlias alias="RestrauntClass" type="com.tbb.basedata.domain.Restraunt" /> 
+
+	<!-- result map -->
+    <resultMap id="RestrauntMap" class="RestrauntClass">
+		<result property="restraunt_id" column="restraunt_id" />
+		<result property="restraunt_name" column="restraunt_name" />
+		<result property="restraunt_tel" column="restraunt_tel" />
+		<result property="restraunt_address" column="restraunt_address" />
+	</resultMap>
+    
+	<!-- column fields -->
+    	<sql id="allColumn">
+		restraunt_id,restraunt_name,restraunt_tel,restraunt_address
+	</sql>
+    
+	<sql id="createColumn">
+        restraunt_name,restraunt_tel,restraunt_address
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="RestrauntClass">
+        insert into restraunt(
+        <include refid="allColumn" />
+        ) values (
+        #restraunt_id#,#restraunt_name#,#restraunt_tel#,#restraunt_address#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	    <select id="retrieve" resultClass="RestrauntClass" 
+	parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from restraunt where restraunt_id = #restraunt_id#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="RestrauntClass">
+    	update restraunt 
+    	<dynamic prepend="set">
+		<isNotNull prepend="," property="restraunt_name"> 
+			restraunt_name = #restraunt_name#
+		</isNotNull>
+		<isNotNull prepend="," property="restraunt_tel"> 
+			restraunt_tel = #restraunt_tel#
+		</isNotNull>
+		<isNotNull prepend="," property="restraunt_address"> 
+			restraunt_address = #restraunt_address#
+		</isNotNull>
+        </dynamic>
+        WHERE restraunt_id = #restraunt_id#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.String"> 
+		delete from restraunt where restraunt_id = #restraunt_id#
+	</delete>
+	
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="restraunt_id"> 
+			restraunt_id like '%$restraunt_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="restraunt_name"> 
+			restraunt_name like '%$restraunt_name$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="restraunt_tel"> 
+			restraunt_tel like '%$restraunt_tel$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="restraunt_address"> 
+			restraunt_address like '%$restraunt_address$%'
+		</isNotNull>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="RestrauntMap"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from restraunt
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by restraunt_id desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from restraunt
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>

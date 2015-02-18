@@ -1,0 +1,30 @@
+<script language="javascript">
+	<!--
+	if (document.getElementById) {
+		var tree = new WebFXTree("首页", "$link.contextPath/IndexAction.do?method=view");
+		tree.setBehavior('classic');	
+		
+		var daily = new WebFXTreeItem("日常办公", "$link.contextPath/daily/IndexAction.do?method=view");
+		tree.add(daily);
+		
+		var basedata = new WebFXTreeItem("业务管理", "$link.contextPath/basedata/IndexAction.do?method=view");
+		tree.add(basedata);		
+		
+		var stat = new WebFXTreeItem("统计数据", "$link.contextPath/stat/IndexAction.do?method=view");
+		tree.add(stat);
+		
+		var gis = new WebFXTreeItem("地理信息", "$!gisServer");
+		tree.add(gis);
+		
+		var sys = new WebFXTreeItem("系统管理", "$link.contextPath/sys/IndexAction.do?method=view");
+		tree.add(sys);
+	
+	    document.write("<div id='xtree'>");
+		document.write(tree);
+		document.write("</div>");
+		
+		tree.expandAll();
+	}
+//-->
+	</script>
+	

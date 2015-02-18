@@ -1,0 +1,46 @@
+<script language="javascript" type="text/javascript">
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：系统管理/查看用户
+		</li>
+		<li class="op">			
+		</li>
+	</ul>
+	
+	<table class="maintb">
+		<tr><th colspan="10">查看</th></tr>
+		<tr>
+			<td class="label">所在机构</td>
+			<td>
+	           #getOrganName($organList "$!user.organ_id")
+			</td>			
+		</tr>		
+		<tr>
+			<td class="label">登录名</td>
+			<td>$!user.user_id</td>			
+		</tr>
+		<tr>
+			<td class="label">用户名</td>
+			<td>$!user.user_name</td>			
+		</tr>		
+		<tr>
+			<td class="label">用户状态</td>
+			<td>
+				#getCodeValue("sys_user_state" "$!user.state")
+			</td>			
+		</tr>
+		<tr>
+			<td class="label">备注</td>
+			<td>$!user.note</td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

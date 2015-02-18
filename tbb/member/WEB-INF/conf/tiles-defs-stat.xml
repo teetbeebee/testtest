@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+	
+	<!--=========首页=========-->
+	<definition name="stat.index.view" extends="stat">		
+		<put name="center" value="/stat/index.vm" />
+	</definition> 
+	
+	<!--=========日期设定=========-->
+	<definition name="stat.date.view" extends="pop">		
+		<put name="center" value="/stat/date.vm" />
+	</definition>
+	
+	<!--=========119电话受理统计=========-->
+	<definition name="stat.tele_log.view" extends="stat">		
+		<put name="center" value="/stat/tele_log_stat.vm" />
+	</definition> 
+	
+	<!--=========119电话受理日比较=========-->
+	<definition name="stat.tele_log.view_compare" extends="stat">		
+		<put name="center" value="/stat/tele_log_stat_compare.vm" />
+	</definition> 
+	
+	<!--=========无效报警分类统计=========-->
+	<definition name="stat.not_case.view" extends="stat">		
+		<put name="center" value="/stat/not_case_stat.vm" />
+	</definition> 
+	
+	<!--=========案件受理分类统计=========-->
+	<definition name="stat.all_case.view_case_type" extends="stat">		
+		<put name="center" value="/stat/all_case_case_type_stat.vm" />
+	</definition>
+	
+	<!--=========案件受理类型统计=========-->
+	<definition name="stat.all_case.view_alarm_type" extends="stat">		
+		<put name="center" value="/stat/all_case_alarm_type_stat.vm" />
+	</definition>	
+	
+	<!--=========日案件受理比较=========-->
+	<definition name="stat.all_case.view_compare" extends="stat">		
+		<put name="center" value="/stat/all_case_stat_compare.vm" />
+	</definition> 
+	
+	<!--=========消防站出动次数统计=========-->
+	<definition name="stat.case_log.view" extends="stat">		
+		<put name="center" value="/stat/case_log_stat.vm" />
+	</definition>		 
+		 
+	<!--=========消防站出动车辆统计=========-->
+	<definition name="stat.fe_action_log.view" extends="stat">		
+		<put name="center" value="/stat/fe_action_log_stat.vm" />
+	</definition>
+	
+	<!--=========消防站出动人数统计=========-->
+	<definition name="stat.fe_action_log.view_follow_num" extends="stat">		
+		<put name="center" value="/stat/fe_action_log_follow_num_stat.vm" />
+	</definition>
+	
+	<!--=========消防站出水次数统计=========-->
+	<definition name="stat.fe_action_log.view_fe_state_out_water" extends="stat">		
+		<put name="center" value="/stat/fe_action_log_fe_state_out_water_stat.vm" />
+	</definition>
+	
+	<!--=========综合统计=========-->
+	<definition name="stat.integrate.view" extends="stat">		
+		<put name="center" value="/stat/integrate_stat.vm" />
+	</definition>
+	
+	<!--=========统计信息=========-->
+	<definition name="stat.info.view" extends="stat">		
+		<put name="center" value="/stat/info_stat.vm" />
+	</definition>
+	
+	<!--=========统计信息详情=========-->
+	<definition name="stat.info.view_detail" extends="stat">		
+		<put name="center" value="/stat/info_stat_detail.vm" />
+	</definition>
+	
+	<!--=========直方图=========-->
+	<definition name="stat.view.pie" extends="pop">		
+		<put name="center" value="/stat/FusionCharts/Pie3D.vm" />
+	</definition>
+	
+	<!--=========饼图=========-->
+	<definition name="stat.view.column" extends="pop">		
+		<put name="center" value="/stat/FusionCharts/Column2D.vm" />
+	</definition>
+	
+	<!--=========现状图=========-->
+	<definition name="stat.view.line" extends="pop">		
+		<put name="center" value="/stat/FusionCharts/Line2D.vm" />
+	</definition>
+	
+</tiles-definitions>

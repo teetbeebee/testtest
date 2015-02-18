@@ -1,0 +1,71 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+		
+		
+	if (isEmpty(document.objForm.role_id.value))
+	{
+		alert ('请输入角色ID!');
+		document.objForm.role_id.focus();
+		return false;
+	}
+
+	if (isEmpty(document.objForm.role_name.value))
+	{
+		alert ('请输入角色名称!');
+		document.objForm.role_name.focus();
+		return false;
+	}	
+	return true;
+}
+
+function do_edit_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/sys/SysRoleAction.do')";
+    	document.objForm.method.value = "edit_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" method="post">
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" >
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：系统管理/编辑角色
+		</li>
+		<li class="op">			
+		</li>
+	</ul>
+	
+	<table class="maintb">
+		<tr><th colspan="10">编辑</th></tr>		
+		<tr>
+			<td class="label">角色ID</td>
+			<td><input type="hidden" name="role_id" value="$!sysRole.role_id"/>$!sysRole.role_id</td>			
+		</tr>
+		<tr>
+			<td class="label">角色名</td>
+			<td><input name="role_name" type="text" class="text" value="$!sysRole.role_name"/></td>			
+		</tr>		
+		<tr>
+			<td class="label">备注</td>
+			<td>$!sysRole.note</td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="do_edit_save()" value="编辑保存" />
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

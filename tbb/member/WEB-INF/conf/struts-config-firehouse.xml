@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>	
+
+	<action-mappings>
+		
+		<!-- =============Example============== 
+		<action path="/module/FunctionAction" type="com.tbb.module.action.FunctionAction">
+			<forward name="redoQuery" path="/module/FunctionAction.do?method=query" redirect="true"/>
+			<forward name="query" path="module.function.list" />
+			<forward name="add" path="module.function.add" />
+			<forward name="edit" path="module.function.edit" />
+			<forward name="view" path="module.function.view" />
+		</action>
+		-->
+		
+		<action path="/cs/firehouse/LoginAction" type="com.tbb.cs.firehouse.LoginAction">
+			<forward name="login_page" path="/cs/firehouse/login.vm" />			
+		</action>
+		
+		<action path="/cs/firehouse/LogoutAction" type="com.tbb.cs.firehouse.LogoutAction">
+		</action>
+		
+		<action path="/cs/firehouse/WorkAction" type="com.tbb.cs.firehouse.WorkAction">
+		</action>
+		
+		<action path="/cs/firehouse/AjaxAction" type="com.tbb.cs.firehouse.AjaxAction">
+		</action>
+		
+		<action path="/cs/firehouse/IndexAction" type="com.tbb.cs.firehouse.IndexAction">
+			<forward name="view" path="/cs/firehouse/index.vm" />		
+			<forward name="view_leftbar" path="/cs/firehouse/leftbar_view.vm" />	
+			<forward name="view_weather" path="/cs/firehouse/weather_view.vm" />				
+		</action>
+		
+		<action path="/cs/firehouse/SysUserAction" type="com.tbb.cs.firehouse.SysUserAction">
+			<forward name="edit_my_pwd" path="firehouse.sys_user.edit_my_pwd" />			
+		</action>
+		
+		<action path="/cs/firehouse/FhActionLogAction" type="com.tbb.cs.firehouse.FhActionLogAction">			
+			<forward name="query" path="firehouse.fh_action_log.list" />		
+			<forward name="query_current" path="/cs/firehouse/fh_action_log_current_list.vm" />		
+			<forward name="view" path="firehouse.fh_action_log.view" />			
+		</action>
+		
+		<action path="/cs/firehouse/FirehouseStrengthAction" type="com.tbb.cs.firehouse.FirehouseStrengthAction">			
+			<forward name="view" path="firehouse.strength.view" />		
+			<forward name="edit" path="firehouse.strength.edit" />
+		</action>
+		
+		<action path="/cs/firehouse/AddressBookAction" type="com.tbb.cs.firehouse.AddressBookAction">
+			<forward name="view" path="firehouse.address_book.view" />
+			<forward name="view_detail" path="firehouse.address_book.view_detail" />
+		</action>
+		
+		<action path="/cs/firehouse/OrganAction" type="com.tbb.cs.firehouse.OrganAction">
+			<forward name="tree" path="firehouse.organ.tree" />
+		</action>
+		
+		<action path="/cs/firehouse/FhCommandAction" type="com.tbb.cs.firehouse.FhCommandAction">
+			<forward name="query" path="firehouse.fh_command.list" />
+		</action>
+		
+		<action path="/cs/firehouse/AttemperNotifyAction" type="com.tbb.cs.firehouse.AttemperNotifyAction">
+			<forward name="edit" path="firehouse.attemper_notify.edit" />
+		</action>
+		
+		<action path="/cs/firehouse/ActionBillAction" type="com.tbb.cs.firehouse.ActionBillAction">
+			<forward name="view" path="firehouse.action_bill.view" />
+		</action>
+		
+		<action path="/cs/firehouse/OnDutyAction" type="com.tbb.cs.firehouse.OnDutyAction">
+			<forward name="view_on_duty_group" path="firehouse.on_duty.view_group" />
+			<forward name="view_on_duty_division" path="firehouse.on_duty.view_division" />
+			<forward name="view_on_duty_squadron" path="firehouse.on_duty.view_squadron" />
+		</action>
+		
+		<action path="/cs/firehouse/MajorUnitAction" type="com.tbb.cs.firehouse.MajorUnitAction">
+			<forward name="query" path="firehouse.major_unit.list" />
+			<forward name="view" path="firehouse.major_unit.view" />
+		</action>
+		
+		<action path="/cs/firehouse/SocietyForceAction" type="com.tbb.cs.firehouse.SocietyForceAction">
+			<forward name="query" path="firehouse.society_force.list" />
+			<forward name="view" path="firehouse.society_force.view" />
+		</action>
+		
+		<action path="/cs/firehouse/ExpertAction" type="com.tbb.cs.firehouse.ExpertAction">
+			<forward name="query" path="firehouse.expert.list" />
+			<forward name="view" path="firehouse.expert.view" />
+		</action>
+		
+		<action path="/cs/firehouse/NotifyAction" type="com.tbb.cs.firehouse.NotifyAction">
+			<forward name="query" path="firehouse.notify.list" />
+			<forward name="view" path="firehouse.notify.view" />
+		</action>
+		
+		<action path="/cs/firehouse/HydrantAction" type="com.tbb.cs.firehouse.HydrantAction">
+			<forward name="query" path="firehouse.hydrant.list" />
+			<forward name="view" path="firehouse.hydrant.view" />
+		</action>
+		
+		<action path="/cs/firehouse/PersonAction" type="com.tbb.cs.firehouse.PersonAction">
+			<forward name="view" path="firehouse.person.view" />			
+		</action>
+		
+		<!-- =============知识库============== -->
+		<action path="/cs/firehouse/KbChemicalAction" type="com.tbb.cs.firehouse.KbChemicalAction">
+			<forward name="query" path="firehouse.kb_chemical.list" />	
+			<forward name="view" path="firehouse.kb_chemical.view" />		
+		</action>
+		
+		<action path="/cs/firehouse/KbGuideAction" type="com.tbb.cs.firehouse.KbGuideAction">
+			<forward name="query" path="firehouse.kb_guide.list" />
+			<forward name="view" path="firehouse.kb_guide.view" />
+		</action>
+		
+		<action path="/cs/firehouse/KbMethodAction" type="com.tbb.cs.firehouse.KbMethodAction">
+			<forward name="query" path="firehouse.kb_method.list" />
+			<forward name="view" path="firehouse.kb_method.view" />
+		</action>
+		
+		<action path="/cs/firehouse/KbLawAction" type="com.tbb.cs.firehouse.KbLawAction">
+			<forward name="query" path="firehouse.kb_law.list" />
+			<forward name="view" path="firehouse.kb_law.view" />
+		</action>
+		
+		<action path="/cs/firehouse/KbOtherAction" type="com.tbb.cs.firehouse.KbOtherAction">
+			<forward name="query" path="firehouse.kb_other.list" />
+			<forward name="view" path="firehouse.kb_other.view" />
+		</action>
+		
+	</action-mappings>	
+</struts-config>

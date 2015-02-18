@@ -1,0 +1,42 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+string[] attribute = Utility.Split(Utility.GetAttributes());
+string[] type = Utility.Split(Utility.GetTypes());
+%>
+package com.tbb.vpn.domain;
+
+public class <%= Utility.UpCaseFirst(name)%> {
+	<%for(int i = 0;i < attribute.Length;i++){%>	
+	private java.lang.<%= type[i]%> <%= attribute[i]%>;
+	<%}%>
+
+	<%for(int i = 0;i < attribute.Length;i++){%>	
+	public java.lang.<%= type[i]%> get<%= Utility.UpCaseFirst(attribute[i])%>(){
+		return <%= attribute[i]%>;
+	}
+
+	public void set<%= Utility.UpCaseFirst(attribute[i])%>(java.lang.<%= type[i]%> <%= attribute[i]%>){
+		this.<%= attribute[i]%> = <%= attribute[i]%>;
+	}
+	<%}%>
+	
+}
+
+<script runat="template">
+</script>

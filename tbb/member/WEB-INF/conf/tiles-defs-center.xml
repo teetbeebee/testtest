@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>  
+	 
+	<definition name="center.sys_user.edit_my_pwd" extends="cs">		
+		<put name="center" value="/cs/center/sys_user_my_pwd_edit.vm" />
+	</definition>	
+	
+	
+	<!--=========地址簿=========-->
+	<definition name="center.address_book.view" extends="cs">		
+		<put name="center" value="/cs/center/address_book_view.vm" />
+	</definition>	
+	 
+	<definition name="center.address_book.view_detail" extends="cs">		
+		<put name="center" value="/cs/center/address_book_detail_view.vm" />
+	</definition>
+	
+	<definition name="center.organ.tree" extends="cs">		
+		<put name="center" value="/cs/center/organ_tree.vm" />
+	</definition>
+	
+	<!--=========模拟案件显示=========-->
+	<definition name="center.simulate_add.view" extends="cs">		
+		<put name="center" value="/cs/center/train/simulate_main.vm" />
+	</definition>
+	
+	<definition name="center.simulate_case.view" extends="cs">		
+		<put name="center" value="/cs/center/train/simulate_case_view.vm" />
+	</definition>
+	
+	<definition name="center.simulate_evaluate_view" extends="cs">		
+		<put name="center" value="/cs/center/train/simulate_case_evaluate_view.vm" />
+	</definition>
+	
+	<definition name="center.simulate_case_evaluate" extends="cs">		
+		<put name="center" value="/cs/center/train/simulate_case_end_list.vm" />
+	</definition>
+	
+	<definition name="center.history_case.list" extends="cs">		
+		<put name="center" value="/cs/center/train/all_history_case_list.vm" />
+	</definition>
+	<!--=========发送模拟案件请求=========-->
+	<definition name="center.simulate_case.transfer" extends="cs">		
+		<put name="center" value="/cs/center/train/simulate_case_transfer.vm" />
+	</definition>
+	
+	<!--=========案件显示=========-->
+	<definition name="center.all_case.view" extends="cs">		
+		<put name="center" value="/cs/center/all_case_view.vm" />
+	</definition>
+	
+	<!--=========案件显示调度显示，可以添加日志=========-->
+	<definition name="center.all_case.view_attemper" extends="cs">		
+		<put name="center" value="/cs/center/all_case_attemper_view.vm" />
+	</definition>
+	
+	<!--=========案件历史查询=========-->
+	<definition name="center.all_case.list" extends="cs">		
+		<put name="center" value="/cs/center/all_case_list.vm" />
+	</definition>	
+	
+	<!--=========重复警显示=========-->
+	<definition name="center.all_case.repeat" extends="cs">		
+		<put name="center" value="/cs/center/all_case_repeat.vm" />
+	</definition>
+	
+	<!--=========案件合并显示=========-->
+	<definition name="center.all_case.merge" extends="cs">		
+		<put name="center" value="/cs/center/all_case_merge.vm" />
+	</definition>
+	
+	<!--=========案件转移=========-->
+	<definition name="center.all_case.transfer" extends="cs">		
+		<put name="center" value="/cs/center/all_case_transfer.vm" />
+	</definition>
+	
+	<!--=========案件辅助信息=========-->
+	<definition name="center.case.view_assistant_info" extends="cs">		
+		<put name="center" value="/cs/center/all_case_assistant_info_view.vm" />
+	</definition>
+	
+	<!--=========出动命令回馈=========-->
+	<definition name="center.case.command.feedback" extends="cs">		
+		<put name="center" value="/cs/center/command_feedback.vm" />
+	</definition>
+	
+	<!--=========调度响应=========-->
+	<definition name="center.attemper_notify.edit" extends="cs">		
+		<put name="center" value="/cs/center/attemper_notify_edit.vm" />
+	</definition>
+	
+	<!--=========消防实力=========-->
+	<definition name="center.strength.view" extends="cs">		
+		<put name="center" value="/cs/center/firehouse_strength_view.vm" />
+	</definition>
+	<definition name="center.strength.edit" extends="cs">		
+		<put name="center" value="/cs/center/firehouse_strength_edit.vm" />
+	</definition>
+	
+	 <!--=========大队值班=========-->
+	<definition name="center.on_duty.view_group" extends="cs">		
+		<put name="center" value="/cs/center/on_duty_group_view.vm" />
+	</definition>	
+	 <!--=========支队值班=========-->
+	<definition name="center.on_duty.view_division" extends="cs">		
+		<put name="center" value="/cs/center/on_duty_division_view.vm" />
+	</definition>	
+	 <!--=========中队值班=========-->
+	<definition name="center.on_duty.view_squadron" extends="cs">		
+		<put name="center" value="/cs/center/on_duty_squadron_view.vm" />
+	</definition>
+	
+	<!--=========重点单位=========-->
+	<definition name="center.major_unit.list" extends="cs">		
+		<put name="center" value="/cs/center/major_unit_list.vm" />		
+	</definition>
+	
+	<definition name="center.major_unit.list_scheme" extends="cs">		
+		<put name="center" value="/cs/center/major_unit_scheme_list.vm" />		
+	</definition>
+	
+	<definition name="center.major_unit.view" extends="cs">		
+		<put name="center" value="/cs/center/major_unit_view.vm" />		
+	</definition>
+	
+	<!--=========社会力量=========-->
+	<definition name="center.society_force.list" extends="cs">		
+		<put name="center" value="/cs/center/society_force_list.vm" />		
+	</definition>
+	
+	<definition name="center.society_force.view" extends="cs">		
+		<put name="center" value="/cs/center/society_force_view.vm" />		
+	</definition>
+	
+	<!--=========专家组专家=========-->
+	<definition name="center.expert.list" extends="cs">		
+		<put name="center" value="/cs/center/expert_list.vm" />		
+	</definition>
+	
+	<definition name="center.expert.view" extends="cs">		
+		<put name="center" value="/cs/center/expert_view.vm" />		
+	</definition>	
+	
+	<!--=========消防水源=========-->
+	<definition name="center.hydrant.list" extends="cs">		
+		<put name="center" value="/cs/center/hydrant_list.vm" />
+	</definition>
+	
+	<definition name="center.hydrant.view" extends="cs">		
+		<put name="center" value="/cs/center/hydrant_view.vm" />
+	</definition>	
+	
+	<!--无效报警-->
+	<definition name="center.not_case.add" extends="cs">		
+		<put name="center" value="/cs/center/not_case_add.vm" />
+	</definition>	
+	
+	<!--=========通知=========-->
+	<definition name="center.notify.list" extends="cs">		
+		<put name="center" value="/cs/center/notify_list.vm" />
+	</definition>
+	
+	<definition name="center.notify.add" extends="cs">		
+		<put name="center" value="/cs/center/notify_add.vm" />
+	</definition>	
+	
+	<definition name="center.notify.answer" extends="cs">		
+		<put name="center" value="/cs/center/notify_answer.vm" />
+	</definition>	
+	
+	<definition name="center.notify.edit" extends="cs">		
+		<put name="center" value="/cs/center/notify_edit.vm" />
+	</definition>
+	
+	<!--=========知识库=========-->
+	<definition name="center.kb_chemical.list" extends="cs">		
+		<put name="center" value="/cs/center/kb_chemical_list.vm" />
+	</definition>
+	
+	<definition name="center.kb_chemical.view" extends="cs">		
+		<put name="center" value="/cs/center/kb_chemical_view.vm" />
+	</definition>
+	
+	<definition name="center.kb_guide.list" extends="cs">		
+		<put name="center" value="/cs/center/kb_guide_list.vm" />
+	</definition>
+	
+	<definition name="center.kb_guide.view" extends="cs">		
+		<put name="center" value="/cs/center/kb_guide_view.vm" />
+	</definition>
+	
+	<definition name="center.kb_law.list" extends="cs">		
+		<put name="center" value="/cs/center/kb_law_list.vm" />
+	</definition>
+	
+	<definition name="center.kb_law.view" extends="cs">		
+		<put name="center" value="/cs/center/kb_law_view.vm" />
+	</definition>
+	
+	<definition name="center.kb_method.list" extends="cs">		
+		<put name="center" value="/cs/center/kb_method_list.vm" />
+	</definition>
+	
+	<definition name="center.kb_method.view" extends="cs">		
+		<put name="center" value="/cs/center/kb_method_view.vm" />
+	</definition>
+	
+	<definition name="center.kb_other.list" extends="cs">		
+		<put name="center" value="/cs/center/kb_other_list.vm" />
+	</definition>
+	
+	<definition name="center.kb_other.view" extends="cs">		
+		<put name="center" value="/cs/center/kb_other_view.vm" />
+	</definition>	
+	
+	<!--=========人员=========-->
+	<definition name="center.person.view" extends="cs">		
+		<put name="center" value="/cs/center/person_view.vm" />
+	</definition>
+	
+	<!--=========系统状态监控=========-->
+	<definition name="center.servers_status.list" extends="cs">		
+		<put name="center" value="/cs/center/server_status.vm" />
+	</definition>
+	
+	 
+</tiles-definitions>

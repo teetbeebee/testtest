@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="OnDuty">
+	<!-- domain class alias -->
+	<typeAlias alias="onDutyClass" type="com.tbb.daily.domain.OnDuty" />
+
+	<!-- result map -->
+	<resultMap id="onDutyMap" class="onDutyClass">
+		<result property="organ_id" column="organ_id" />
+		<result property="on_duty_date" column="on_duty_date" />
+		<result property="on_duty_chief" column="on_duty_chief" />
+		<result property="on_duty_assis_chief" column="on_duty_assis_chief" />
+		<result property="on_duty_assistant" column="on_duty_assistant" />
+
+		<result property="on_duty_clierk" column="on_duty_clierk" />
+		<result property="fh_monitor" column="fh_monitor" />
+		<result property="fh_front_staff" column="fh_front_staff" />
+		<result property="fh_back_staff" column="fh_back_staff" />
+		<result property="fh_messenger" column="fh_messenger" />
+
+		<result property="define1" column="define1" />
+		<result property="define2" column="define2" />
+		<result property="define3" column="define3" />
+		<result property="note" column="note" />
+	</resultMap>
+
+	<!-- column fields -->
+	<sql id="allColumn"> 
+		organ_id,on_duty_date,on_duty_chief,on_duty_assis_chief,on_duty_assistant,
+		on_duty_clierk,fh_monitor,fh_front_staff,fh_back_staff,fh_messenger,
+		define1,define2,define3,note
+	</sql>
+	
+    <sql id="createColumn">
+        organ_id,on_duty_date,on_duty_chief,on_duty_assis_chief,on_duty_assistant,
+		on_duty_clierk,fh_monitor,fh_front_staff,fh_back_staff,fh_messenger,
+		define1,define2,define3,note
+    </sql>
+
+	<!-- create domain-->
+	<insert id="create" parameterClass="onDutyClass"> 
+		insert into on_duty
+		( 
+			<include refid="createColumn" />
+		) 
+		values 
+		( 
+			#organ_id#,#on_duty_date#,#on_duty_chief#,#on_duty_assis_chief#,#on_duty_assistant#,
+			#on_duty_clierk#,#fh_monitor#,#fh_front_staff#,#fh_back_staff#,#fh_messenger#,
+			#define1#,#define2#,#define3#,#note#
+		) 
+	</insert>
+
+	<!-- retrieve domain -->
+	<select id="retrieve" resultClass="onDutyClass" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from on_duty 
+		where on_duty_date = #on_duty_date# and organ_id = #organ_id#
+	</select>
+
+	<!-- update domain -->
+	<update id="update" parameterClass="onDutyClass"> 
+		update on_duty
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="on_duty_chief"> 
+				on_duty_chief = #on_duty_chief#
+			</isNotNull>
+			<isNotNull prepend="," property="on_duty_assis_chief"> 
+				on_duty_assis_chief = #on_duty_assis_chief#
+			</isNotNull>
+			<isNotNull prepend="," property="on_duty_assistant"> 
+				on_duty_assistant = #on_duty_assistant#
+			</isNotNull>
+			<isNotNull prepend="," property="on_duty_clierk"> 
+				on_duty_clierk = #on_duty_clierk#
+			</isNotNull>
+			<isNotNull prepend="," property="fh_monitor"> 
+				fh_monitor = #fh_monitor#
+			</isNotNull>
+			<isNotNull prepend="," property="fh_front_staff"> 
+				fh_front_staff = #fh_front_staff#
+			</isNotNull>
+			<isNotNull prepend="," property="fh_back_staff"> 
+				fh_back_staff = #fh_back_staff#
+			</isNotNull>
+			<isNotNull prepend="," property="fh_messenger"> 
+				fh_messenger = #fh_messenger#
+			</isNotNull>
+			<isNotNull prepend="," property="define1"> 
+				define1 = #define1#
+			</isNotNull>
+			<isNotNull prepend="," property="define2"> 
+				define2 = #define2#
+			</isNotNull>
+			<isNotNull prepend="," property="define3"> 
+				define3 = #define3#
+			</isNotNull>
+			<isNotNull prepend="," property="note"> 
+				note = #note#
+			</isNotNull>
+		</dynamic> 
+		where on_duty_date = #on_duty_date# and organ_id = #organ_id#
+	</update>
+
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.util.HashMap"> 
+		delete from on_duty
+		where on_duty_date = #on_duty_date# and organ_id = #organ_id#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+		<isNotNull prepend="and" property="organ_id"> 
+			organ_id like '%$organ_id$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="on_duty_date"> 
+			<![CDATA[ datediff(day,on_duty_date,'$on_duty_date$ 00:00:00') = 0 ]]>
+		</isNotNull>
+		<isNotNull prepend="and" property="on_duty_chief"> 
+			on_duty_chief like '%$on_duty_chief$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="on_duty_assis_chief"> 
+			on_duty_assis_chief like '%$on_duty_assis_chief$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="on_duty_assistant"> 
+			on_duty_assistant like '%$on_duty_assistant$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="on_duty_clierk"> 
+			on_duty_clierk like '%$on_duty_clierk$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="fh_monitor"> 
+			fh_monitor like '%$fh_monitor$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="fh_front_staff"> 
+			fh_front_staff like '%$fh_front_staff$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="fh_back_staff"> 
+			fh_back_staff like '%$fh_back_staff$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="fh_messenger"> 
+			fh_messenger like '%$fh_messenger$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="define1"> 
+			define1 like '%$define1$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="define2"> 
+			define2 like '%$define2$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="define3"> 
+			define3 like '%$define3$%'
+		</isNotNull>
+		<isNotNull prepend="and" property="note"> 
+			note like '%$note$%'
+		</isNotNull>
+	</sql>
+
+	<sql id="dynamicScope">
+
+	</sql>
+
+	<!-- query domain-->
+	<select id="query_list" resultMap="onDutyMap" 
+	parameterClass="java.util.HashMap"> 
+		select <include refid="allColumn" /> 
+		from on_duty 
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic>
+		<isNotNull prepend=" " property="orderBy"> 
+			order by $orderBy$
+		</isNotNull>
+	</select>
+
+	<select id="query_cnt" resultClass="java.lang.Integer" 
+	parameterClass="java.util.HashMap">
+		select count(*) from on_duty  
+		<dynamic prepend="where">
+			<include refid="dynamicWhere" />
+			<include refid="dynamicScope" />
+		</dynamic> 
+	</select>
+
+	
+
+	
+
+</sqlMap>

@@ -1,0 +1,35 @@
+.dTree {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px;
+}
+.dTree DIV {
+	FONT-SIZE: 11px
+}
+.dTree A.label {
+	LEFT: 3px; FONT: 11px Arial; CURSOR: default; COLOR: #000000; POSITION: relative; TEXT-DECORATION: none
+}
+.dTree A.label:hover {
+	COLOR: #3366cc; TEXT-DECORATION: underline
+}
+.dTree A.selected {
+	BACKGROUND: #004080; COLOR: #ffffff
+}
+.dTree A.selected:hover {
+	BACKGROUND: #004080; COLOR: #ffffff
+}
+.dTree INPUT.checkbox {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 14px; PADDING-TOP: 0px; HEIGHT: 14px; 
+}
+dTree INPUT.radio {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 14px; PADDING-TOP: 0px; HEIGHT: 14px; 
+}
+td {  font-size: 12px}
+.mframe td.tm{background:#4B92D9;height:20px;text-align:left;}
+.mframe td.tl {width:1px; background:#799AE1;}
+.mframe td.tr {width:1px; background:#799AE1}
+.mframe span.tt {color:#FFFFFF; font-weight:bold ; padding-left:10px; }
+.mframe td.mm {background:#FFFFFF; padding:3px }
+.mframe td.ml {width:1px; background:#799AE1}
+.mframe td.mr {width:1px; background:#799AE1}
+.mframe td.bm {height:13px; font-size:1px; border-top:1px solid #799AE1}
+.mframe td.bl {width:1px;}
+.mframe td.br {width:1px;}

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>	
+
+	<action-mappings>
+		
+		<!-- =============Example============== 
+		<action path="/module/FunctionAction" type="com.tbb.module.action.FunctionAction">
+			<forward name="redoQuery" path="/module/FunctionAction.do?method=query" redirect="true"/>
+			<forward name="query" path="module.function.list" />
+			<forward name="add" path="module.function.add" />
+			<forward name="edit" path="module.function.edit" />
+			<forward name="view" path="module.function.view" />
+		</action>
+		-->
+		
+		<action path="/cs/center/LoginAction" type="com.tbb.cs.center.LoginAction">
+			<forward name="login_page" path="/cs/center/login.vm" />
+			<forward name="lock" path="/cs/center/lock.vm" />			
+		</action>
+		
+		<action path="/cs/center/LogoutAction" type="com.tbb.cs.center.LogoutAction">
+		</action>
+		
+		<action path="/cs/center/WorkAction" type="com.tbb.cs.center.WorkAction">
+		</action>
+		
+		<action path="/cs/center/AjaxAction" type="com.tbb.cs.center.AjaxAction">
+		</action>
+		
+		<action path="/cs/center/IndexAction" type="com.tbb.cs.center.IndexAction">
+			<forward name="view" path="/cs/center/index.vm" />		
+			<forward name="view_leftbar" path="/cs/center/leftbar_view.vm" />	
+			<forward name="view_weather" path="/cs/center/weather_view.vm" />				
+		</action>
+		
+		<action path="/cs/center/SysUserAction" type="com.tbb.cs.center.SysUserAction">
+			<forward name="edit_my_pwd" path="center.sys_user.edit_my_pwd" />			
+		</action>
+				
+		<action path="/cs/center/AddressBookAction" type="com.tbb.cs.center.AddressBookAction">
+			<forward name="view" path="center.address_book.view" />
+			<forward name="view_detail" path="center.address_book.view_detail" />
+		</action>
+		
+		<action path="/cs/center/OrganAction" type="com.tbb.cs.center.OrganAction">
+			<forward name="tree" path="center.organ.tree" />
+		</action>
+		
+		<action path="/cs/center/FirehouseStrengthAction" type="com.tbb.cs.center.FirehouseStrengthAction">			
+			<forward name="view" path="center.strength.view" />	
+			<forward name="edit" path="center.strength.edit" />		
+		</action>
+		
+		<action path="/cs/center/OnDutyAction" type="com.tbb.cs.center.OnDutyAction">
+			<forward name="view_on_duty_group" path="center.on_duty.view_group" />
+			<forward name="view_on_duty_division" path="center.on_duty.view_division" />
+			<forward name="view_on_duty_squadron" path="center.on_duty.view_squadron" />
+		</action>
+		
+		<action path="/cs/center/MajorUnitAction" type="com.tbb.cs.center.MajorUnitAction">
+			<forward name="query" path="center.major_unit.list" />
+			<forward name="query_scheme" path="center.major_unit.list_scheme" />
+			<forward name="view" path="center.major_unit.view" />
+		</action>
+		
+		<action path="/cs/center/SocietyForceAction" type="com.tbb.cs.center.SocietyForceAction">
+			<forward name="query" path="center.society_force.list" />
+			<forward name="view" path="center.society_force.view" />
+		</action>
+		
+		<action path="/cs/center/ExpertAction" type="com.tbb.cs.center.ExpertAction">
+			<forward name="query" path="center.expert.list" />
+			<forward name="view" path="center.expert.view" />
+		</action>
+		
+		<action path="/cs/center/HydrantAction" type="com.tbb.cs.center.HydrantAction">
+			<forward name="query" path="center.hydrant.list" />
+			<forward name="view" path="center.hydrant.view" />
+		</action>
+		
+		<action path="/cs/center/AllCaseAction" type="com.tbb.cs.center.AllCaseAction">
+			<forward name="query" path="center.all_case.list" />
+			<forward name="view" path="center.all_case.view" />
+			<forward name="query_current" path="/cs/center/all_case_current_list.vm" />					
+			<forward name="add" path="/cs/center/all_case_add.vm" />	
+			<forward name="edit" path="/cs/center/all_case_edit.vm" />	
+			<forward name="repeat" path="center.all_case.repeat" />
+			<forward name="merge" path="center.all_case.merge" />
+			<forward name="transfer" path="center.all_case.transfer"/>	
+			<forward name="view_attemper" path="center.all_case.view_attemper"/>
+		</action>
+		
+		<action path="/cs/center/SimulateAction" type="com.tbb.cs.center.SimulateAction">
+			<forward name="simulate_main" path="center.simulate_add.view" />
+			<forward name="simulate_start" path="/cs/center/train/simulate_case_start.vm" />
+			<forward name="simulate_menu" path="/cs/center/train/simulate_menu_tree.vm"/>	
+			<forward name="simulate_hand_add"  path="/cs/center/train/simulate_hand_add.vm"/>
+			<forward name="query" path="/cs/center/train/simulate_case_list.vm"/>
+			<forward name="query_simulate_end" path="center.simulate_case_evaluate"/>
+			<forward name="view" path="center.simulate_case.view"/>
+			<forward name="evaluate_view" path="center.simulate_evaluate_view"/>
+			<forward name="ending_view" path="/cs/center/train/simulate_case_ending.vm"></forward>
+			<forward name="transfer" path="center.simulate_case.transfer"/>
+			<forward name="query_history" path="center.history_case.list"/>
+		</action>	
+		
+		<action path="/cs/center/NotCaseAction" type="com.tbb.cs.center.NotCaseAction">
+			<forward name="add" path="center.not_case.add" />
+		</action>
+		
+		<!-- =============知识库============== -->
+		<action path="/cs/center/KbChemicalAction" type="com.tbb.cs.center.KbChemicalAction">
+			<forward name="query" path="center.kb_chemical.list" />	
+			<forward name="view" path="center.kb_chemical.view" />			
+		</action>
+		
+		<action path="/cs/center/KbGuideAction" type="com.tbb.cs.center.KbGuideAction">
+			<forward name="query" path="center.kb_guide.list" />
+			<forward name="view" path="center.kb_guide.view" />
+		</action>
+		
+		<action path="/cs/center/KbMethodAction" type="com.tbb.cs.center.KbMethodAction">
+			<forward name="query" path="center.kb_method.list" />
+			<forward name="view" path="center.kb_method.view" />
+		</action>
+		
+		<action path="/cs/center/KbLawAction" type="com.tbb.cs.center.KbLawAction">
+			<forward name="query" path="center.kb_law.list" />
+			<forward name="view" path="center.kb_law.view" />
+		</action>
+		
+		<action path="/cs/center/KbOtherAction" type="com.tbb.cs.center.KbOtherAction">
+			<forward name="query" path="center.kb_other.list" />
+			<forward name="view" path="center.kb_other.view" />
+		</action>
+		
+	    <!-- =============案件调度============== -->
+		<action path="/cs/center/AttemperAction" type="com.tbb.cs.center.AttemperAction">
+		   <forward name="view_command_feedback" path="center.case.command.feedback"/>
+		</action>
+		
+		<!-- =============案件辅助============== -->
+		<action path="/cs/center/AlarmOtherDealWithAction" type="com.tbb.cs.center.AlarmOtherDealWithAction">
+			<forward name="view_assistant_info" path="center.case.view_assistant_info"/>
+		</action>
+		
+		<!-- =============支队出动命令手工响应============== -->
+		<action path="/cs/center/AttemperNotifyAction" type="com.tbb.cs.center.AttemperNotifyAction">
+			<forward name="edit" path="center.attemper_notify.edit" />
+		</action>
+		
+		<!-- =============通知============== -->
+		<action path="/cs/center/NotifyAction" type="com.tbb.cs.center.NotifyAction">
+			<forward name="query" path="center.notify.list" />
+			<forward name="add" path="center.notify.add" />
+			<forward name="answer" path="center.notify.answer" />
+			<forward name="edit" path="center.notify.edit" />
+		</action>
+		
+		<!-- =============系统状态监控============== -->
+		<action path="/cs/center/ServerStatusAction" type="com.tbb.cs.monitor.QueryServersStatusAction">
+		    <forward name="query" path="center.servers_status.list" />
+		</action>
+
+		<action path="/cs/center/CheckTelAction" type="com.tbb.cs.monitor.CheckTelAction">
+		</action>
+		
+		<action path="/cs/center/QueryBlacklistAction" type="com.tbb.cs.monitor.QueryBlacklistAction">
+		</action>
+
+		<action path="/cs/center/RevCallCenterMsgAction" type="com.tbb.cs.monitor.RevCallCenterMsgAction">
+		</action>
+
+		<action path="/cs/center/PersonAction" type="com.tbb.cs.center.PersonAction">
+			<forward name="view" path="center.person.view" />			
+		</action>
+				
+	</action-mappings>	
+</struts-config>

@@ -1,0 +1,53 @@
+
+<html >
+
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=GB2312" />
+<title>日期时间选择控件</title>
+
+  <!-- calendar stylesheet -->
+  <link rel="stylesheet" type="text/css" href="calendar-win2k-cold-1.css" />
+
+  <!-- main calendar program -->
+  <script type="text/javascript" src="calendar.js"></script>
+
+  <!-- language for the calendar -->
+  <script type="text/javascript" src="calendar-zh.js"></script>
+
+  <!-- the following script defines the Calendar.setup helper function, which makes
+       adding a calendar a matter of 1 or 2 lines of code. -->
+  <script type="text/javascript" src="calendar-setup.js"></script>
+
+</head>
+
+<body>
+
+<form name="objForm">
+
+  日期:<input type="text" id="date_start" name="date_start" /><script type="text/javascript">
+    Calendar.setup({
+      inputField     :    "date_start", // 显示日期的输入框
+      ifFormat       :    "%Y-%m-%d %H:%M",
+      showsTime      :    true,
+      button         :    "date_start", // 触发控件的元素
+      step           :    1
+    });
+  </script>
+
+<br>
+
+  日期时间:<input type="text" id="date_time_start" name="date_time_start" />
+  <script type="text/javascript">
+    Calendar.setup({
+      inputField     :    "date_time_start", // 显示日期的输入框
+      ifFormat       :    "%Y-%m-%d",
+      showsTime      :    false,
+      button         :    "date_time_start", // 触发控件的元素
+      step           :    1
+    });
+  </script>
+
+</form>
+
+</body>
+</html>

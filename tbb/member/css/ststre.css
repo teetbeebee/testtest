@@ -1,0 +1,85 @@
+/*整体布局*/
+body {
+	width: 640px;
+	height: 500px;
+	margin: 2px;
+	padding: 0px;
+	background-color: black;
+}
+
+
+	
+/*细节布局*/
+.redtxt {
+	font-family: 宋体;
+	font-size: 30px;
+	color: red;
+}
+
+.greentxt {
+	font-family: 宋体;
+	font-size: 20px;
+	color: lime;
+}
+
+.yellowtitle{
+		font-family: 宋体;
+		font-size: 14px;
+		color: white;
+		font-weight: bold;
+	}
+.yellowtxt {
+	font-family: 宋体;
+	font-size: 14px;
+	color: white;
+}
+
+.greenbigcapt {
+	font-family: 宋体;
+	font-weight: bold;
+	font-size: 18px;
+	color:lime;
+}
+
+.greencapt {
+	font-family: 宋体;
+	font-size: 14px;
+	color: lime;
+}
+
+.yellowcapt {
+	font-family: 宋体;
+	font-size: 14px;
+	color: white;
+}
+
+.context {
+	font-family: 宋体;
+	font-size: 14px;
+	text-align: left;
+	overflow: hidden;
+}
+
+.maintb {
+	padding: 0;
+	margin: 0px;
+	width: 96%;	
+	line-height: 16px;
+	background-color:black;	
+}
+
+.maintb td {
+	height: 16px;
+}
+
+.maintb td.label {
+	font-family: 宋体;
+	font-size: 14px;
+	color: white;
+}
+
+.maintb td.title {
+	font-family: 宋体;
+	font-size: 14px;
+	color: white;	
+}

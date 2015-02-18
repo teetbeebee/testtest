@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java/tmf"/>
+	<classpathentry kind="src" path="src/java/tbb"/>
+	<classpathentry kind="src" path="email"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/antlr-2.7.2.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-chain-1.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-fileupload-1.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-io-1.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-lang-2.0.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-lang-2.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-validator-1.3.0.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/concurrent.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/dbunit-2.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/DmJdbcDriver.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/jxl-2.5.8.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/mr-2.3c.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/oscache-2.3.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/oscore-2.2.5.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/propertyset-1.4.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/quartz-1.5.2.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/sslext-1.2.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/struts-core-1.3.5.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/struts-taglib-1.3.4.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/struts-tiles-1.3.5.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/xmlBlaster.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/saxpath.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/drools-ant-4.0.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/drools-compiler-4.0.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/drools-core-4.0.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/drools-decisiontables-4.0.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/drools-jsr94-4.0.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ant-1.6.5.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/antlr-runtime-3.0.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ant-nodeps-1.6.5.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/core-3.2.3.v_686_R32x.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/janino-2.5.7.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/jsr94-1.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/jxl-2.4.2.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/mvel14-1.2rc4rv908.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/xercesImpl-2.4.0.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/xstream-1.2.2.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/jspsmartupload.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/filemover.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/uploadbean.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/sqljdbc.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ibatis-common-2.1.7.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ibatis-dao-2.1.7.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ibatis-sqlmap-2.1.7.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/mysql-connector-java-5.0.3-bin.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/json-lib-2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/simplefan.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_25">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/velocity-1.7.zip"/>
+	<classpathentry kind="lib" path="member/WEB-INF/lib/velocity-tools-2.0.zip"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="output" path="member/WEB-INF/classes"/>
+</classpath>

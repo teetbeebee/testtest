@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig
+          PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+          "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<properties resource="res/config/sql-map-config.properties" />
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		maxSessions="64" maxTransactions="8" maxRequests="128"
+		useStatementNamespaces="true" />
+
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property value="${SimpleDriver}" name="JDBC.Driver" />
+			<property value="${SimpleUrl}" name="JDBC.ConnectionURL" />
+			<property value="${SimpleUsername}" name="JDBC.Username" />
+			<property value="${SimplePassword}" name="JDBC.Password" />
+			<property value="15" name="Pool.MaximumActiveConnections" />
+			<property value="15" name="Pool.MaximumIdleConnections" />
+			<property value="1000" name="Pool.MaximumWait" />
+			<!--database reset connect-->
+			<property name="Pool.PingQuery" value="select 1 from system.sysdba.dual"/>
+            <property name="Pool.PingEnabled" value="true"/>
+		</dataSource>
+	</transactionManager>
+
+	<!--=========Example==========
+	<sqlMap resource="res/sqlmap/module/Function.xml" />	
+	-->
+	
+	<!--common-->
+	<sqlMap resource="res/sqlmap/common/Common.xml" />
+	
+    <!--sys-->	
+	<sqlMap resource="res/sqlmap/sys/SysUser.xml" />	
+	<sqlMap resource="res/sqlmap/sys/SysRole.xml" />
+	<sqlMap resource="res/sqlmap/sys/SysPermit.xml" />
+	<sqlMap resource="res/sqlmap/sys/SysDict.xml" />
+	<sqlMap resource="res/sqlmap/sys/SysConfig.xml" />
+    <sqlMap resource="res/sqlmap/sys/SysGrant.xml" />
+	<sqlMap resource="res/sqlmap/sys/UserRole.xml" />
+	
+	<!--basedata-->
+	<sqlMap resource="res/sqlmap/basedata/Organ.xml" />
+	<sqlMap resource="res/sqlmap/basedata/T1.xml" />
+	<sqlMap resource="res/sqlmap/basedata/Dictionary.xml" />
+	<sqlMap resource="res/sqlmap/basedata/TBB_BASEDATA.xml" />
+	<sqlMap resource="res/sqlmap/basedata/TBB_PROJ_LIST.xml" />
+	<sqlMap resource="res/sqlmap/basedata/Restraunt.xml" />
+	<sqlMap resource="res/sqlmap/basedata/Recipe.xml" />
+	<sqlMap resource="res/sqlmap/vpn/Vpnuser.xml" />
+	
+	<!--member-->
+	<sqlMap resource="res/sqlmap/member/Web_member.xml" />
+	
+</sqlMapConfig>

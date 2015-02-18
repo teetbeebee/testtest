@@ -1,0 +1,265 @@
+/*整体布局*/
+html {
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0px;
+	font-family: 宋体, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background: url(../images/body_bg.png) top repeat-x;
+	background-color: #FFF;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	height: 90px;
+	position: absolute;
+}
+
+#title1 {
+ 	position: absolute;
+	left: 0;
+	top: 35px;
+	height: 47px;
+	padding-top:18px;
+	color: #000978;
+	text-indent:68px;
+	font-size:20px;
+	font-weight:bold;
+	font-family:黑体;
+	background:url(../images/title.png) left top no-repeat
+}
+
+#title2 {
+	position: absolute;
+	left: 0;
+	top: 0px;
+	width: 213px;
+	height: 35px;
+	color: #fff;
+}
+
+#userbox {
+	position: absolute;
+	right: 10px;
+	top: 64px;
+	text-align: right;
+	height: 20px;
+	line-height: 20px;
+	color: #000;
+	font-size: 12px;
+}
+
+#topbar {
+	height: 35px;
+}
+
+#topnav ul {
+	padding: 0;
+	list-style: none;
+	height: 35px;
+	float: right;
+	margin: 0 20px 0 0 !important;
+	margin: 0 10px 0 0;
+}
+
+.topnav_line {
+	width: 2px;
+	background: url(../images/topnavbutton.png) no-repeat top right;
+	height: 35px;
+}
+
+#topnav li {
+	float: left;
+}
+
+#topnav li a {
+	display: block;
+	line-height: 35px;
+	font-size: 12px;
+	color: white;
+	width: 80px;
+	text-align: center;
+	text-decoration: none;
+	background: url(../images/topnavbutton.png) no-repeat top right;
+}
+
+#topnav li a:hover {
+	background: url(../images/topnavbutton.png) no-repeat bottom right;
+}
+
+#menu {
+	width: 160px;
+}
+
+#menu #xtree {
+	margin: 0 10px;
+}
+
+#work {
+	padding: 5px;
+}
+
+#footer {
+	clear: both;
+	background: url(../images/footer_bg.png) top repeat-x;
+	height: 40px;
+	font-size: 9pt
+}
+
+#footer span {
+	float: right;
+	margin: 16px 5px 0 0
+}
+
+/*细节布局*/
+.text {
+	height: 16px;
+}
+
+.button {
+	height: 24px;;
+	line-height: 20px;;
+	font-size: 12px;;
+	margin-left: 10px;;
+	vertical-align: middle;
+}
+
+.current {
+	margin: 0;;
+	padding: 0;;
+	height: 23px;;
+	list-style: none;
+	font-size: 14px;
+}
+
+.current li.pos {
+	margin: 0;;
+	padding: 0;;
+	height: 23px;;
+	float: left;;
+	line-height: 25px;;
+	font-weight: bold;;
+	margin-left: -20px;
+}
+
+.current li.op {
+	margin: 0;;
+	padding: 0;;
+	height: 23px;;
+	float: right;;
+	margin-right: 1px;
+}
+
+.maintb {
+	margin: 0;;
+	padding: 0;;
+	width: 100%;;
+	margin-top: 10px;;
+	line-height: 25px;;
+	border-collapse: collapse;
+}
+
+.maintb th {
+	text-align: left;;
+	background: #B8CCED;;
+	border-bottom: 1px #819ECF solid;;
+	height: 40px;;
+	line-height: 25px;;
+	padding-left: 6px;;
+	font-weight: bold;;
+	font-size: 14px;
+}
+
+.maintb th.sub {
+	text-align: left;;
+	background: #E5ECF9;;
+	border-bottom: 1px #819ECF solid;;
+	height: 25px;;
+	line-height: 25px;;
+	padding-right: 6px;;
+	padding-top: 0px;;
+	padding-bottom: 0px;;
+	font-size: 12px;
+}
+
+.maintb th.op {
+	text-align: right;;
+	background: #E5ECF9;;
+	border-top: 1px #819ECF solid;;
+	height: 40px;;
+	line-height: 25px;;
+	padding-right: 6px;;
+	padding-top: 0px;;
+	padding-bottom: 0px;;
+	font-size: 12px;;
+	border-bottom: none;
+}
+
+.maintb td {
+	line-height: 25px;;
+	height: 30px;;
+	padding-left: 10px;
+}
+
+.maintb td.label {
+	width: 100px;
+	text-align:right;
+}
+
+.maintb td.title {
+	font-weight: bold;;
+	font-size: 12px;;
+	background: #E4E7F8;;
+	text-align: left;
+}
+
+.searcharea {
+	float: left;;
+	margin-top: 5px;;
+	padding-bottom: 5px;;
+	padding-left: 5px;;
+	text-align: left;;
+	vertical-align: middle;
+	text-align:right;
+	font-weight: normal;
+}
+
+.searcharea .condition {
+	float: left;
+	width: 100px;
+}
+
+.searcharea .condition_value {
+	float: left;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
+.selectarea {
+	float: left;;
+	margin-top: 5px;;
+	padding-bottom: 5px;;
+	padding-left: 5px;;
+	text-align: left;;
+	vertical-align: middle;
+}
+
+.pagearea {
+	float: right;;
+	margin-top: 5px;;
+	padding-bottom: 5px;;
+	padding-left: 5px;;
+	text-align: left;;
+	vertical-align: middle;
+}
+
+.pagenavbutton {
+	
+}

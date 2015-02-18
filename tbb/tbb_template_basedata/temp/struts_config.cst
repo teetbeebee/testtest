@@ -1,0 +1,33 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%
+string[] name = Utility.Split(Utility.GetVo_names());
+%>
+	<%for(int i = 0;i < name.Length;i++){%>	
+		<action path="/basedata/<%= Utility.UpCaseFirst(name[i])%>Action" type="com.tbb.basedata.action.<%= Utility.UpCaseFirst(name[i])%>Action">		
+			<forward name="add" path="/basedata/<%= name[i]%>_add.vm" />
+			<forward name="edit" path="/basedata/<%= name[i]%>_edit.vm" />
+			<forward name="query" path="/basedata/<%= name[i]%>_list.vm" />
+			<forward name="view" path="/basedata/<%= name[i]%>_view.vm" />
+		</action>
+		
+	<%}%>
+	
+
+<script runat="template">
+</script>

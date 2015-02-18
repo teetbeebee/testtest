@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>	
+
+	<action-mappings>
+		
+		<!-- =============Example============== 
+		<action path="/module/FunctionAction" type="com.tbb.module.action.FunctionAction">
+			<forward name="redoQuery" path="/module/FunctionAction.do?method=query" redirect="true"/>
+			<forward name="query" path="module.function.list" />
+			<forward name="add" path="module.function.add" />
+			<forward name="edit" path="module.function.edit" />
+			<forward name="view" path="module.function.view" />
+		</action>
+		-->
+		
+		<action path="/sys/IndexAction" 
+			type="com.tbb.sys.action.IndexAction">
+			<forward name="view" path="sys.index.view" />
+		</action>
+		
+		<action path="/registe" 
+			type="com.tbb.sys.action.RegisteAction">
+			<forward name="registe" path="/sys/sys_user_register.html" />
+			<forward name="vpnregiste" path="/vpn/vpnregiste.html" />
+			<forward name="vpnok" path="/vpn/vpnregisteok.html" />
+		</action>
+		
+		<action path="/sys/WeixinAction" 
+			type="com.tbb.sys.action.WeixinAction">
+			<forward name="registe" path="/sys/sys_user_registe.vm" />
+		</action>
+		
+		<action path="/sys/SysUserAction" type="com.tbb.sys.action.SysUserAction">
+			<forward name="redoQuery" path="/sys/SysUserAction.do?method=query" 
+				redirect="true"/>
+			<!-- <forward name="query" path="sys.sys_user.list" />  -->
+			<forward name="query" path="/sys/sys_user_list.vm" />
+			<forward name="add" path="/sys/sys_user_add.vm" />
+			<forward name="edit" path="/sys/sys_user_edit.vm" />
+			<forward name="view" path="sys.sys_user.view" />
+			
+			<forward name="edit_pwd" path="sys.sys_user.edit_pwd" />
+			<forward name="edit_imi_pwd" path="imiation.sys_user.edit_my_pwd" />
+			<forward name="edit_my_pwd" path="sys.sys_user.edit_my_pwd" />
+			<forward name="registe" path="/sys/sys_role_registe.vm" />
+		</action>
+		
+		<action path="/sys/SysRoleAction" type="com.tbb.sys.action.SysRoleAction">
+			<forward name="redoQuery" path="/sys/SysRoleAction.do?method=query" 
+				redirect="true"/>
+			<forward name="query" path="sys.sys_role.list" />
+			<forward name="add" path="sys.sys_role.add" />
+			<forward name="edit" path="sys.sys_role.edit" />
+			<forward name="view" path="sys.sys_role.view" />
+		</action>
+		
+		<action path="/sys/SysPermitAction" type="com.tbb.sys.action.SysPermitAction">		
+			<forward name="query" path="sys.sys_permit.list" />	
+			<forward name="view" path="sys.sys_permit.view" />		
+		</action>
+		
+		<action path="/sys/SysPermitAction" type="com.tbb.sys.action.SysPermitAction">		
+			<forward name="query" path="sys.sys_permit.list" />	
+			<forward name="view" path="sys.sys_permit.view" />		
+		</action>		
+		
+		<action path="/sys/SysGrantAction" type="com.tbb.sys.action.SysGrantAction">
+			<forward name="redoQuerySysUser" path="/sys/SysUserAction.do?method=query"
+				redirect="true"/>
+			<forward name="redoQuerySysRole" path="/sys/SysRoleAction.do?method=query"
+				redirect="true"/>		
+			<forward name="edit_user_role" path="sys.sys_grant.edit_user_role" />	
+			<forward name="edit_role_permit" path="sys.sys_grant.edit_role_permit" />		
+		</action>	
+		
+		<action path="/sys/TerminalAction" type="com.tbb.sys.action.TerminalAction">
+			<forward name="redoQuery" path="/sys/TerminalAction.do?method=query"
+				redirect="true"/>
+			<forward name="query" path="sys.terminal.list" />
+			<forward name="add" path="sys.terminal.add" />
+			<forward name="edit" path="sys.terminal.edit" />
+			<forward name="view" path="sys.terminal.view" />
+		</action>
+		
+		<action path="/sys/SysDictAction" type="com.tbb.sys.action.SysDictAction">
+			<forward name="redoQuery" path="/sys/SysDictAction.do?method=query"
+				redirect="true"/>
+			<forward name="query" path="sys.sys_dict.list" />
+			<forward name="add" path="sys.sys_dict.add" />
+			<forward name="edit" path="sys.sys_dict.edit" />
+			<forward name="view" path="sys.sys_dict.view" />
+		</action>
+		
+		<action path="/sys/SysConfigAction" type="com.tbb.sys.action.SysConfigAction">
+			<forward name="redoQuery" path="/sys/SysConfigAction.do?method=query"
+				redirect="true"/>
+			<forward name="query" path="sys.sys_config.list" />
+			<forward name="add" path="sys.sys_config.add" />
+			<forward name="edit" path="sys.sys_config.edit" />
+			<forward name="view" path="sys.sys_config.view" />
+		</action>
+		
+	</action-mappings>
+	
+</struts-config>

@@ -1,0 +1,161 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Property Name="voname" Type="System.String"  Optional="False" Category="Strings" Description="This is voname." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+%>
+package com.tbb.basedata.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.tbb.tmf.core.BaseException;
+import com.tbb.tmf.core.BaseService;
+import com.tbb.tmf.core.PageList;
+import com.tbb.basedata.dao.<%= Utility.UpCaseFirst(name)%>Dao;
+import com.tbb.basedata.domain.<%= Utility.UpCaseFirst(name)%>;
+
+/**
+ * <%= Utility.UpCaseFirst(name)%> Service
+ */
+public class <%= Utility.UpCaseFirst(name)%>Service extends BaseService {
+	private static <%= Utility.UpCaseFirst(name)%>Service instance = new <%= Utility.UpCaseFirst(name)%>Service();
+
+	private <%= Utility.UpCaseFirst(name)%>Service() {
+		// empty
+		// 防止直接创建对象
+	}
+
+	public static <%= Utility.UpCaseFirst(name)%>Service getInstance() {
+		return instance;
+	}
+
+	/**
+	 * 创建<%= Utility.UpCaseFirst(name)%>对象
+	 * 
+	 * @param <%= name%>
+	 * @throws Exception
+	 */
+	public void create<%= Utility.UpCaseFirst(name)%>(<%= Utility.UpCaseFirst(name)%> <%= name%>) throws Exception {
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			dao.create(<%= name%>);
+		} catch (Exception e) {
+			throw new BaseException("创建新<%= Utility.UpCaseFirst(name)%>失败！", e);
+		}
+	}
+
+	/**
+	 * 根据<%= Utility.UpCaseFirst(name)%>主关键字获取<%= Utility.UpCaseFirst(name)%>信息
+	 * 
+	 * @param domainPK
+	 * @return
+	 * @throws Exception
+	 */
+	public <%= Utility.UpCaseFirst(name)%> retrieve<%= Utility.UpCaseFirst(name)%>(java.lang.Integer domainPK) throws Exception {
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			return dao.retrieve(domainPK);
+		} catch (Exception e) {
+			throw new BaseException("获取<%= Utility.UpCaseFirst(name)%>信息失败！", e);
+		}
+	}
+
+	/**
+	 * 更新<%= Utility.UpCaseFirst(name)%>信息
+	 * 
+	 * @param <%= name%>
+	 * @return
+	 * @throws Exception
+	 */
+	public int update<%= Utility.UpCaseFirst(name)%>(<%= Utility.UpCaseFirst(name)%> <%= name%>) throws Exception {
+		int effectRows = 0;
+
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			effectRows = dao.update(<%= name%>);
+		} catch (Exception e) {
+			throw new BaseException("修改<%= Utility.UpCaseFirst(name)%>信息失败！", e);
+		}
+
+		return effectRows;
+	}
+
+	/**
+	 * 根据<%= Utility.UpCaseFirst(name)%>主关键字删除<%= Utility.UpCaseFirst(name)%>
+	 * 
+	 * @param domainPK
+	 * @return
+	 * @throws Exception
+	 */
+	public int delete<%= Utility.UpCaseFirst(name)%>(java.lang.Integer domainPK) throws Exception {
+		int effectRows = 0;
+
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			effectRows = dao.delete(domainPK);
+		} catch (Exception e) {
+			throw new BaseException("删除<%= Utility.UpCaseFirst(name)%>失败！", e);
+		}
+
+		return effectRows;
+	}
+
+	/**
+	 * 查询<%= Utility.UpCaseFirst(name)%>
+	 * 
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public List query<%= Utility.UpCaseFirst(name)%>ForList(Map params) throws Exception {
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			return dao.queryForList(params);
+		} catch (Exception e) {
+			throw new BaseException("查询<%= Utility.UpCaseFirst(name)%>失败!", e);
+		}
+	}
+
+	/**
+	 * 查询<%= Utility.UpCaseFirst(name)%>
+	 * 
+	 * @param params
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 * @throws Exception
+	 */
+	public PageList query<%= Utility.UpCaseFirst(name)%>ForPageList(Map params, int pageIndex, int pageSize)
+			throws Exception {
+		try {
+			<%= Utility.UpCaseFirst(name)%>Dao dao = (<%= Utility.UpCaseFirst(name)%>Dao) getDao(<%= Utility.UpCaseFirst(name)%>Dao.class);
+			return dao.queryForPageList(params, pageIndex, pageSize);
+		} catch (Exception e) {
+			throw new BaseException("查询<%= Utility.UpCaseFirst(name)%>失败!", e);
+		}
+	}
+
+	
+
+	
+}
+
+
+
+<script runat="template">
+</script>

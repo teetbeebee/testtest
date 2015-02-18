@@ -1,0 +1,104 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+%>
+package com.tbb.basedata.dao;
+
+
+import java.util.List;
+import java.util.Map;
+
+import com.tbb.tmf.core.PageList;
+import com.tbb.basedata.domain.<%= Utility.UpCaseFirst(name)%>;
+import com.ibatis.dao.client.DaoException;
+
+/**
+ * <%= Utility.UpCaseFirst(name)%> Dao
+ */
+public interface <%= Utility.UpCaseFirst(name)%>Dao {
+	/**
+	 * 创建领域对象
+	 * 
+	 * @param domain
+	 *            领域对象
+	 * @throws DaoException
+	 */
+	public void create(<%= Utility.UpCaseFirst(name)%> domain) throws DaoException;
+
+	/**
+	 * 获取领域对象
+	 * 
+	 * @param domainPK
+	 *            领域对象主关键字
+	 * @return 领域对象
+	 * @throws DaoException
+	 */
+	public <%= Utility.UpCaseFirst(name)%> retrieve(java.lang.Integer domainPK) throws DaoException;
+
+	/**
+	 * 更新领域对象
+	 * 
+	 * @param domain
+	 *            领域对象
+	 * @return 成功更新的记录数
+	 * @throws DaoException
+	 */
+	public int update(<%= Utility.UpCaseFirst(name)%> domain) throws DaoException;
+
+	/**
+	 * 删除领域对象
+	 * 
+	 * @param domainPK
+	 *            领域对象主关键字
+	 * @return 成功删除的记录数
+	 * @throws DaoException
+	 */
+	public int delete(java.lang.Integer domainPK) throws DaoException;
+
+	/**
+	 * 查询领域对象
+	 * 
+	 * @param params
+	 *            查询条件
+	 * @return 包装为List的领域对象集合
+	 * @throws DaoException
+	 */
+	public List queryForList(Map params) throws DaoException;
+
+	/**
+	 * 查询领域对象
+	 * 
+	 * @param params
+	 *            查询条件
+	 * @param pageIndex
+	 *            第几页
+	 * @param pageSize
+	 *            每页的最大记录数
+	 * @return 包装为PageList的领域对象集合
+	 * @throws DaoException
+	 */
+	public PageList queryForPageList(Map params, int pageIndex, int pageSize)
+			throws DaoException;
+	
+
+	
+
+	
+}
+<script runat="template">
+</script>

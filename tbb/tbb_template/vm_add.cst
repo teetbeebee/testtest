@@ -1,0 +1,100 @@
+﻿<%-- 
+Name:
+Author: 
+Description: 
+--%>
+<%--
+常用标签：
+<%= Utility.UpCaseFirst(name)%>
+<%= name%>
+<%= chinese[i]%>
+<%= attribute[i]%>
+<%= title%>
+--%>
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Template description here." %>
+<%@ Assembly Name="System.Data" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Src="Internal\Utility.cs" %>
+<%string name = Utility.GetVo_name();
+string cn_name = Utility.GetCn_name();
+string[] attribute = Utility.Split(Utility.GetAttributes());
+string[] cn_attribute = Utility.Split(Utility.GetCn_attributes());
+string[] type = Utility.Split(Utility.GetTypes());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><%= cn_name%>添加</title>
+<link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+	
+	if (isEmpty(document.objForm.user_id.value))
+	{
+		alert ('请输入登录名!');
+		document.objForm.user_id.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_add_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/vpn/<%= name%>.do')";
+    	document.objForm.method.value = "add_save";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<form name="objForm" method="post">
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" />
+    <input type="hidden" name="state" value="0" />
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">vpn管理</a></li>
+    <li><a href="#"><%= cn_name%>增加</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    
+    <ul class="forminfo">
+	<%for(int i = 0;i < cn_attribute.Length;i++){%>
+		<li><label><%= cn_attribute[i]%></label><input name="<%= attribute[i]%>" type="text" class="dfinput"/></li>
+	<%}%>
+    <li><label>&nbsp;</label><input name="" type="button" onClick="do_add_save()" class="btn" value="确认保存"/></li>
+    </ul>
+    
+    
+    </div>
+</form>
+
+</body>
+
+</html>
+
+
+
+<script runat="template">
+</script>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<global-exceptions>
+		<exception handler="com.newbee.tmf.core.ActionExceptionHandler"
+			key="exceptionMessage" type="java.lang.Throwable" />
+	</global-exceptions>
+
+	<global-forwards>
+		<!-- 执行出错 -->
+		<forward name="error" path="/error.vm" />
+		<forward name="login" path="/login.vm" />
+		<!-- 操作成功 -->
+		<forward name="opok" path="/opok.vm" />
+		<!-- member登录  -->
+		<forward name="kickmember" path="/member/login.html" />
+	</global-forwards>
+
+	<action-mappings>
+		
+		<!-- 指向首页的 -->
+		<action path="/index" type="com.tbb.action.PrepareAction">
+			<forward name="memberloginframe" path="/member/login.html" />
+			<forward name="memberlogin" path="/member/zh-cn/login.html" />
+			<forward name="memberok" path="/member/ok.html" />
+			<forward name="memberindexframe" path="/member/index.html" />
+			<forward name="vpnindex" path="/vpn/index.html" />
+		</action>
+
+		<action path="/member" type="com.tbb.member.action.MemberAction">
+			<forward name="memberftindex" path="/member/ft/ft_index.html" />
+			<forward name="memberfthead" path="/member/ft/ft_header.html" />
+			<forward name="memberftzaopan" path="/member/ft/ft_zp.html" />
+			<forward name="memberftbet" path="/member/ft/bet/bet.html" />
+		</action>
+		
+		<action path="/login" type="com.tbb.action.CustomerAction">
+			<forward name="vpn" path="/vpn/index.html" />
+		</action>
+		
+		<action path="/register" type="com.tbb.action.RegisterAction">
+			<forward name="vpn" path="/vpn/index.html" />
+		</action>
+		
+		
+		
+		<!-- 指向首页的 --> 
+		<action path="/IndexAction" type="com.tbb.action.IndexAction">
+			<forward name="view" path="/tbb/main.html" />
+			<forward name="left" path="/tbb/left.html" />
+			<!-- <forward name="view" path="sys.index.view" />  -->
+			<forward name="view2" path="/index.htm" />
+			<forward name="query" path="basedata.index.query" />
+			<forward name="imiation_view" path="imiation.view" />	
+		</action>
+		
+		<!-- vpn管理 -->
+		<action path="/vpnuser" type="com.tbb.vpn.action.VpnuserAction">
+			<forward name="query" path="/tbb/vpn/vpnuserlist.html" />
+			<forward name="add" path="/tbb/vpn/vpnuseradd.html" />
+			<forward name="edit" path="/tbb/vpn/vpnuseredit.html" />
+			<forward name="view" path="/tbb/vpn/vpnuserview.html" />
+		</action>
+		
+		<!-- 终端入口 -->
+		<action path="/p" type="com.tbb.action.PAction">
+		</action>
+		
+		<action path="/AjaxAction" type="com.tbb.action.AjaxAction">
+		</action>
+		
+		<!-- 登陆 -->
+		<action path="/LoginAction" type="com.tbb.action.LoginAction">
+			<forward name="redoIndex" path="/IndexAction.php?s=view" redirect="true" />
+			<forward name="redoMnIndex" path="/IndexAction.do?s=imiation_view" redirect="true" />
+		</action>
+		
+		<!-- 注销 -->
+		<action path="/LogoutAction" type="com.tbb.action.LogoutAction">
+			<forward name="imiation" path="/mn_login.vm"></forward>
+		</action>	
+		
+		<!-- 处理代理 -->
+		<action path="/ProcessAgentAction" type="com.tbb.action.ProcessAgentAction">
+		</action>	
+
+		<action path="/tiles/dispatch"
+			type="org.apache.struts.tiles.actions.DefinitionDispatcherAction">
+		</action>
+		<action path="/tiles/reload"
+			type="org.apache.struts.tiles.actions.ReloadDefinitionsAction">
+		</action>
+		<action path="/tiles/view"
+			type="org.apache.struts.tiles.actions.ViewDefinitionsAction">
+		</action>
+		
+	</action-mappings>
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/conf/tiles-defs.xml,
+			/WEB-INF/conf/tiles-defs-assistant.xml,
+			/WEB-INF/conf/tiles-defs-basedata.xml,
+			/WEB-INF/conf/tiles-defs-daily.xml,
+			/WEB-INF/conf/tiles-defs-log.xml,
+			/WEB-INF/conf/tiles-defs-sys.xml,
+			/WEB-INF/conf/tiles-defs-cti.xml,
+			/WEB-INF/conf/tiles-defs-center.xml,
+			/WEB-INF/conf/tiles-defs-firehouse.xml,
+			/WEB-INF/conf/tiles-defs-gis.xml,
+			/WEB-INF/conf/tiles-defs-archive.xml,
+			/WEB-INF/conf/tiles-defs-stat.xml,/WEB-INF/conf/tiles-defs-imiation.xml" />
+	</plug-in>
+	
+	<plug-in className="com.newbee.tmf.core.DaoPlugin">
+		<set-property property="dao" value="/res/config/dao-config.xml" />
+		<set-property property="datasource" value="sqlserver" />
+		<set-property property="defaultsource" value="true" />
+	</plug-in>
+
+	<plug-in id="configPlugin" className="com.newbee.tmf.core.ConfigPlugin"/>
+</struts-config>

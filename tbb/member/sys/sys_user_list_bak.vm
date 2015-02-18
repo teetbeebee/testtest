@@ -1,0 +1,152 @@
+<script language="javascript" type="text/javascript">
+//action请求
+var action = "$link.setAction('/sys/SysUserAction.do?#arclist')";
+
+function do_clear(){	
+	document.objForm.$!{params.names.user_id}.value = "";
+	document.objForm.$!{params.names.user_name}.value = "";
+	document.objForm.$!{params.names.state}.options.length > 0 ? document.objForm.$!{params.names.state}.selectedIndex = 0 : "";
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.method.value = "query";
+	document.objForm.submit();	
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "view";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_edit_pwd(id)
+{
+	document.objForm.action = action;
+	document.objForm.method.value = "edit_pwd";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_edit_user_role(id)
+{
+	document.objForm.action = "$link.contextPath/sys/SysGrantAction.do";
+	document.objForm.method.value = "edit_user_role";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("建议修改用户状态为禁用，确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+<form name="objForm" method="#method()">
+	
+	<!-- 隐含域 start-->
+    <input type="hidden" name="method">
+	<input type="hidden" name="user_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!userList.pageIndex">
+    <!-- 隐含域 end-->
+
+	<ul class="current">
+		<li class="pos">
+		　 当前位置：系统管理/用户列表
+		</li>
+		<li class="op">
+			<input type="button" class="button" value="新增用户"  onclick="do_add();" />
+		</li>
+	</ul>
+	
+	<table class="maintb">
+        <tr>
+          <th colspan="10">查询条件</th>
+        </tr>
+		<tr>
+			<td class="label">登录名</td><td><input class="text" type="text" name="$!params.names.user_id" value="$!params.values.user_id" /></td>
+			<td class="label">用户名</td><td><input class="text" type="text" name="$!params.names.user_name" value="$!params.values.user_name" /></td>
+		</tr>
+		<tr>
+			<td class="label">用户状态</td>
+			<td colspan="3">
+				<select name="$!params.names.state">
+					<option value=""></option>
+					#sysDictOptions("sys_user_state" "$!params.values.state")
+				</select>	
+			</td>			
+		</tr>		
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" value="查询" onclick="do_query();"/>
+				<input class="button" type="reset" value="重置"/><input class="button" type="button" value="清空" onclick="do_clear();"/>
+		 	</th>
+        </tr>
+	</table>
+	
+	<table class="maintb" id="reclist">
+        <tr>
+          <th colspan="10">#page_count($userList)</th>
+        </tr>
+		<tr>
+			<td class="title" style="width:20px;">&nbsp;</td>
+			<td class="title">登录名</td>
+			<td class="title">用户名</td>
+			<td class="title">用户状态</td>
+			<td class="title">说明</td>
+			<td class="title">&nbsp;</td>
+		</tr>
+		#foreach($user in $userList.getPage())
+		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!user.user_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!user.user_id');">$!user.user_id</a></td>
+			<td>$!user.user_name</td>
+			<td>#getCodeValue("sys_user_state" "$user.state")</td>
+			<td>$!user.note</td>
+			<td>
+				<input class="button" type="button" value="编辑" onClick="do_edit('$!user.user_id')" />
+				<input class="button" type="button" value="修改密码" onClick="do_edit_pwd('$!user.user_id')" />
+				<input class="button" type="button" value="设置角色" onClick="do_edit_user_role('$!user.user_id')" />
+			</td>
+		</tr>
+		#end 
+		 <tr>
+          <th colspan="10" class="op">
+			<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($userList "goto_page")
+		  </th>
+        </tr>
+	</table>
+</form>

@@ -1,0 +1,48 @@
+<script language="javascript" type="text/javascript">
+/**
+ * 参数检测
+ */
+function isValid(){
+
+	if (isEmpty(document.objForm.recipe_name.value))
+	{
+		alert ('请输入选项。');
+		document.objForm.col_value.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+</script>
+<!-- 工作区 -->
+<form name="objForm" id="objForm" enctype="multipart/form-data" method="post" >
+
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" />
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<table class="maintb">
+		<tr><th colspan="10">新增</th></tr>    
+		<tr>
+		<tr>
+			<td class="label">菜名</td>
+			<td><input name="recipe_name" type="text" class="text"  value="$!recipe.recipe_name" readonly="readonly"/></td>			
+		</tr>
+		<tr>
+			<td class="label">价格</td>
+			<td><input name="recipe_price" type="text" class="text"  value="$!recipe.recipe_price" readonly="readonly"/></td>			
+		</tr>
+		<tr>
+			<td class="label">样图</td>
+			<td><img src="/tbb/upload/$!recipe.recipe_pic"  /></td>			
+		</tr>
+		<tr>
+			<th colspan="10" class="op">
+				<input class="button" type="button" onClick="history.back()" value="返回" />
+			</th>
+		</tr>
+	</table>
+
+</form>

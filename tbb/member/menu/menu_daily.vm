@@ -1,0 +1,24 @@
+<script language="javascript">
+	<!--
+	if (document.getElementById) {
+		var tree = new WebFXTree("日常办公", "$link.contextPath/daily/IndexAction.do?method=view");
+		tree.setBehavior('classic');	
+		
+		//var menu = new WebFXTreeItem("通知管理", "$link.contextPath/daily/IndexAction.do?method=view");
+		//tree.add(menu);	
+	
+		var menu = new WebFXTreeItem("值班表", "$link.contextPath/daily/OnDutyAction.do?method=edit");
+		tree.add(menu);
+		
+		//var menu = new WebFXTreeItem("指挥中心LED屏控制", "$link.contextPath/daily/LedAction.do?method=edit");
+		//tree.add(menu);
+			
+	    document.write("<div id='xtree'>");
+		document.write(tree);
+		document.write("</div>");
+		
+		tree.expandAll();
+	}
+//-->
+	</script>
+	

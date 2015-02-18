@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+          PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" 
+          "http://jakarta.apache.org/struts/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>
+
+	<!--=========首页=========-->
+	<definition name="log.index.view" extends="log">
+		<put name="center" value="/log/index.vm" />
+	</definition>
+	
+	<!--=========用户登录=========-->
+	<definition name="log.user_log.list" extends="log">
+		<put name="center" value="/log/user_log_list.vm" />
+	</definition>
+	<definition name="log.user_log.view" extends="log">
+		<put name="center" value="/log/user_log_view.vm" />
+	</definition>
+	
+	<!--=========消防站=========-->
+	<definition name="log.fh_action_log.list" extends="log">
+		<put name="center" value="/log/fh_action_log_list.vm" />
+	</definition>
+	<definition name="log.fh_action_log.view" extends="log">
+		<put name="center" value="/log/fh_action_log_view.vm" />
+	</definition>
+	
+	<!--=========消防车辆=========-->
+	<definition name="log.fe_action_log.list" extends="log">
+		<put name="center" value="/log/fe_action_log_list.vm" />
+	</definition>
+	<definition name="log.fe_action_log.view" extends="log">
+		<put name="center" value="/log/fe_action_log_view.vm" />
+	</definition>
+
+	<!--=========特殊装备=========-->
+	<definition name="log.equ_action_log.list" extends="log">
+		<put name="center" value="/log/equ_action_log_list.vm" />
+	</definition>
+	<definition name="log.equ_action_log.view" extends="log">
+		<put name="center" value="/log/equ_action_log_view.vm" />
+	</definition>
+	
+	<!--=========电话=========-->
+	<definition name="log.tele_log.list" extends="log">
+		<put name="center" value="/log/tele_log_list.vm" />
+	</definition>
+	<definition name="log.tele_log.view" extends="log">
+		<put name="center" value="/log/tele_log_view.vm" />
+	</definition>	
+	
+	<!--=========骚扰电话=========-->
+	<definition name="log.tele_black_log.list" extends="log">
+		<put name="center" value="/log/tele_black_log_list.vm" />
+	</definition>
+	<definition name="log.tele_black_log.view" extends="log">
+		<put name="center" value="/log/tele_black_log_view.vm" />
+	</definition>
+	
+	<!--=========案件日志=========-->
+	<definition name="log.case_log.list" extends="log">
+		<put name="center" value="/log/case_log_list.vm" />
+	</definition>
+	<definition name="log.case_log.view" extends="log">
+		<put name="center" value="/log/case_log_view.vm" />
+	</definition>
+	
+	<!--=========调度日志=========-->
+	<definition name="log.attemper_log.list" extends="log">
+		<put name="center" value="/log/attemper_log_list.vm" />
+	</definition>
+	<definition name="log.attemper_log.view" extends="log">
+		<put name="center" value="/log/attemper_log_view.vm" />
+	</definition>	
+	
+</tiles-definitions>

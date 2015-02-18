@@ -1,0 +1,153 @@
+/*整体布局*/
+body {
+	height: 64px;
+	width: 832px;
+	margin: 2px;
+	padding: 0px;
+	background-color: black;
+}
+
+/*细节布局*/
+.textred {
+	font-family: 宋体;
+	font-size: 14px;
+	color: red;
+	text-align: left;
+}
+
+.textgreen {
+	font-family: 宋体;
+	font-size: 12px;
+	color: lime;
+}
+
+.textyellow {
+	font-family: 宋体;
+	font-size: 12px;
+	color: white;
+}
+
+.weathercapt {
+	font-family: 宋体;
+	font-size: 16px;
+	color: lime;
+}
+
+.date {
+	font-family: 宋体;
+	font-size: 14px;
+	font-weight: bold;
+	color: red;
+}
+
+.clock {
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	color: lime;
+}
+
+.redtxt {
+	font-family: 宋体;
+	font-size: 12px;
+	color: red;
+}
+
+.greentxt {
+	color: lime;
+}
+
+.yellotxt {
+	color: white;
+}
+
+.layer_casenum {		
+	font-family: 宋体;
+	font-size: 12px;
+	color: white;
+	line-height: 14px;
+	
+	visibility: visible;	
+	display: block;
+		
+	overflow: hidden;
+	background-color: black;
+}
+
+.layer_case {	
+	width: 928;
+	height:96px;
+	
+	left: 138;
+	top: 26;
+	padding: 0px; 
+
+	font-family: 宋体;
+	color: red;
+	text-align: left;
+	font-size: 14px;
+	line-height: 16px;
+	
+	visibility: visible;
+	display: block;
+	
+	z-index: 1;
+	position: absolute;	
+	overflow: hidden;
+	background-color: black;
+}
+
+/* 中间案件位置滚动欢迎词 */
+.layer_welcome {	
+	width: 928px;
+	height:96px;
+	
+	vertical-align:middle;
+	
+	left: 138;
+    top: 0px;
+	padding:0px;
+	
+	visibility: visible;	
+	display: none;
+	overflow: hidden;	
+	background-color: black;
+}
+
+/* 整个中间滚动欢迎词 
+.layer_welcome {	
+	width: 540px;
+	height: 64px;
+	
+	vertical-align:middle;
+	
+	left: 138px;
+	top: 0x;
+	padding:0px;
+	
+	visibility: visible;	
+	display: none;
+	overflow: hidden;
+	
+	z-index: 0;
+	position: absolute;	
+	background-color: black;
+}
+*/
+
+/* led表格 */
+.maintb td {
+	height: 14px;
+	padding-left: 10px;
+}
+
+.maintb td.label {
+	width: 100px;
+}
+
+.maintb td.title {
+	font-weight: bold;
+	font-size: 14px;
+	background: #E4E7F8;
+	text-align: left;
+}

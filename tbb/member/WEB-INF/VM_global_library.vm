@@ -1,0 +1,304 @@
+#******************** 从系统字典表中获取代码值 ***************************#
+##调用示例：#getCodeValue("all_case_case_state" "$Engine.fe_state") ##
+#macro(getCodeValue $dict_type $current_id)
+#foreach($sysDict in $sysDictList)#if($sysDict.dict_type.equals($dict_type) && $sysDict.code_id.equals($current_id))
+#set ($color = "#333333")
+	#if($dict_type.equals("engine_state"))
+		#if($current_id.equals("-2"))
+			#set ($color = "#3A6EA5")
+		#end
+		#if($current_id.equals("-3"))	
+			#set ($color = "#FF0000")
+		#end
+		#if($current_id.equals("-4"))	
+			#set ($color = "#0000FF")
+		#end
+		#if($current_id.equals("-5"))	
+			#set ($color = "#808000")
+		#end
+		#if($current_id.equals("-6"))	
+			#set ($color = "#800080")
+		#end
+		#if($current_id.equals("-7"))	
+			#set ($color = "#008080")
+		#end
+		#if($current_id.equals("-8"))	
+			#set ($color = "#B6010D")
+		#end
+		<span style="color:$color">$!sysDict.code_value</span>
+	#else
+	#if($dict_type.equals("equipment_state"))
+	#if($current_id.equals("-2"))
+    			#set ($color = "#3A6EA5")
+    		#end
+    		#if($current_id.equals("-3"))
+    			#set ($color = "#FF0000")
+    		#end
+    		#if($current_id.equals("-4"))
+    			#set ($color = "#0000FF")
+    		#end
+    		#if($current_id.equals("-5"))
+    			#set ($color = "#808000")
+    		#end
+			<span style="color:$color">$!sysDict.code_value</span>
+		#else#if($dict_type.equals("all_case_case_state"))
+        		#if($current_id.equals("0"))
+        			#set ($color = "#3A6EA5")
+        		#end
+        		#if($current_id.equals("1"))
+        			#set ($color = "#FF0000")
+        		#end
+        		#if($current_id.equals("2"))
+        			#set ($color = "#0000FF")
+        		#end
+        		#if($current_id.equals("3"))
+        			#set ($color = "#808000")
+    			#end
+    			#if($current_id.equals("4"))
+    			#set ($color = "#800080")
+        		#end
+        		#if($current_id.equals("5"))
+        			#set ($color = "#008080")
+        		#end
+<span style="color:$color">$!sysDict.code_value</span>
+#else$!sysDict.code_value#end
+#end
+#end
+#end#end#end
+
+#******************** 从系统字典表中获取状态填充到select下拉框中 ***************************#
+##调用示例：#sysDictOptions("all_case_case_state" "$Engine.fe_state") ##
+#macro(sysDictOptions $dict_type $current_id)
+	#foreach($sysDict in $sysDictList)
+		#if ($sysDict.dict_type.equals($dict_type))
+			<option value="$!sysDict.code_id" #if($sysDict.code_id.equals($current_id)) selected #end>$!sysDict.code_value</option>
+		#end
+	#end
+#end
+
+#macro(sysDictOptionsTypes $dict_type $current_id)
+	#foreach($sysDict in $sysDictList)
+		#if ($sysDict.dict_type.equals($dict_type))
+			#if($!current_id.equals(""))
+				<option value="$!sysDict.code_id" #if($sysDict.code_value.equals("未知")) selected #end>$!sysDict.code_value</option>
+			#else
+				<option value="$!sysDict.code_id" #if($sysDict.code_id.equals($current_id)) selected #end>$!sysDict.code_value</option>
+			#end
+		#end
+	#end
+#end
+
+#******************** 根据ID获取名称 ***************************#
+##调用示例：#getFhName($houseList "organ_id") ##
+#macro(getFhName $houseList $organ_id)
+	#foreach($fh in $houseList)
+	  #if($!fh.organ_id.equals($!organ_id)) $!fh.fh_name #end	
+	#end
+#end
+
+#******************** 从组织机构列表中获取数据填充到select下拉框中 ***************************#
+##调用示例：#houseOptions($organList "squardron_id") ##
+#macro(houseOptions $organList $organ_id)
+	#foreach($org in $organList)
+	    #if ($!org.level > 1)
+	    <option value="$!org.organ.organ_id" #if($!org.organ.organ_id.equals($!organ_id)) selected #end>$!org.organ.organ_name	  		
+	    </option>
+	    #end
+	#end
+#end
+
+#******************** 根据终端ID获取终端名称 ***************************#
+##调用示例：#getTerminalName($terminalList "terminal_id") ##
+#macro(getTerminalName $terminalList $terminal_id)
+	#foreach($terminal in $terminalList)
+	  #if($!terminal.terminal_id.equals($!terminal_id)) $!terminal.terminal_name #end	
+	#end
+#end
+
+#******************** 根据装备ID获取装备名称 ***************************#
+##调用示例：#getEquName($equipmentList "equ_id") ##
+#macro(getEquName $equipmentList $equ_id)
+	#foreach($equipment in $equipmentList)
+	  #if($!equipment.equ_id.equals($!equ_id)) $!equipment.equ_name #end	
+	#end
+#end
+
+#******************** 根据车辆ID获取车辆名称 ***************************#
+##调用示例：#getFeName($EngineList "fe_id") ##
+#macro(getFeName $EngineList $fe_id)
+	#foreach($Engine in $EngineList)
+	  #if($!Engine.fe_id.equals($!fe_id)) $!Engine.fe_name #end	
+	#end
+#end
+
+#******************** 根据组织机构获取组织机构名称 ***************************#
+##调用示例：#getOrganNameD($organList "organ_id") ##
+#macro(getOrganNameD $organList $organ_id)
+	#foreach($org in $organList)
+	  #if($!org.organ_id.equals($!organ_id)) $!org.organ_name #end	
+	#end
+#end
+
+#******************** 根据组织机构获取组织机构名称 ***************************#
+##调用示例：#getOrganName($organList "organ_id") ##
+#macro(getOrganName $organList $organ_id)
+	#foreach($org in $organList)
+	  #if($!org.organ.organ_id.equals($!organ_id)) $!org.organ.organ_name #end	
+	#end
+#end
+
+#******************** 从组织机构列表中获取数据填充到select下拉框中 ***************************#
+##调用示例：#organOptions($organList "organ_id") ##
+#macro(organOptions $organList $organ_id)
+	#foreach($org in $organList)
+	   <option value="$!org.organ.organ_id" #if($!org.organ.organ_id.equals($!organ_id)) selected #end>
+	   #set($count=[0..$!org.level])
+		   #set($i = 0)            
+		   #foreach($i in $count)
+		       #if ($i > 0)		     
+			   	&nbsp;			
+		  	   #end
+			  #set($i = $i + 1)
+		   #end 
+		   #if ($!org.level > 0)└#end
+			 $!org.organ.organ_name		  		
+	    </option>
+	#end
+#end
+
+
+#******************** 根据用户id获取用户名 ***************************#
+##调用示例：#getUserName("user_id") ##
+#macro(getUserName $user_id)
+	#foreach($user in $sysUserList)
+	  #if($!user.user_id.equals($!user_id)) $!user.user_name #end	
+	#end
+#end
+
+#*************** 所有的velocity宏都集中放在这个文件 ********************#
+#macro(method)post#end
+
+#******************** 日期时间选择控件 ***************************#
+#macro(calendar $id $showtime)
+  <script type="text/javascript">
+    document.getElementById("$id").title = "点击输入框将出现日期选择框";
+	document.getElementById("$id").readOnly = true;
+    #if($showtime == "true")
+      Calendar.setup({inputField:"$id",ifFormat:"%Y-%m-%d %H:%M",showsTime:true,button:"$id",step:1});
+    #else
+      Calendar.setup({inputField:"$id",ifFormat:"%Y-%m-%d",showsTime:false,button:"$id",step:1});
+    #end
+  </script>
+#end
+
+#*************** 月份回显 ********************#
+#macro(getMonth $cur_month)
+  #set($month = ["1","2","3","4","5","6","7","8","9","10","11","12"])
+  #if ($cur_month =="0")
+    <option value="0" selected>选择月份</option>
+  #elseif ($cur_month =="")
+    <option value="0" selected>选择月份</option>
+  #else
+    <option value="0">选择月份</option>
+  #end
+  #foreach($mon in $month)
+   #if ($mon == $cur_month)
+    <option value="$cur_month" selected>$cur_month</option>
+   
+   #else
+    <option value="$mon">$mon</option>
+   #end
+  #end
+#end
+
+#**********************全选、不选、反选按钮，所有模块***************************************#
+#macro(select $tableId)
+    选择:
+    <a href="javascript:selectAll('$tableId')">全选</a>
+	<a href="javascript:selectNone('$tableId')">无</a>
+	<a href="javascript:selectReverse('$tableId')">反选</a>
+#end
+
+#*************** 根据后台传过来的pageList显示查询结果的记录数，所有模块 ********************#
+#macro(page_count $plist)
+  #if($plist)
+    #if($plist.count > 0)
+      查询结果(共$plist.count条记录)
+    #elseif($plist.size() > 0)
+      查询结果(共$plist.size()条记录)
+    #else
+    查询结果(没有符合条件的记录。)
+    #end
+  #else
+  查询结果(没有符合条件的记录。)
+  #end
+#end
+
+#macro(rec_count $plist $title)
+  #if($plist)
+    #if($plist.count > 0)
+      $title(共$plist.count条记录)
+    #elseif($plist.size() > 0)
+      $title(共$plist.size()条记录)
+    #else
+    $title(0条记录)
+    #end
+  #else
+  $title(0条记录)
+  #end
+#end
+
+#*************** 根据后台传过来的pageList翻页导航，所有模块 ********************#
+#macro(page_navg $plist $action)
+<div class="pagearea">
+  #if($plist)
+    #if($plist.count > 0)
+      第$plist.getPageIndex()/$plist.getPageCount()页&nbsp;&nbsp;
+	  #if(!$plist.isFirstPage())
+	   <a href="javascript:${action}(1)">首页</a>
+	  #else 
+	   <span style="color: #666">首页</span>
+	  #end
+	   
+	  #if($plist.isPreviousPageAvailable())
+	   <a href="javascript:${action}($plist.getPrevPageIndex())">上一页</a>
+	  #else
+	   <span style="color: #666">上一页</span>
+	  #end 
+
+	  #if($plist.isNextPageAvailable())
+	   <a href="javascript:${action}($plist.getNextPageIndex())">下一页</a>
+	  #else
+	   <span style="color: #666">下一页</span>
+	  #end
+
+	  #if(!$plist.isLastPage()) 
+	    <a href="javascript:${action}($plist.getPageCount())">尾页</a>
+	  #else
+	    <span style="color: #666">尾页</span>
+	  #end
+    #end
+  #end
+  转到<input class="text" name="xgoto_page" id="xgoto_page" size="3" style="width:30px;" />页&nbsp;<input class="pagenavbutton" type="button" value="GO"  onclick="${action}(xgoto_page.value)" />
+  </div>
+#end
+
+
+#******************** 服务器状态监控显示时，根据状态改变颜色样式 ***************************#
+##调用示例：#getColorStatus("status") ##
+#macro(getColorStatus $status)
+	#if($status.equals("正常"))
+	<span class="ok">正常</span>
+	#else
+	<span class="error">$status</span>
+	#end
+#end
+
+#************************** MJ+ 08/03/11 字典表信息获取车辆的状态值(不包括颜色) **********************#
+#macro(getCodeValueText $dict_type $current_id)
+	#foreach($sysDict in $sysDictList)
+		#if($sysDict.dict_type.equals($dict_type) && $sysDict.code_id.equals($current_id))
+			$!sysDict.code_value
+		#end
+	#end
+#end
