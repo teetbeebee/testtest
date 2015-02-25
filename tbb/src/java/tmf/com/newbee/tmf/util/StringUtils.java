@@ -1140,6 +1140,13 @@ public class StringUtils
 		}
 		return resultString;
 	}
+	
+	
+	public static String md5x(String origin){
+		String res1 = MD5Encode(origin);
+		String res2 = MD5Encode(origin.substring(5));
+		return res1 + res2.substring(17);
+	}
 
 	/**
      * 判断字符串中是否含有中文
@@ -1199,5 +1206,10 @@ public class StringUtils
 
 		}
 		return "";
+	}
+	
+	public static void main(String[] args) {
+		String pwd = "admin";
+		System.out.println(StringUtils.md5x(pwd));
 	}
 }

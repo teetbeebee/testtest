@@ -173,7 +173,7 @@ public class BaseDispatchAction extends BaseAction
 			}		
 		} else if ( this.getClass().getName().indexOf("RegisteAction") < 0
 				 && this.getClass().getName().indexOf("WeixinAction") < 0
-				 && this.getClass().getName().indexOf("CustomerLoginAction") < 0
+				 && this.getClass().getName().indexOf("UserLoginAction") < 0
 				 && this.getClass().getName().indexOf("RegisterAction") < 0
 				 && (!this.getClass().getName().equals("com.tbb.action.PrepareAction"))
 				)
@@ -226,7 +226,7 @@ public class BaseDispatchAction extends BaseAction
 			//todo
 		} else if ( this.getClass().getName().indexOf("RegisteAction") < 0
 				&& this.getClass().getName().indexOf("WeixinAction") < 0
-				&& this.getClass().getName().indexOf("CustomerLoginAction") < 0
+				&& this.getClass().getName().indexOf("UserLoginAction") < 0
 				&& this.getClass().getName().indexOf("RegisterAction") < 0
 				&& (!this.getClass().getName().equals("com.tbb.action.PrepareAction"))
 				)

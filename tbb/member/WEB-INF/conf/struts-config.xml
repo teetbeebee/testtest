@@ -36,7 +36,7 @@
 			<forward name="memberftbet" path="/member/ft/bet/bet.html" />
 		</action>
 		
-		<action path="/login" type="com.tbb.action.CustomerAction">
+		<action path="/login" type="com.tbb.action.UserLoginAction">
 			<forward name="vpn" path="/vpn/index.html" />
 		</action>
 		

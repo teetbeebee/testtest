@@ -70,6 +70,17 @@ public class VpnuserSqlMapDao extends BaseSqlMapDao implements VpnuserDao {
 		}
 		return object;
 	}
+	
+	public Vpnuser retrieveVpnuserByEmail(java.lang.String domainPK) throws DaoException {
+		Vpnuser object = new Vpnuser();
+		try {
+			object = (Vpnuser) getSqlMapExecutor().queryForObject(
+					"Vpnuser.retrieveVpnuserByEmail", domainPK);
+		} catch (SQLException e) {
+			throw new DaoException("Retrieve domain error. cause:" + e, e);
+		}
+		return object;
+	}
 
 	public int update(Vpnuser domain) throws DaoException {
 		try {

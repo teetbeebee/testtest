@@ -18,6 +18,8 @@ public interface VpnuserDao {
 	
 	public Vpnuser retrieve(java.lang.String domainPK) throws DaoException;
 	
+	public Vpnuser retrieveVpnuserByEmail(java.lang.String domainPK) throws DaoException;
+	
 	public void create(Vpnuser domain) throws DaoException;
 	
 	public int update(Vpnuser domain) throws DaoException;

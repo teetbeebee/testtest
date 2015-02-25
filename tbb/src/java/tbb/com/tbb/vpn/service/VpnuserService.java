@@ -71,6 +71,27 @@ public class VpnuserService extends BaseService
 			throw new BaseException("获取Vpnuser信息失败！", e);
 		}
 	}
+	
+	/**
+	 * 根据Vpnuser主关键字获取Vpnuser信息
+	 * 
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
+	public Vpnuser retrieveVpnuserByEmail(java.lang.String email) throws Exception
+	{
+		try
+		{
+			VpnuserDao dao = (VpnuserDao)getDao(VpnuserDao.class);
+			return dao.retrieveVpnuserByEmail(email);
+		}
+		catch (Exception e)
+		{
+			throw new BaseException("获取Vpnuser信息失败！", e);
+		}
+	}
+
 
 	/**
 	 * 更新Vpnuser信息
@@ -136,6 +157,7 @@ public class VpnuserService extends BaseService
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			throw new BaseException("查询Vpnuser失败!", e);
 		}
 	}

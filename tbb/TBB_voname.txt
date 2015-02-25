@@ -1,26 +1,23 @@
-restraunt,recipe
+1 注册用户 分配线路
+vpnuser vpnline
 
-restraunt
-餐馆
-restraunt_id,restraunt_name,restraunt_tel,restraunt_address
-餐馆编号,餐馆名称,联系电话,地址
-String,String,String,String
-
-recipe
-菜谱
-recipe_id,restraunt_id,recipe_name,recipe_price,recipe_pic
-菜谱编号,餐馆编号,菜谱名称,价格,菜谱图片相对路径
-String,String,String,String,String
-
+2 用户到期信息
 vpnuser
-vpn用户
-user_id,user_name,email,qq,password,regtime,expiretime,session_id,user_type,state,vpn_server_id,account
-用户编号,用户名,邮件,qq,密码,注册时间,过期时间,session_id,用户类型,状态,vpn服务器id,账户余额
-String,String,String,String,String,Timestamp,Timestamp,String,Integer,Integer,String,Double
 
-vpnserver
-vpn服务器
-vpnserver_id,ip,vpn_type,expiretime
-id,ip,vpn类型,过期时间
-String,String,String,Timestamp
+3 添加vpn节点、并初始化节点用户
+vpnline vpnuser
 
+00 ban用户、删除节点、节点用户校验
+vpnline vpnuser
+
+vpnuser:
+
+vpnline:
+1 id
+2 ip
+3 servicetype(如pptp_port、l2tp_port等等，含端口号)
+4 linename
+5 stat
+6 expiretime
+
+vpnuserright:

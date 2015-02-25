@@ -18,6 +18,7 @@ import com.newbee.tmf.config.Config;
 import com.newbee.tmf.core.ActionContext;
 import com.newbee.tmf.core.BaseDispatchAction;
 import com.newbee.tmf.util.RequestUtils;
+import com.newbee.tmf.util.StringUtils;
 import com.newbee.tmf.util.ValueUtils;
 import com.tbb.sys.domain.SysUser;
 import com.tbb.sys.service.SysUserService;
@@ -74,10 +75,14 @@ public class RegisterAction extends BaseDispatchAction {
     		model.put("results", "notExist");
     	else{
     		Vpnuser vpnuser = (Vpnuser)vpnuserList.get(0);
-    		if(vpnuser.getState() == 0)
-    			model.put("results", "notRegiste");
-    		else
-    			model.put("results", "registed");
+    		if(vpnuser.getState() == VpnuserService._notActive)
+    			model.put("results", "notActivate");
+    		else if (vpnuser.getState() == VpnuserService._active)
+    			model.put("results", "activated");
+    		else if (vpnuser.getState() == VpnuserService._forbidden)
+    			model.put("results", "forbidden");
+    		else 
+    			model.put("results", "exception");
     	}
     	
     	// 将查询结果封装成JSon对象
@@ -97,6 +102,7 @@ public class RegisterAction extends BaseDispatchAction {
 		// 一次性赋值
 		ValueUtils.populate(vpnuser, map);
 		vpnuser.setUser_id(GUID.generate());
+		vpnuser.setPassword(StringUtils.md5x(vpnuser.getPassword()));
 		VpnuserService vs = VpnuserService.getInstance();
 		vpnuser.setState(vs._notActive);
 		
@@ -104,7 +110,14 @@ public class RegisterAction extends BaseDispatchAction {
 		
     	Map model = new HashMap();
     	
-    	vs.createVpnuser(vpnuser);
+    	Vpnuser vpnuser2 = vs.retrieveVpnuserByEmail(vpnuser.getEmail());
+    	if(vpnuser2 == null){
+    		vs.createVpnuser(vpnuser);
+    	} else {
+    		vpnuser2.setPassword(vpnuser.getPassword());
+    		vs.updateVpnuser(vpnuser2);
+    	}
+    	
     	
     	this.sendVpnRegisterMail(vpnuser.getEmail(), vpnuser.getUser_id());
 
@@ -130,13 +143,16 @@ public class RegisterAction extends BaseDispatchAction {
 		VpnuserService vs = VpnuserService.getInstance();
 		List vpnuserList =  vs.queryVpnuserForList(params);
 		Vpnuser vpnuser;
+		String msg = "";
 		if(vpnuserList.size() > 0){
 			vpnuser = (Vpnuser)vpnuserList.get(0);
 			vpnuser.setState(vs._active);
 			vs.updateVpnuser(vpnuser);
+			msg = "恭喜您激活成功，" + vpnuser.getEmail() + "!";
 		}
 
-        return null;
+		request.setAttribute("msg", msg);
+		return mapping.findForward("vpn");
     }
 	
 	private void sendVpnRegisterMail(String receiveAddress, String regCode){

@@ -8,6 +8,7 @@ package com.tbb.tools.email;
 public class MailTool {
 	
 	public static void sendmail(String receiveAddress, String content){
+		System.out.println("sendmail begin:" + receiveAddress + ", " + content);
 		MailSenderInfo mailInfo = new MailSenderInfo();
 		mailInfo.setMailServerHost("smtp.gmail.com");
 		mailInfo.setMailServerPort("587");
@@ -20,7 +21,8 @@ public class MailTool {
 		
 		mailInfo.setContent(content);
 		SimpleMailSender sms = new SimpleMailSender();
-		sms.sendHtmlMail(mailInfo);//
+		sms.sendHtmlMail(mailInfo);
+		System.out.println("sendmail end.");
 	}
 	
 	public static void main(String[] args){

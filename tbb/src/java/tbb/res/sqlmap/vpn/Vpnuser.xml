@@ -47,6 +47,12 @@
 		from vpnuser where user_id = #user_id#
 	</select>
 	
+	<select id="retrieveVpnuserByEmail" resultClass="VpnuserClass" 
+	parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from vpnuser where email = #email#
+	</select>
+	
 	<!-- update domain -->
 	<update id="update" parameterClass="VpnuserClass">
     	update vpnuser 
@@ -96,19 +102,16 @@
 	<!-- query domain where condition-->
 	<sql id="dynamicWhere">
 		<isNotNull prepend="and" property="user_id"> 
-			user_id = '%$user_id$%'
+			user_id = #user_id#
 		</isNotNull>
 		<isNotNull prepend="and" property="user_name"> 
 			user_name like '%$user_name$%'
 		</isNotNull>
 		<isNotNull prepend="and" property="email"> 
-			email = '%$email$%'
+			email = #email#
 		</isNotNull>
 		<isNotNull prepend="and" property="qq"> 
-			qq like '%$qq$%'
-		</isNotNull>
-		<isNotNull prepend="and" property="password"> 
-			password like '%$password$%'
+			qq = '$qq$'
 		</isNotNull>
 		<isNotNull prepend="and" property="regtime"> 
 			regtime = #regtime#

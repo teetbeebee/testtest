@@ -17,23 +17,25 @@
 		  <!-- start-smoth-scrolling-->
 		<script type="text/javascript" src="vpn/js/move-top.js"></script>
 		<script type="text/javascript" src="vpn/js/easing.js"></script>
+		
+		<!-- start-smoth-scrolling-->
+		<link href="vpn/css/style.css" rel='stylesheet' type='text/css' />
+   		 <!-- Custom Theme files -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		
 		<script type="text/javascript">
+			var sessid = "";
+
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
+				
+				initmsg();
 			});
-		</script>
-		 <!-- start-smoth-scrolling-->
-		<link href="vpn/css/style.css" rel='stylesheet' type='text/css' />
-   		 <!-- Custom Theme files -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
 
-		<!--start-top-nav-script-->
-		<script>
 			$(function() {
 				var pull 		= $('#pull');
 					menu 		= $('nav ul');
@@ -67,12 +69,42 @@
 			}
 
 			function login(){
-				return false;
-
-				if(isValid()){
-					document.objForm.action = "$link.setAction('/login.php')";
-			    	document.objForm.submit();		
+				if(!isValid()){
+					return false;
 				}
+				
+				var email = $('#email').val();
+				var password = $('#password').val();
+				
+				var url = "$link.setAction('/login.php?email=')";
+				url += email;
+				url += '&password='
+				url += password;
+
+				jQuery.ajax({
+			        url:url,
+			        type:"POST",
+			        cache:false,
+			        dataType: "json",
+			        success:function(data, textStatus) {
+			        	alert('aaa');
+			        	var msg = data.msg;
+			        	var result = data.result;
+			        	var tmp_sessid = data.sess_id;
+			        	
+			            if(result == "success"){
+							$("#info").html(msg);
+							sess_id = tmp_sessid;
+							return false;
+			            } else {
+			            	$("#info").html(msg);
+			            	sess_id = "";
+			            	return false;
+			            }
+			        }
+			    });
+
+			    return true;
 			}
 
 			function register(){
@@ -146,10 +178,16 @@
 							$("#info").html("邮箱帐户不存在");
 							return false;
 			            } else if(data.results == "notActivate"){
-			            	$("#info").html("邮箱帐户未激活");
+			            	$("#info").html("邮箱帐户未激活，请去邮箱激活，如未收到激活邮件，请再次点击注册按钮");
 							return false;
 			            } else if(data.results == "activated"){
-			            	$("#info").html("");
+			            	$("#info").html("邮箱账户已激活，请登录!");
+							return false;
+			            } else if(data.results == "forbidden"){
+			            	$("#info").html("邮箱账户已被禁用，请联系管理员");
+							return false;
+			            } else if(data.results == "exception"){
+			            	$("#info").html("邮箱账户异常，请联系管理员");
 							return false;
 			            }
 			        }
@@ -167,12 +205,17 @@
 				}
 				return false;
 			}
-
-			$(document).ready(function(){
+			
+			function initmsg(){
 				var msg = "$!msg";
-				if(msg == '')
+				if(msg == ''){
+					$('#msg').text('未登录!');
 					return;
-			}); 
+				} else {
+					$('#msg').text(msg);
+					return;
+				}
+			}
 
 		</script>
 		<!--//End-top-nav-script-->
@@ -227,7 +270,7 @@
 							<div class="service-grid wow bounceIn" data-wow-delay="0.4s">
 								<span class="service-icon1"> </span>
 								<h3><a href="#contact">登录</a></h3>
-								<p><a href="#contact" class="scroll" style="text-decoration: none">未登录。</a></p>
+								<p><a id="msg" href="#contact" class="scroll" style="text-decoration: none">未登录。</a></p>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -556,6 +599,7 @@
 					 	 		<div><label  id="info"></label></div>
 								<input class="wow shake" data-wow-delay="0.3s" type="button" value="登录" onclick="return login();" />
 								<input class="wow shake" data-wow-delay="0.3s" type="button" value="注册" onclick="return register();" />
+								<!-- <input class="wow shake" data-wow-delay="0.3s" type="button" value="修改密码" onclick="return register();" />  -->
 							</form>
 						</div>
 					</div>
