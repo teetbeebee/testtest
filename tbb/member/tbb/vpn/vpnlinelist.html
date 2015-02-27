@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>vpn用户查询</title>
+<link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
+<link href="$link.contextPath/tbb/css/tbb.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="$link.contextPath/tbb/js/jquery.js"></script>
+<script type="text/javascript" src="$link.contextPath/js/checkbox.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".click").click(function(){
+  $(".tip").fadeIn(200);
+  });
+  
+  $(".addclick").click(function(){
+	  $(".tip").fadeIn(200);
+	  });
+  
+  $(".tiptop a").click(function(){
+  $(".tip").fadeOut(200);
+});
+
+  $(".sure").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+  $(".cancel").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+});
+
+//action请求
+var action = "$link.setAction('/vpnuser.php')";
+
+function do_clear(){	
+	document.objForm.$!{params.names.user_id}.value = "";
+	document.objForm.$!{params.names.user_name}.value = "";
+	document.objForm.$!{params.names.state}.options.length > 0 ? document.objForm.$!{params.names.state}.selectedIndex = 0 : "";
+}
+
+//翻页
+function goto_page(aIndex){
+	document.objForm.reset();
+	document.objForm.action = action;
+	document.objForm.s.value = "query";
+	document.objForm.$!{params.names.pageIndex}.value = aIndex;
+	document.objForm.submit();
+}
+
+function do_query(){
+	document.objForm.action = action;
+	document.objForm.s.value = "query";
+	document.objForm.submit();	
+}
+
+function do_add()
+{
+	document.objForm.action = action;
+	document.objForm.s.value = "add";	
+	document.objForm.submit();
+}
+
+function do_edit(id)
+{
+	document.objForm.action = action;
+	document.objForm.s.value = "edit";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+function do_view(id)
+{
+	document.objForm.action = action;
+	document.objForm.s.value = "view";	
+	document.objForm.user_id.value = id;	
+	document.objForm.submit();
+}
+
+
+function do_delete_batch(){
+	if(!isSelect('reclist')){
+		alert("请至少选择一个记录！");
+	}
+	else{
+		if(confirm("建议修改用户状态为禁用，确定要删除选定记录吗？")){
+			document.objForm.action = action;
+			document.objForm.method.value = "delete";
+			document.objForm.submit();
+		}
+	}
+}
+</script>
+
+
+</head>
+
+
+<body>
+<form name="objForm" method="#method()">
+	<!-- 隐含域 start-->
+    <input type="hidden" name="s">
+	<input type="hidden" name="user_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!userList.pageIndex">
+    <!-- 隐含域 end-->
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">系统管理</a></li>
+    <li><a href="#">线路管理</a></li>
+    </ul>
+    </div>
+    
+    <div class="rightinfo">
+    
+    <div class="tools">
+    
+    	<ul class="toolbar">
+        <li onclick="do_add();"><span><img src="$link.contextPath/tbb/images/t01.png" /></span>添加</li>
+        <li class="click"><span><img src="$link.contextPath/tbb/images/t02.png" /></span>修改</li>
+        <li><span><img src="$link.contextPath/tbb/images/t03.png" /></span>删除</li>
+        <li onclick="do_query();"><span><img src="$link.contextPath/tbb/images/t04.png" /></span>查询</li>
+        <li>登录名：<input class="text" type="text" name="$!params.names.user_id" value="$!params.values.user_id" /></li>
+        <li>用户名：<input class="text" type="text" name="$!params.names.user_name" value="$!params.values.user_name" /></li>
+        
+        </ul>
+        
+        
+        <ul class="toolbar1">
+        <li><span><img src="$link.contextPath/tbb/images/t05.png" /></span>设置</li>
+        </ul>
+    
+    </div>
+    
+    
+    <table class="tablelist" id="reclist">
+    	<thead>
+    	<tr>
+        <th><input name="" type="checkbox" value="" checked="checked"/></th>
+	<th>用户编号</th>
+	<th>用户名</th>
+	<th>邮件</th>
+	<th>qq</th>
+	<th>密码</th>
+	<th>注册时间</th>
+	<th>过期时间</th>
+	<th>session_id</th>
+	<th>用户类型</th>
+	<th>状态</th>
+	<th>vpn服务器id</th>
+	<th>账户余额</th>
+	<th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        
+        #foreach($vpnuser in $vpnuserList.getPage())
+        		<tr>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnuser.user_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!vpnuser.user_id');">$!vpnuser.user_id</a></td>
+<td>$!vpnuser.user_name</td>
+<td>$!vpnuser.email</td>
+<td>$!vpnuser.qq</td>
+<td>$!vpnuser.password</td>
+<td>$!vpnuser.regtime</td>
+<td>$!vpnuser.expiretime</td>
+<td>$!vpnuser.session_id</td>
+<td>$!vpnuser.user_type</td>
+<td>$!vpnuser.state</td>
+<td>$!vpnuser.vpn_server_id</td>
+<td>$!vpnuser.account</td>
+			<td>
+				<input class="button" type="button" value="编辑" onClick="do_edit('$!vpnuser.user_id')" />
+			</td>
+		</tr>
+		#end 
+        </tbody>
+    </table>
+    
+   
+    <div class="pagin">
+    	<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($userList "goto_page")
+    </div>
+    
+    
+    <div class="tip">
+    	<div class="tiptop"><span>提示信息</span><a></a></div>
+        
+      <div class="tipinfo">
+        <span><img src="$link.contextPath/tbb/images/ticon.png" /></span>
+        <div class="tipright">
+        <p>是否确认对信息的修改 ？</p>
+        <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+        </div>
+        </div>
+        
+        <div class="tipbtn">
+        <input name="" type="button"  class="sure" value="确定" />&nbsp;
+        <input name="" type="button"  class="cancel" value="取消" />
+        </div>
+    
+    </div>
+    
+    
+    
+    
+    </div>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+	</script>
+</form>
+</body>
+
+</html>
+
+
+

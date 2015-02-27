@@ -41,6 +41,9 @@
 		<!--vpn-->
 		<dao interface="com.tbb.vpn.dao.VpnuserDao" 
 			implementation="com.tbb.vpn.dao.sqlmap.VpnuserSqlMapDao" />
+		
+		<dao interface="com.tbb.vpn.dao.VpnlineDao" 
+			implementation="com.tbb.vpn.dao.sqlmap.VpnlineSqlMapDao" />
 			
 		<!-- member -->
 		<dao interface="com.tbb.member.dao.Web_memberDao" 

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Vpn">
+	<!-- domain class alias -->
+    <typeAlias alias="VpnlineClass" type="com.tbb.member.domain.Vpnline" /> 
+
+	<!-- result map -->
+    <resultMap id="VpnlineMap" class="VpnlineClass">
+        <result property="line_id" column="line_id" />
+        <result property="ip" column="ip" />
+        <result property="servicetype" column="servicetype" />
+        <result property="linename" column="linename" />
+        <result property="start_time" column="start_time" />
+        <result property="expire_time" column="expire_time" />
+	</resultMap>
+    
+	<!-- column fields -->
+    <sql id="allColumn">
+        line_id
+        ,ip
+        ,servicetype
+        ,linename
+        ,start_time
+        ,expire_time
+	</sql>
+    
+	<sql id="createColumn">
+        line_id
+        ,ip
+        ,servicetype
+        ,linename
+        ,start_time
+        ,expire_time
+    </sql>
+	
+		<!-- create Domain -->
+    <insert id="create" parameterClass="VpnlineClass">
+        insert into vpnline(
+        <include refid="allColumn" />
+        ) values (
+        #line_id:VARCHAR#
+        ,#ip:VARCHAR#
+        ,#servicetype:VARCHAR#
+        ,#linename:VARCHAR#
+        ,#start_time:TIMESTAMP#
+        ,#expire_time:TIMESTAMP#
+        )
+    </insert>
+	
+		<!-- retrieve domain -->
+	    <select id="retrieve" resultClass="VpnlineClass" 
+	parameterClass="java.lang.String"> 
+		select <include refid="allColumn" /> 
+		from vpnline where line_id = #line_id#
+	</select>
+	
+	<!-- update domain -->
+	<update id="update" parameterClass="VpnlineClass">
+    	update vpnline 
+    	<dynamic prepend="set">
+        <isNotNull prepend="," property="line_id">
+            line_id=#line_id:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="ip">
+            ip=#ip:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="servicetype">
+            servicetype=#servicetype:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="linename">
+            linename=#linename:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="start_time">
+            start_time=#start_time:TIMESTAMP#
+        </isNotNull>
+        <isNotNull prepend="," property="expire_time">
+            expire_time=#expire_time:TIMESTAMP#
+        </isNotNull>
+        </dynamic>
+        WHERE line_id = #line_id#
+    </update>
+	
+	<!-- delete domain -->
+	<delete id="delete" parameterClass="java.lang.String"> 
+		delete from vpnline where line_id = #line_id#
+	</delete>
+
+	<!-- query domain where condition-->
+	<sql id="dynamicWhere">
+        <isNotNull prepend="and" property="line_id"> 
+			line_id like '%$line_id$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="ip"> 
+			ip like '%$ip$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="servicetype"> 
+			servicetype like '%$servicetype$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="linename"> 
+			linename like '%$linename$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="start_time"> 
+			start_time = #start_time#
+		</isNotNull>
+        <isNotNull prepend="and" property="expire_time"> 
+			expire_time = #expire_time#
+		</isNotNull>
+	</sql>
+	
+	<sql id="dynamicScope">
+	</sql>
+	
+	<!-- query domain-->
+	    <select id="query_list" resultMap="VpnlineMap"
+		parameterClass="java.util.HashMap">
+		select 
+		<include refid="allColumn" />
+		from vpnline
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+		order by line_id desc
+	</select>
+	
+	<select id="query_cnt" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from vpnline
+		<dynamic prepend="where">
+			<include refid="dynamicWhere"/>
+			<include refid="dynamicScope" />
+		</dynamic>
+	</select>
+	
+</sqlMap>
+

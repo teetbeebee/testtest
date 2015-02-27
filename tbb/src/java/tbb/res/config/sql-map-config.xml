@@ -50,9 +50,12 @@
 	<sqlMap resource="res/sqlmap/basedata/TBB_PROJ_LIST.xml" />
 	<sqlMap resource="res/sqlmap/basedata/Restraunt.xml" />
 	<sqlMap resource="res/sqlmap/basedata/Recipe.xml" />
-	<sqlMap resource="res/sqlmap/vpn/Vpnuser.xml" />
 	
 	<!--member-->
 	<sqlMap resource="res/sqlmap/member/Web_member.xml" />
+	
+	<!-- vpn -->
+	<sqlMap resource="res/sqlmap/vpn/Vpnuser.xml" />
+	<sqlMap resource="res/sqlmap/vpn/Vpnline.xml" />
 	
 </sqlMapConfig>

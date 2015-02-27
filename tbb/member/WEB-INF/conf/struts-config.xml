@@ -64,6 +64,13 @@
 			<forward name="view" path="/tbb/vpn/vpnuserview.html" />
 		</action>
 		
+		<action path="/vpnline" type="com.tbb.vpn.action.VpnlineAction">
+			<forward name="query" path="/tbb/vpn/vpnlinelist.html" />
+			<forward name="add" path="/tbb/vpn/vpnlineadd.html" />
+			<forward name="edit" path="/tbb/vpn/vpnlineedit.html" />
+			<forward name="view" path="/tbb/vpn/vpnlineview.html" />
+		</action>
+		
 		<!-- 终端入口 -->
 		<action path="/p" type="com.tbb.action.PAction">
 		</action>
