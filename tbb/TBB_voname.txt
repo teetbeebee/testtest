@@ -26,6 +26,7 @@ vpnuserright:
 1) data=(m=adduser&nodes=[iplist json]&uname=uname&pwd=pwd&valid=date&utype=utype)
 2) data=(m=banuser&nodes=[iplist json]&uname=uname)
 3) data=(m=upduser&nodes=[iplist json]&uname=uname&pwd=pwd&valid=date&utype=utype)
+2) data=(m=deluser&nodes=[iplist json]&uname=uname)
 4) data=(m=synuser&node=ip&users=[user json])
 5) 传输内容要加密
 6) 注册用户只允许 “字母、数字、下划线”

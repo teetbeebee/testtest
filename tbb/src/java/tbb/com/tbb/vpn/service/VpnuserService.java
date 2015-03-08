@@ -1,13 +1,21 @@
 ﻿package com.tbb.vpn.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import net.sf.json.JSONObject;
 
 import com.newbee.tmf.core.BaseException;
 import com.newbee.tmf.core.BaseService;
 import com.newbee.tmf.core.PageList;
+import com.tbb.tools.UrlUtil;
 import com.tbb.tools.email.MailTool;
 import com.tbb.vpn.dao.VpnuserDao;
+import com.tbb.vpn.domain.Vpnline;
 import com.tbb.vpn.domain.Vpnuser;
 
 /**
@@ -210,6 +218,95 @@ public class VpnuserService extends BaseService
 			"  </body>" +
 			"</html>";
 		MailTool.sendmail(receiveAddress, content);
+	}
+	
+	public String notifyAddUser(Vpnuser vpnuser){
+		String result = "";
+		VpnlineService vls = VpnlineService.getInstance();
+		Map params = new HashMap();
+		List<Vpnline> lineList = new ArrayList<Vpnline>(); 
+		try {
+			lineList =  vls.queryVpnlineForList(params);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String httpheader = "http://192.168.192.138:62688/agent?data=";
+		String data = "m=adduser&uname=" + vpnuser.getUser_name() + "&pwd=" + vpnuser.getPassword() + "&nodes=";
+		
+		if(lineList.size() > 0){
+			List<JSONObject> ipList = new ArrayList<JSONObject>();
+			for (int i = 0; i < lineList.size(); i++) {
+				Vpnline vl = lineList.get(i);
+				JSONObject ipJson = new JSONObject();
+				ipJson.element("Ip", vl.getIp());
+				ipJson.element("Port", vl.getPort());
+				
+				ipList.add(ipJson);
+			}
+			
+			JSONObject ips = new JSONObject();
+			ips.element("Nodes", ipList);
+			data += ips.toString();
+		}
+		
+		data = this.encode(data);
+		data = httpheader + data;
+		
+		UrlUtil.getURLContent(data);
+		
+		return result;
+	}
+	
+	public String notifyDelUser(Vpnuser vpnuser){
+		String result = "";
+		VpnlineService vls = VpnlineService.getInstance();
+		Map params = new HashMap();
+		List<Vpnline> lineList = new ArrayList<Vpnline>(); 
+		try {
+			lineList =  vls.queryVpnlineForList(params);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String httpheader = "http://192.168.192.138:62688/agent?data=";
+		String data = "m=deluser&uname=" + vpnuser.getUser_name() + "&nodes=";
+		
+		if(lineList.size() > 0){
+			List<JSONObject> ipList = new ArrayList<JSONObject>();
+			for (int i = 0; i < lineList.size(); i++) {
+				Vpnline vl = lineList.get(i);
+				JSONObject ipJson = new JSONObject();
+				ipJson.element("Ip", vl.getIp());
+				ipJson.element("Port", vl.getPort());
+				
+				ipList.add(ipJson);
+			}
+			
+			JSONObject ips = new JSONObject();
+			ips.element("Nodes", ipList);
+			data += ips.toString();
+		}
+		
+		data = this.encode(data);
+		data = httpheader + data;
+		
+		UrlUtil.getURLContent(data);
+		
+		return result;
+	}
+	
+	private String encode(String original){
+		String encoded = "";
+		try {
+			encoded = URLEncoder.encode(original, "utf8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return encoded;
 	}
 
 }

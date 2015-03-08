@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>vpnline添加</title>
 <link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
 <script type="text/javascript" src="$link.contextPath/js/jquery-1.11.2.js"></script>
 
@@ -32,35 +31,39 @@ $(document).ready(function() {
     		//alert($('.datepicker').val());
     	}
     });
+    
+    $('#start_time').val($('#start_time').val().replace(' 00:00:00.0', ''));
+    $('#expire_time').val($('#expire_time').val().replace(' 00:00:00.0', ''));
 });
-
 
 /**
  * 参数检测
  */
 function isValid(){
-	
 	if (isEmpty(document.objForm.ip.value))
 	{
 		alert ('请输入IP地址!');
-		document.objForm.user_id.focus();
+		document.objForm.ip.focus();
 		return false;
 	}
-	
+	if (isEmpty(document.objForm.port.value))
+	{
+		alert ('请输入端口!');
+		document.objForm.port.focus();
+		return false;
+	}
 	if (isEmpty(document.objForm.servicetype.value))
 	{
 		alert ('请输入服务类型!');
 		document.objForm.servicetype.focus();
 		return false;
 	}
-	
 	if (isEmpty(document.objForm.linename.value))
 	{
 		alert ('请输入线路名称!');
 		document.objForm.linename.focus();
 		return false;
 	}
-	
 	if (isEmpty(document.objForm.start_time.value))
 	{
 		alert ('请输入开始时间!');
@@ -68,7 +71,6 @@ function isValid(){
 		return false;
 	}
 	$('#start_time').val($('#start_time').val() + ' 00:00:00');
-
 	if (isEmpty(document.objForm.expire_time.value))
 	{
 		alert ('请输入过期时间!');
@@ -116,9 +118,10 @@ function do_add_save(){
     
     <ul class="forminfo">
         <li><label>IP地址</label><input name="ip" id="ip" type="text" class="dfinput"/></li>
+        <li><label>端口</label><input name="port" id="port" type="text" class="dfinput"/></li>
         <li><label>服务类型</label><input name="servicetype" id="servicetype" type="text" class="dfinput"/></li>
         <li><label>线路名称</label><input name="linename" id="linename" type="text" class="dfinput"/></li>
-        <li><label>开始时间</label><input name="start_time" id="start_time" type="text" class="dfinput" /></li>
+        <li><label>开始时间</label><input name="start_time" id="start_time" type="text" class="dfinput"/></li>
         <li><label>过期时间</label><input name="expire_time" id="expire_time" type="text" class="dfinput"/></li>
         
     <li><label>&nbsp;</label><input name="" type="button" onClick="do_add_save()" class="btn" value="确认保存"/></li>

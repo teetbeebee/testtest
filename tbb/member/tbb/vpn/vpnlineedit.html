@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>vpnline编辑</title>
 <link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
 <script type="text/javascript" src="$link.contextPath/js/jquery-1.11.2.js"></script>
 
@@ -45,6 +44,12 @@ function isValid(){
 	{
 		alert ('请输入IP地址!');
 		document.objForm.ip.focus();
+		return false;
+	}
+	if (isEmpty(document.objForm.port.value))
+	{
+		alert ('请输入端口!');
+		document.objForm.port.focus();
 		return false;
 	}
 	if (isEmpty(document.objForm.servicetype.value))
@@ -114,6 +119,7 @@ function do_edit_save(){
     
     <ul class="forminfo">
         <li><label>IP地址</label><input name="ip" value="$!vpnline.getIp()" id="ip" type="text" class="dfinput"/></li>
+        <li><label>端口</label><input name="port" value="$!vpnline.getPort()" id="port" type="text" class="dfinput"/></li>
         <li><label>服务类型</label><input name="servicetype" value="$!vpnline.getServicetype()" id="servicetype" type="text" class="dfinput"/></li>
         <li><label>线路名称</label><input name="linename" value="$!vpnline.getLinename()" id="linename" type="text" class="dfinput"/></li>
         <li><label>开始时间</label><input name="start_time" value="$!vpnline.getStart_time()" id="start_time" type="text" class="dfinput"/></li>

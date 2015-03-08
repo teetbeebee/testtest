@@ -10,6 +10,7 @@
     <resultMap id="VpnlineMap" class="VpnlineClass">
         <result property="line_id" column="line_id" />
         <result property="ip" column="ip" />
+        <result property="port" column="port" />
         <result property="servicetype" column="servicetype" />
         <result property="linename" column="linename" />
         <result property="start_time" column="start_time" />
@@ -20,6 +21,7 @@
     <sql id="allColumn">
         line_id
         ,ip
+        ,port
         ,servicetype
         ,linename
         ,start_time
@@ -29,6 +31,7 @@
 	<sql id="createColumn">
         line_id
         ,ip
+        ,port
         ,servicetype
         ,linename
         ,start_time
@@ -42,6 +45,7 @@
         ) values (
         #line_id:VARCHAR#
         ,#ip:VARCHAR#
+        ,#port:VARCHAR#
         ,#servicetype:VARCHAR#
         ,#linename:VARCHAR#
         ,#start_time:TIMESTAMP#
@@ -65,6 +69,9 @@
         </isNotNull>
         <isNotNull prepend="," property="ip">
             ip=#ip:VARCHAR#
+        </isNotNull>
+        <isNotNull prepend="," property="port">
+            port=#port:VARCHAR#
         </isNotNull>
         <isNotNull prepend="," property="servicetype">
             servicetype=#servicetype:VARCHAR#
@@ -94,6 +101,9 @@
 		</isNotNull>
         <isNotNull prepend="and" property="ip"> 
 			ip like '%$ip$%'
+		</isNotNull>
+        <isNotNull prepend="and" property="port"> 
+			port like '%$port$%'
 		</isNotNull>
         <isNotNull prepend="and" property="servicetype"> 
 			servicetype like '%$servicetype$%'

@@ -53,6 +53,12 @@
 			});
 
 			function isValid(){
+				if($('user_name').val() == ''){
+					$("#check_result").html("请输入用户名");
+					$('user_name').focus();
+					return false;
+				}
+				
 				if($('email').val() == ''){
 					$("#check_result").html("请输入邮箱帐户");
 					$('email').focus();
@@ -87,7 +93,6 @@
 			        cache:false,
 			        dataType: "json",
 			        success:function(data, textStatus) {
-			        	alert('aaa');
 			        	var msg = data.msg;
 			        	var result = data.result;
 			        	var tmp_sessid = data.sess_id;
@@ -114,6 +119,7 @@
 				
 				var email = $('#email').val();
 				var password = $('#password').val();
+				var user_name = $('#user_name').val();
 
 				if(!isValidEmail(email)){
 					return false;
@@ -123,6 +129,8 @@
 				url += email;
 				url += '&password='
 				url += password;
+				url += '&user_name='
+				url += user_name;
 
 				jQuery.ajax({
 			        url:url,
@@ -593,6 +601,7 @@
 					<div class="col-md-6">
 						<div class="contact-right wow fadeInLeft" data-wow-delay="0.4s">
 							<form>
+								<input id="user_name" type="text" class="text" value="Username..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username...';}">
 								<input id="email" type="text" class="text" value="Email..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email...';}" onchange="checkActivate();" >
 					 			<input id="password" type="text" class="text" value="Password..." onfocus="this.value = '';$(this).attr('type', 'password');" onblur="if (this.value == '') {this.value = '';}">
 					 	 		<textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}" style="display: none;">Message..</textarea>

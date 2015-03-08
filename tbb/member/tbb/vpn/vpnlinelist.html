@@ -30,6 +30,18 @@ $(document).ready(function(){
   $(".tip").fadeOut(100);
 });
 
+  $('#ckbctr').click(function(event) {  //on click 
+      if(this.checked) { // check select status
+          $('.checkbox').each(function() { //loop through each checkbox
+              this.checked = true;  //select all checkboxes with class "checkbox1"               
+          });
+      }else{
+          $('.checkbox').each(function() { //loop through each checkbox
+              this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+          });         
+      }
+  });
+
 });
 
 //action请求
@@ -75,7 +87,7 @@ function do_view(id)
 {
 	document.objForm.action = action;
 	document.objForm.s.value = "view";	
-	document.objForm.user_id.value = id;	
+	document.objForm.line_id.value = id;	
 	document.objForm.submit();
 }
 
@@ -87,7 +99,7 @@ function do_delete_batch(){
 	else{
 		if(confirm("建议修改用户状态为禁用，确定要删除选定记录吗？")){
 			document.objForm.action = action;
-			document.objForm.method.value = "delete";
+			document.objForm.s.value = "delete";
 			document.objForm.submit();
 		}
 	}
@@ -121,7 +133,7 @@ function do_delete_batch(){
     	<ul class="toolbar">
         <li onclick="do_add();"><span><img src="$link.contextPath/tbb/images/t01.png" /></span>添加</li>
         <li class="click"><span><img src="$link.contextPath/tbb/images/t02.png" /></span>修改</li>
-        <li onclick="do_delete_batch();"><span><img src="$link.contextPath/tbb/images/t03.png" /></span>删除</li>
+        <li><span><img src="$link.contextPath/tbb/images/t03.png" /></span>删除</li>
         <li onclick="do_query();"><span><img src="$link.contextPath/tbb/images/t04.png" /></span>查询</li>
         <li>登录名：<input class="text" type="text" name="$!params.names.user_id" value="$!params.values.user_id" /></li>
         <li>用户名：<input class="text" type="text" name="$!params.names.user_name" value="$!params.values.user_name" /></li>
@@ -139,9 +151,9 @@ function do_delete_batch(){
     <table class="tablelist" id="reclist">
     	<thead>
     	<tr>
-        <th><input name="" type="checkbox" value="" checked="checked"/></th>
-        <th>ID</th>
+        <th><input id="ckbctr" type="checkbox"/></th>
         <th>IP地址</th>
+        <th>端口</th>
         <th>服务类型</th>
         <th>线路名称</th>
         <th>开始时间</th>
@@ -154,9 +166,9 @@ function do_delete_batch(){
         
         #foreach($vpnline in $vpnlineList.getPage())
         		<tr>
-			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnline.vpnline_id" title="选择/不选择" /></td>
-			<td><a href="javascript:do_view('$!vpnline.vpnline_id');">$!vpnline.line_id</a></td>
-                <td>$!vpnline.ip</td>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnline.line_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!vpnline.line_id');">$!vpnline.ip</a></td>
+                <td>$!vpnline.port</td>
                 <td>$!vpnline.servicetype</td>
                 <td>$!vpnline.linename</td>
                 <td>$!vpnline.start_time</td>

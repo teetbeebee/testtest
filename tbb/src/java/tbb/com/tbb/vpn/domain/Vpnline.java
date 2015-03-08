@@ -3,6 +3,7 @@ package com.tbb.vpn.domain;
 public class Vpnline {
 	private java.lang.String line_id;
 	private java.lang.String ip;
+	private java.lang.String port;
 	private java.lang.String servicetype;
 	private java.lang.String linename;
 	private java.sql.Timestamp start_time;
@@ -21,6 +22,13 @@ public class Vpnline {
 
 	public void setIp(java.lang.String ip){
 		this.ip = ip;
+	}
+	public java.lang.String getPort(){
+		return port;
+	}
+
+	public void setPort(java.lang.String port){
+		this.port = port;
 	}
 	public java.lang.String getServicetype(){
 		return servicetype;

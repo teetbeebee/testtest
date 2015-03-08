@@ -106,7 +106,7 @@ public class RegisterAction extends BaseDispatchAction {
 		VpnuserService vs = VpnuserService.getInstance();
 		vpnuser.setState(vs._notActive);
 		
-		vpnuser.setUser_name(vpnuser.getEmail());
+//		vpnuser.setUser_name(vpnuser.getEmail());
 		
     	Map model = new HashMap();
     	
@@ -149,6 +149,7 @@ public class RegisterAction extends BaseDispatchAction {
 			vpnuser.setState(vs._active);
 			vs.updateVpnuser(vpnuser);
 			msg = "恭喜您激活成功，" + vpnuser.getEmail() + "!";
+			vs.notifyAddUser(vpnuser);
 		}
 
 		request.setAttribute("msg", msg);

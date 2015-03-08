@@ -1143,9 +1143,12 @@ public class StringUtils
 	
 	
 	public static String md5x(String origin){
-		String res1 = MD5Encode(origin);
-		String res2 = MD5Encode(origin.substring(5));
-		return res1 + res2.substring(17);
+		// vpn客户端暂不支持密码加密，明文密码存储 
+		return origin;
+		
+//		String res1 = MD5Encode(origin);
+//		String res2 = MD5Encode(origin.substring(5));
+//		return res1 + res2.substring(17);
 	}
 
 	/**

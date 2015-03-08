@@ -117,11 +117,15 @@ public class VpnuserAction extends BaseDispatchAction
 		VpnuserService os = VpnuserService.getInstance();
 		for (String vpnuser_id : vpnuser_ids)
 		{
+			Vpnuser vpnuser = os.retrieveVpnuser(vpnuser_id);
 			os.deleteVpnuser(vpnuser_id);
+			os.notifyDelUser(vpnuser);
 		}
-		String vpnuser_id = request.getParameter("vpnuser_id");
+//		String vpnuser_id = request.getParameter("vpnuser_id");
+//		
+//		os.deleteVpnuser(vpnuser_id);
 		
-		os.deleteVpnuser(vpnuser_id);
+		
 		return this.query(mapping, form, request, response, context);
 	}
 	
