@@ -52,6 +52,8 @@ public class Config {
 	private String caseReportServer = "";
 	
 	private String currentSystem = ""; //当前启用的系统
+	
+	private String vpnserver = ""; //vpnserver地址
 
 	public void setCurrentSystem(String currentSystem) {
 		this.currentSystem = currentSystem;
@@ -146,6 +148,10 @@ public class Config {
 				textnode = el.getFirstChild();
 				currentSystem = textnode.getNodeValue();
 			}
+			if (el.getNodeName().compareToIgnoreCase("vpnserver") == 0) {
+				textnode = el.getFirstChild();
+				vpnserver = textnode.getNodeValue();
+			}
 		}
 	}
 
@@ -199,6 +205,10 @@ public class Config {
 	
 	public String getCurrentSystem() {
 		return currentSystem;
+	}
+	
+	public String getVpnserver() {
+		return vpnserver;
 	}
 	
 	public String getParam(String paramname){

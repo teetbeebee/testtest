@@ -220,7 +220,7 @@ public class VpnuserService extends BaseService
 		MailTool.sendmail(receiveAddress, content);
 	}
 	
-	public String notifyAddUser(Vpnuser vpnuser){
+	public String notifyAddUser(Vpnuser vpnuser, String vpnserver){
 		String result = "";
 		VpnlineService vls = VpnlineService.getInstance();
 		Map params = new HashMap();
@@ -232,7 +232,7 @@ public class VpnuserService extends BaseService
 			e.printStackTrace();
 		}
 		
-		String httpheader = "http://192.168.192.138:62688/agent?data=";
+		String httpheader = "http://" + vpnserver + "/agent?data=";
 		String data = "m=adduser&uname=" + vpnuser.getUser_name() + "&pwd=" + vpnuser.getPassword() + "&nodes=";
 		
 		if(lineList.size() > 0){
@@ -259,7 +259,7 @@ public class VpnuserService extends BaseService
 		return result;
 	}
 	
-	public String notifyDelUser(Vpnuser vpnuser){
+	public String notifyDelUser(Vpnuser vpnuser, String vpnserver){
 		String result = "";
 		VpnlineService vls = VpnlineService.getInstance();
 		Map params = new HashMap();
@@ -271,7 +271,7 @@ public class VpnuserService extends BaseService
 			e.printStackTrace();
 		}
 		
-		String httpheader = "http://192.168.192.138:62688/agent?data=";
+		String httpheader = "http://" + vpnserver + "/agent?data=";
 		String data = "m=deluser&uname=" + vpnuser.getUser_name() + "&nodes=";
 		
 		if(lineList.size() > 0){

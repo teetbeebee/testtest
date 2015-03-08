@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.newbee.tmf.config.Config;
 import com.newbee.tmf.core.ActionContext;
 import com.newbee.tmf.core.BaseDispatchAction;
 import com.newbee.tmf.core.BaseException;
@@ -119,7 +120,9 @@ public class VpnuserAction extends BaseDispatchAction
 		{
 			Vpnuser vpnuser = os.retrieveVpnuser(vpnuser_id);
 			os.deleteVpnuser(vpnuser_id);
-			os.notifyDelUser(vpnuser);
+			Config config = (Config) request.getSession().getServletContext().getAttribute("config");
+			String vpnserver = config.getVpnserver();
+			os.notifyDelUser(vpnuser, vpnserver);
 		}
 //		String vpnuser_id = request.getParameter("vpnuser_id");
 //		

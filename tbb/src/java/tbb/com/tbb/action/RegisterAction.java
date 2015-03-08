@@ -149,7 +149,10 @@ public class RegisterAction extends BaseDispatchAction {
 			vpnuser.setState(vs._active);
 			vs.updateVpnuser(vpnuser);
 			msg = "恭喜您激活成功，" + vpnuser.getEmail() + "!";
-			vs.notifyAddUser(vpnuser);
+			
+			Config config = (Config) request.getSession().getServletContext().getAttribute("config");
+			String vpnserver = config.getVpnserver();
+			vs.notifyAddUser(vpnuser, vpnserver);
 		}
 
 		request.setAttribute("msg", msg);

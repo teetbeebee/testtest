@@ -5,6 +5,7 @@
     <parameter name="filePath">d:\scheme</parameter>
     <docPath>c:\datum</docPath>
     <currentSystem>vpn</currentSystem>
+    <vpnserver>192.168.192.138:62688</vpnserver>
     <adminmail>teebeebee@gmail.com</adminmail>
     <adminmail>teebeebee123</adminmail>
 </Config>
