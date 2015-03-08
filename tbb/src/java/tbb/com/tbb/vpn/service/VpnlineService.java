@@ -153,6 +153,7 @@ public class VpnlineService extends BaseService
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			throw new BaseException("查询Vpnline失败!", e);
 		}
 	}

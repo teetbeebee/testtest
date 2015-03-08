@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>vpnline编辑</title>
+<link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
+<script type="text/javascript" src="$link.contextPath/js/jquery-1.11.2.js"></script>
+
+<script type="text/javascript" src="$link.contextPath/js/Zebra_Datepicker/zebra_datepicker.js"></script>
+<link href="$link.contextPath/js/Zebra_Datepicker/default.css" rel="stylesheet" type="text/css" />
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+    $('input#start_time').Zebra_DatePicker({
+    	format: 'Y-m-d',
+    	onChange: function(view, elements) {
+    		//alert($('.datepicker').val());
+    	},
+    	onSelect: function(dateText, inst){
+    		//alert($('.datepicker').val());
+    	}
+    });
+    
+    $('input#expire_time').Zebra_DatePicker({
+    	format: 'Y-m-d',
+    	onChange: function(view, elements) {
+    		//alert($('.datepicker').val());
+    	},
+    	onSelect: function(dateText, inst){
+    		//alert($('.datepicker').val());
+    	}
+    });
+    
+    $('#start_time').val($('#start_time').val().replace(' 00:00:00.0', ''));
+    $('#expire_time').val($('#expire_time').val().replace(' 00:00:00.0', ''));
+});
+
+/**
+ * 参数检测
+ */
+function isValid(){
+	if (isEmpty(document.objForm.ip.value))
+	{
+		alert ('请输入IP地址!');
+		document.objForm.ip.focus();
+		return false;
+	}
+	if (isEmpty(document.objForm.servicetype.value))
+	{
+		alert ('请输入服务类型!');
+		document.objForm.servicetype.focus();
+		return false;
+	}
+	if (isEmpty(document.objForm.linename.value))
+	{
+		alert ('请输入线路名称!');
+		document.objForm.linename.focus();
+		return false;
+	}
+	if (isEmpty(document.objForm.start_time.value))
+	{
+		alert ('请输入开始时间!');
+		document.objForm.start_time.focus();
+		return false;
+	}
+	$('#start_time').val($('#start_time').val() + ' 00:00:00');
+	if (isEmpty(document.objForm.expire_time.value))
+	{
+		alert ('请输入过期时间!');
+		document.objForm.expire_time.focus();
+		return false;
+	}
+	$('#expire_time').val($('#expire_time').val() + ' 00:00:00');
+	
+	return true;
+}
+
+/**
+ * 提交新增
+ */
+function do_edit_save(){
+	if(isValid()){
+		document.objForm.action = "$link.setAction('/vpnline.php?s=edit_save')";
+    	document.objForm.submit();
+	}
+}
+
+</script>
+</head>
+
+<body>
+<form name="objForm" method="post">
+    <!-- 隐含域 start -->
+    <input type="hidden" name="method" />
+    <input type="hidden" name="state" value="0" />
+    <input type="hidden" name="line_id" value="$!vpnline.getLine_id()" />
+    $!params.getHiddenAll() 
+    <!-- 隐含域 end -->
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">vpn管理</a></li>
+    <li><a href="#">vpnline增加</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+    
+    <ul class="forminfo">
+        <li><label>IP地址</label><input name="ip" value="$!vpnline.getIp()" id="ip" type="text" class="dfinput"/></li>
+        <li><label>服务类型</label><input name="servicetype" value="$!vpnline.getServicetype()" id="servicetype" type="text" class="dfinput"/></li>
+        <li><label>线路名称</label><input name="linename" value="$!vpnline.getLinename()" id="linename" type="text" class="dfinput"/></li>
+        <li><label>开始时间</label><input name="start_time" value="$!vpnline.getStart_time()" id="start_time" type="text" class="dfinput"/></li>
+        <li><label>过期时间</label><input name="expire_time" value="$!vpnline.getExpire_time()" id="expire_time" type="text" class="dfinput"/></li>
+        
+    <li><label>&nbsp;</label><input name="" type="button" onClick="do_edit_save()" class="btn" value="确认保存"/></li>
+    </ul>
+    
+    
+    </div>
+</form>
+
+</body>
+
+</html>
+
+

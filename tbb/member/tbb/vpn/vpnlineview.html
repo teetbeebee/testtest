@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>vpn用户添加</title>
+<title>vpnline添加</title>
 <link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="$link.contextPath/js/alike.js"></script>
 <script language="javascript" type="text/javascript">
@@ -11,9 +11,9 @@
  */
 function isValid(){
 	
-	if (isEmpty(document.objForm.user_name.value))
+	if (isEmpty(document.objForm.IP.value))
 	{
-		alert ('请输入用户名!');
+		alert ('请输入IP地址!');
 		document.objForm.user_id.focus();
 		return false;
 	}
@@ -26,7 +26,7 @@ function isValid(){
  */
 function do_add_save(){
 	if(isValid()){
-		document.objForm.action = "$link.setAction('/vpnuser.php?s=add_save')";
+		document.objForm.action = "$link.setAction('/vpnline.php?s=add_save')";
     	document.objForm.submit();
 	}
 }
@@ -47,7 +47,7 @@ function do_add_save(){
     <ul class="placeul">
     <li><a href="#">首页</a></li>
     <li><a href="#">vpn管理</a></li>
-    <li><a href="#">vpn用户增加</a></li>
+    <li><a href="#">vpnline增加</a></li>
     </ul>
     </div>
     
@@ -56,14 +56,12 @@ function do_add_save(){
     <div class="formtitle"><span>基本信息</span></div>
     
     <ul class="forminfo">
-		<li><label>用户名</label><input name="user_name" type="text" class="dfinput"/></li>
-		<li><label>邮件</label><input name="email" type="text" class="dfinput"/></li>
-		<li><label>qq</label><input name="qq" type="text" class="dfinput"/></li>
-		<li><label>密码</label><input name="password" type="text" class="dfinput"/></li>
-		<li><label>用户类型</label><input name="user_type" type="text" class="dfinput"/></li>
-		<li><label>状态</label><input name="state" type="text" class="dfinput"/></li>
-		<li><label>vpn服务器id</label><input name="vpn_server_id" type="text" class="dfinput"/></li>
-		<li><label>账户余额</label><input name="account" type="text" class="dfinput"/></li>
+        <li><label>IP地址</label><input name="IP" type="text" class="dfinput"/></li>
+        <li><label>服务类型</label><input name="SERVICETYPE" type="text" class="dfinput"/></li>
+        <li><label>线路名称</label><input name="LINENAME" type="text" class="dfinput"/></li>
+        <li><label>开始时间</label><input name="START_TIME" type="text" class="dfinput"/></li>
+        <li><label>过期时间</label><input name="EXPIRE_TIME" type="text" class="dfinput"/></li>
+        
     <li><label>&nbsp;</label><input name="" type="button" onClick="do_add_save()" class="btn" value="确认保存"/></li>
     </ul>
     
@@ -74,3 +72,5 @@ function do_add_save(){
 </body>
 
 </html>
+
+

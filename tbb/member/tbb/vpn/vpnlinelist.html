@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>vpn用户查询</title>
+<title>vpnline查询</title>
 <link href="$link.contextPath/tbb/css/style.css" rel="stylesheet" type="text/css" />
 <link href="$link.contextPath/tbb/css/tbb.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="$link.contextPath/tbb/js/jquery.js"></script>
@@ -33,7 +33,7 @@ $(document).ready(function(){
 });
 
 //action请求
-var action = "$link.setAction('/vpnuser.php')";
+var action = "$link.setAction('/vpnline.php')";
 
 function do_clear(){	
 	document.objForm.$!{params.names.user_id}.value = "";
@@ -67,7 +67,7 @@ function do_edit(id)
 {
 	document.objForm.action = action;
 	document.objForm.s.value = "edit";	
-	document.objForm.user_id.value = id;	
+	document.objForm.line_id.value = id;	
 	document.objForm.submit();
 }
 
@@ -102,15 +102,15 @@ function do_delete_batch(){
 <form name="objForm" method="#method()">
 	<!-- 隐含域 start-->
     <input type="hidden" name="s">
-	<input type="hidden" name="user_id">
-	<input name="$!params.names.pageIndex" type="hidden" value="$!userList.pageIndex">
+	<input type="hidden" name="line_id">
+	<input name="$!params.names.pageIndex" type="hidden" value="$!vpnlineList.pageIndex">
     <!-- 隐含域 end-->
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
     <li><a href="#">首页</a></li>
     <li><a href="#">系统管理</a></li>
-    <li><a href="#">线路管理</a></li>
+    <li><a href="#">vpnline管理</a></li>
     </ul>
     </div>
     
@@ -121,7 +121,7 @@ function do_delete_batch(){
     	<ul class="toolbar">
         <li onclick="do_add();"><span><img src="$link.contextPath/tbb/images/t01.png" /></span>添加</li>
         <li class="click"><span><img src="$link.contextPath/tbb/images/t02.png" /></span>修改</li>
-        <li><span><img src="$link.contextPath/tbb/images/t03.png" /></span>删除</li>
+        <li onclick="do_delete_batch();"><span><img src="$link.contextPath/tbb/images/t03.png" /></span>删除</li>
         <li onclick="do_query();"><span><img src="$link.contextPath/tbb/images/t04.png" /></span>查询</li>
         <li>登录名：<input class="text" type="text" name="$!params.names.user_id" value="$!params.values.user_id" /></li>
         <li>用户名：<input class="text" type="text" name="$!params.names.user_name" value="$!params.values.user_name" /></li>
@@ -140,41 +140,29 @@ function do_delete_batch(){
     	<thead>
     	<tr>
         <th><input name="" type="checkbox" value="" checked="checked"/></th>
-	<th>用户编号</th>
-	<th>用户名</th>
-	<th>邮件</th>
-	<th>qq</th>
-	<th>密码</th>
-	<th>注册时间</th>
-	<th>过期时间</th>
-	<th>session_id</th>
-	<th>用户类型</th>
-	<th>状态</th>
-	<th>vpn服务器id</th>
-	<th>账户余额</th>
+        <th>ID</th>
+        <th>IP地址</th>
+        <th>服务类型</th>
+        <th>线路名称</th>
+        <th>开始时间</th>
+        <th>过期时间</th>
 	<th>操作</th>
         </tr>
         </thead>
         <tbody>
 
         
-        #foreach($vpnuser in $vpnuserList.getPage())
+        #foreach($vpnline in $vpnlineList.getPage())
         		<tr>
-			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnuser.user_id" title="选择/不选择" /></td>
-			<td><a href="javascript:do_view('$!vpnuser.user_id');">$!vpnuser.user_id</a></td>
-<td>$!vpnuser.user_name</td>
-<td>$!vpnuser.email</td>
-<td>$!vpnuser.qq</td>
-<td>$!vpnuser.password</td>
-<td>$!vpnuser.regtime</td>
-<td>$!vpnuser.expiretime</td>
-<td>$!vpnuser.session_id</td>
-<td>$!vpnuser.user_type</td>
-<td>$!vpnuser.state</td>
-<td>$!vpnuser.vpn_server_id</td>
-<td>$!vpnuser.account</td>
+			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnline.vpnline_id" title="选择/不选择" /></td>
+			<td><a href="javascript:do_view('$!vpnline.vpnline_id');">$!vpnline.line_id</a></td>
+                <td>$!vpnline.ip</td>
+                <td>$!vpnline.servicetype</td>
+                <td>$!vpnline.linename</td>
+                <td>$!vpnline.start_time</td>
+                <td>$!vpnline.expire_time</td>
 			<td>
-				<input class="button" type="button" value="编辑" onClick="do_edit('$!vpnuser.user_id')" />
+				<input class="button" type="button" value="编辑" onClick="do_edit('$!vpnline.line_id')" />
 			</td>
 		</tr>
 		#end 
@@ -183,7 +171,7 @@ function do_delete_batch(){
     
    
     <div class="pagin">
-    	<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($userList "goto_page")
+    	<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($vpnlineList "goto_page")
     </div>
     
     
@@ -217,6 +205,3 @@ function do_delete_batch(){
 </body>
 
 </html>
-
-
-

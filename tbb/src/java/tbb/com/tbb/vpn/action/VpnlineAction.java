@@ -1,16 +1,11 @@
-﻿package com.tbb.vpn.action;
+package com.tbb.vpn.action;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -24,11 +19,10 @@ import com.newbee.tmf.core.QueryParams;
 import com.newbee.tmf.util.RequestUtils;
 import com.newbee.tmf.util.ValueUtils;
 import com.tbb.tools.GUID;
-import com.tbb.tools.UrlUtil;
-import com.tbb.vpn.domain.Vpnuser;
-import com.tbb.vpn.service.VpnuserService;
+import com.tbb.vpn.domain.Vpnline;
+import com.tbb.vpn.service.VpnlineService;
 
-public class VpnuserAction extends BaseDispatchAction
+public class VpnlineAction extends BaseDispatchAction
 {
 	public ActionForward add(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response,
@@ -41,22 +35,23 @@ public class VpnuserAction extends BaseDispatchAction
 			HttpServletRequest request, HttpServletResponse response,
 			ActionContext context) throws Exception
 	{
-		Vpnuser vpnuser = new Vpnuser();
-		vpnuser.setUser_id(GUID.generate());
+		Vpnline vpnline = new Vpnline();
+		vpnline.setLine_id(GUID.generate());
 		Map<String, String> map = new HashMap<String, String>();
 		// 取页面参数
 		RequestUtils.getParameter(request, map);
 		// 一次性赋值
-		ValueUtils.populate(vpnuser, map);
+		ValueUtils.populate(vpnline, map);
 		
-		VpnuserService service = VpnuserService.getInstance();
+		VpnlineService service = VpnlineService.getInstance();
 		
 		
 		try{
-			service.createVpnuser(vpnuser);
+			service.createVpnline(vpnline);
 		} catch(Exception ex){
+			ex.printStackTrace();
 			throw ex;
-//			throw new BaseException("新增的ID：“" + vpnuser.getUser_id()
+//			throw new BaseException("新增的ID：“" + vpnline.getLine_id()
 //					+ "”失败，不能新增！");
 		}
 
@@ -68,21 +63,21 @@ public class VpnuserAction extends BaseDispatchAction
 			HttpServletRequest request, HttpServletResponse response,
 			ActionContext context) throws Exception
 	{
-		String vpnuser_id = request.getParameter("user_id");
-		if (null == vpnuser_id || "".equals(vpnuser_id.trim()))
+		String vpnline_id = request.getParameter("line_id");
+		if (null == vpnline_id || "".equals(vpnline_id.trim()))
 		{
 			throw new BaseException("修改的对象编号为空，不能修改！");
 		}
 
-		VpnuserService os = VpnuserService.getInstance();
+		VpnlineService os = VpnlineService.getInstance();
 
-		Vpnuser vpnuser = os.retrieveVpnuser(vpnuser_id);
-		if (null == vpnuser)
+		Vpnline vpnline = os.retrieveVpnline(vpnline_id);
+		if (null == vpnline)
 		{
-			throw new BaseException("修改编号为“" + vpnuser_id + "”的对象为空或不存在，不能修改！");
+			throw new BaseException("修改编号为“" + vpnline_id + "”的对象为空或不存在，不能修改！");
 		}
 
-		request.setAttribute("vpnuser", vpnuser);
+		request.setAttribute("vpnline", vpnline);
 		return mapping.findForward("edit");
 	}
 
@@ -90,15 +85,15 @@ public class VpnuserAction extends BaseDispatchAction
 			HttpServletRequest request, HttpServletResponse response,
 			ActionContext context) throws Exception
 	{
-		Vpnuser vpnuser = new Vpnuser();
+		Vpnline vpnline = new Vpnline();
 		Map<String, String> map = new HashMap<String, String>();
 		// 取页面参数
 		RequestUtils.getParameter(request, map);
 		// 一次性赋值
-		ValueUtils.populate(vpnuser, map);
+		ValueUtils.populate(vpnline, map);
 
-		VpnuserService service = VpnuserService.getInstance();
-		service.updateVpnuser(vpnuser);
+		VpnlineService service = VpnlineService.getInstance();
+		service.updateVpnline(vpnline);
 
 		return this.query(mapping, form, request, response, context);
 	}
@@ -108,20 +103,20 @@ public class VpnuserAction extends BaseDispatchAction
 			HttpServletRequest request, HttpServletResponse response,
 			ActionContext context) throws Exception
 	{
-		String[] vpnuser_ids = request.getParameterValues("pk");
-		if (vpnuser_ids == null || vpnuser_ids.length < 1)
+		String[] vpnline_ids = request.getParameterValues("pk");
+		if (vpnline_ids == null || vpnline_ids.length < 1)
 		{
 			throw new BaseException("请选择要删除的记录");
 		}
 
-		VpnuserService os = VpnuserService.getInstance();
-		for (String vpnuser_id : vpnuser_ids)
+		VpnlineService os = VpnlineService.getInstance();
+		for (String vpnline_id : vpnline_ids)
 		{
-			os.deleteVpnuser(vpnuser_id);
+			os.deleteVpnline(vpnline_id);
 		}
-		String vpnuser_id = request.getParameter("vpnuser_id");
+		String vpnline_id = request.getParameter("vpnline_id");
 		
-		os.deleteVpnuser(vpnuser_id);
+		os.deleteVpnline(vpnline_id);
 		return this.query(mapping, form, request, response, context);
 	}
 	
@@ -135,44 +130,12 @@ public class VpnuserAction extends BaseDispatchAction
 		int pageIndex = queryParams.getPageIndex();
 		int pageSize = queryParams.getPageSize();
 
-		VpnuserService vpnusers = VpnuserService.getInstance();
-		PageList vpnuserList = vpnusers.queryVpnuserForPageList(params, pageIndex, pageSize);
+		VpnlineService vpnlines = VpnlineService.getInstance();
+		PageList vpnlineList = vpnlines.queryVpnlineForPageList(params, pageIndex, pageSize);
 
-		request.setAttribute("vpnuserList", vpnuserList);
+		request.setAttribute("vpnlineList", vpnlineList);
 		return mapping.findForward("query");
 	}
 	
-	public static void main(String[] args) {
-		String httpheader = "http://192.168.192.138:62688/agent?data=";
-		String data = "m=adduser&uname=vbbpn&pwd=123qwe&nodes=";
-		List ipList = new ArrayList<JSONObject>();
-		JSONObject ip1 = new JSONObject();
-		ip1.element("Ip", "119.9.73.63");
-		ip1.element("Port", "443");
-		
-		JSONObject ip2 = new JSONObject();
-		ip2.element("Ip", "119.9.73.163");
-		ip2.element("Port", "1443");
-		
-		ipList.add(ip1);
-		ipList.add(ip2);
-		
-		JSONObject ips = new JSONObject();
-		ips.element("Nodes", ipList);
-		data += ips.toString();
-		System.out.println(data);
-		try {
-			data = URLEncoder.encode(data, "utf8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		data = httpheader + data;
-		System.out.println(data);
-		
-		UrlUtil.getURLContent(data);
-	}
 }
-
 

@@ -204,14 +204,6 @@ insert into USER_ROLE(USER_ID,ROLE_ID) values('admin','r001');
 insert into USER_ROLE(USER_ID,ROLE_ID) values('0808','r002');
 
 
-
-
-
-
-
-
-
-
 --  以下以模块划分为主，便于sql代码调试 -- 
 --  sys_permit注册 -- 
 insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.basedata.action.RecipeAction@query','查询Recipe',null);
@@ -230,3 +222,40 @@ insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.R
 insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.RecipeAction@edit_save','r001');
 insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.RecipeAction@delete','r001');
 insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.basedata.action.RecipeAction@view','r001');
+
+----  vpn相关---- 
+--  vpnline注册 -- 
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@query','查询Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@add','添加Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@add_save','保存Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@edit','编辑Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@edit_save','编辑保存Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@delete','删除Vpnline',null);
+insert into SYS_PERMIT(PERMIT_ID,PERMIT_NAME,NOTE) values('com.tbb.vpn.action.VpnlineAction@view','查看Vpnline',null);
+
+--  vpnline授权 -- 
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@query','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@add','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@add_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@edit','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@edit_save','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@delete','r001');
+insert into SYS_ROLE_PERMIT(PERMIT_ID,ROLE_ID) values('com.tbb.vpn.action.VpnlineAction@view','r001');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

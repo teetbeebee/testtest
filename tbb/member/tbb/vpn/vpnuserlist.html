@@ -140,14 +140,11 @@ function do_delete_batch(){
     	<thead>
     	<tr>
         <th><input name="" type="checkbox" value="" checked="checked"/></th>
-	<th>用户编号</th>
 	<th>用户名</th>
 	<th>邮件</th>
 	<th>qq</th>
-	<th>密码</th>
 	<th>注册时间</th>
 	<th>过期时间</th>
-	<th>session_id</th>
 	<th>用户类型</th>
 	<th>状态</th>
 	<th>vpn服务器id</th>
@@ -161,14 +158,11 @@ function do_delete_batch(){
         #foreach($vpnuser in $vpnuserList.getPage())
         		<tr>
 			<td><input class="checkbox" type="checkbox" name="pk" value="$!vpnuser.user_id" title="选择/不选择" /></td>
-			<td><a href="javascript:do_view('$!vpnuser.user_id');">$!vpnuser.user_id</a></td>
-<td>$!vpnuser.user_name</td>
+			<td><a href="javascript:do_view('$!vpnuser.user_id');">$!vpnuser.user_name</a></td>
 <td>$!vpnuser.email</td>
 <td>$!vpnuser.qq</td>
-<td>$!vpnuser.password</td>
 <td>$!vpnuser.regtime</td>
 <td>$!vpnuser.expiretime</td>
-<td>$!vpnuser.session_id</td>
 <td>$!vpnuser.user_type</td>
 <td>$!vpnuser.state</td>
 <td>$!vpnuser.vpn_server_id</td>
@@ -183,7 +177,7 @@ function do_delete_batch(){
     
    
     <div class="pagin">
-    	<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($userList "goto_page")
+    	<div class="selectarea">#select("reclist") <input class="button" type="button" value="删除" onclick="do_delete_batch('reclist')"/></div> #page_navg($vpnuserList "goto_page")
     </div>
     
     

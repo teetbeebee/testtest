@@ -317,6 +317,7 @@ public class BaseDispatchAction extends BaseAction
 			Throwable t = e.getTargetException();
 			if (t instanceof Exception)
 			{
+				t.printStackTrace();
 				throw ((Exception)t);
 			}
 			else

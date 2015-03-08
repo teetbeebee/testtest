@@ -257,25 +257,25 @@
 	  #if(!$plist.isFirstPage())
 	   <a href="javascript:${action}(1)">首页</a>
 	  #else 
-	   <span style="color: #666">首页</span>
+	   <a style="color: #666">首页</a>
 	  #end
 	   
 	  #if($plist.isPreviousPageAvailable())
 	   <a href="javascript:${action}($plist.getPrevPageIndex())">上一页</a>
 	  #else
-	   <span style="color: #666">上一页</span>
+	   <a style="color: #666">上一页</a>
 	  #end 
 
 	  #if($plist.isNextPageAvailable())
 	   <a href="javascript:${action}($plist.getNextPageIndex())">下一页</a>
 	  #else
-	   <span style="color: #666">下一页</span>
+	   <a style="color: #666">下一页</a>
 	  #end
 
 	  #if(!$plist.isLastPage()) 
 	    <a href="javascript:${action}($plist.getPageCount())">尾页</a>
 	  #else
-	    <span style="color: #666">尾页</span>
+	    <a style="color: #666">尾页</a>
 	  #end
     #end
   #end

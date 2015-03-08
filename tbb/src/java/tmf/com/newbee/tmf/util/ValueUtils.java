@@ -15,6 +15,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.fileupload.FileItem;
+import org.xmlBlaster.util.Timestamp;
 
 import com.newbee.tmf.util.converters.ClassConverter;
 
@@ -608,7 +609,11 @@ public class ValueUtils {
 			if (type.toString().substring(6).equalsIgnoreCase(
 					"java.math.BigDecimal")) {
 				value = new BigDecimal(tempvalue);
-			} 
+			} else
+				if (type.toString().substring(6).equalsIgnoreCase(
+						"java.sql.Timestamp")) {
+				value = Timestamp.valueOf(tempvalue);
+			}
 
 			// Perform the assignment for this property
 			setProperty(bean, name, value);
