@@ -72,6 +72,7 @@ public class Config {
 					.newInstance();
 			builder = factory.newDocumentBuilder();
 			String address = Config.ROOT + "/WEB-INF/config.xml";
+			System.out.println(address);
 			doc = builder.parse(new org.xml.sax.InputSource(
 					new java.io.FileInputStream(address)));
 			doc.normalize();// 去掉XML文档中作为格式化内容的空白而映射在DOM树中的不必要的Text Node对象

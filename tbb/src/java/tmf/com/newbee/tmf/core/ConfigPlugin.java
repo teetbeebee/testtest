@@ -72,6 +72,7 @@ public class ConfigPlugin implements PlugIn
 		}
 		catch (Exception ex2)
 		{
+			ex2.printStackTrace();
 			log.error("初始化参数失败!");
 			throw new ServletException("初始化参数失败:", ex2);
 		}
